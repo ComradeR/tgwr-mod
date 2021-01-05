@@ -752,6 +752,10 @@
  RUS_idea_orthodox_church_desc:0 "Русь со времеён падения Византии считалась единственной страной, способной защитить православные народы. Традиции и всемогущество церкви объединяют народы."
  RUS_idea_strike_movement2:0 "Всероссийская Забастовка"
  RUS_idea_strike_movement2_desc:0 "Сейчас в забастовках принимают участие более миллиона рабочих. Нужно немедленно остановить их!"
+ RUS_threat_of_revolution2:0 "Угроза революции"
+ RUS_threat_of_revolution2_desc:0 "Движение социалистов-революционеров, большевиков и многих других, планирует свергнуть царскую династию и создать республику, но у каждого движения свои взгляды на то, как должна выглядеть будущая республика, и, вероятно, политическая борьба не закончится.С одним оборотом"
+ RUS_threat_of_revolution3:0 "Угроза революции"
+ RUS_threat_of_revolution3_desc:0 "Движение социалистов-революционеров, большевиков и многих других, планирует свергнуть царскую династию и создать республику, но у каждого движения свои взгляды на то, как должна выглядеть будущая республика, и, вероятно, политическая борьба не закончится.С одним оборотом"
 
  #in progress
 
@@ -762,30 +766,41 @@
 
  RUS_idea_berlin_baghdad_railway:0 "Berlin-Vladivostok Railway Construction"
  RUS_idea_berlin_baghdad_railway_desc:0 "[ROOT.GetName] has began the construction of the Berlin-Vladivostok railway and is receiving assistance from German investors."
+ 
  RUS_idea_army_collapse:0 "Russian Army Collapse"
  RUS_idea_army_collapse_desc:0 "Part of the army rebelled against us! Due to the start of the revolution, many commanders went over to the Reds. Mass desertion and fraternization with the enemy led to the complete collapse of the Russian army. God help us survive!"
- RUS_threat_of_revolution2:0 "Threat of Revolution"
- RUS_threat_of_revolution2_desc:0 "The movements of the socialist revolutionaries, Bolsheviks, and many others plan to overthrow the Tsar dynasty and establish a republic. However, each movement has its own views on what the future republic should look like, and, probably, the political struggle will not end with one revolution."
- RUS_threat_of_revolution3:0 "Threat of Revolution"
- RUS_threat_of_revolution3_desc:0 "The movements of the socialist revolutionaries, Bolsheviks, and many others plan to overthrow the Tsar dynasty and establish a republic. However, each movement has its own views on what the future republic should look like, and, probably, the political struggle will not end with one revolution."
+ 
  RUS_idea_combat_organization:0 "The Combat Organization"
+ 
  RUS_idea_stolyipin_reform:0 "Stolyipin Reform"RUS_idea_dual_power:0 "Dual Power"
+ 
  RUS_idea_white_guard:0 "White Guard"
+ 
  RUS_idea_transsib_railway_modernization:0 "Trans-Siberian Railway Modernization"
+ 
  RUS_idea_russian_state_library:0 "Russian State Library"
+ 
  RUS_idea_treaty_of_the_three_emperors:0 "Treaty of the Three Emperors"
  RUS_idea_treaty_of_the_three_emperors_desc:0 "Russia is supporting the royal houses of Britain and Germany to try on differences between empires."
+
  RUS_idea_federal_act:0 "The Federal Subject"
  RUS_idea_federal_act_desc:0 "Russia has prepared a project creating a common economic space for countries that have ratified the federal act."
+ 
  RUS_idea_legal_marxism:0 "Legalization of Marxism"
+
  RUS_idea_sleeping_bear:0 "Sleeping Bear"
  RUS_idea_sleeping_bear_desc:0 "The new government of Russia has signed an act of neutrality, and will not take part in offensive wars."
+ 
  RUS_idea_united_and_indivible:0 "United and Indivible"
  RUS_idea_united_and_indivible_desc:0 "United and Indivible"
+ 
  RUS_idea_autonomous_governorate:0 "Autonomous Governorate"
+ 
  rasputin_is_dead:0 "§YHas Died§!"
+ 
  RUS_idea_rasputin_church:0 "Khlystovism"
  RUS_idea_rasputin_church_desc:0 "The Holy Synod is in the hands of Rasputin's followers."
+ 
  putilov_factory:0 "Putilov Plant"
  
  #SOVIET RUSSIA
