@@ -1866,6 +1866,7 @@ Australia_disestablish_the_cmf_desc:0 ""
 
 
  RUS_provisional_committee:0 "Временный Комитет"
+ RUS_provisional_committee_desc:0 ""
 
  RUS_doctrine_of_field_artillery:0 "Доктрина полевой артиллерии"
  RUS_doctrine_of_field_artillery_desc:0 "После поражения в войне с Японией началась разработка нового Полевого Устава, являвшегося основной доктриной царской армии. По сравнению со старым, новый устав должен учитывать взаимодействие артиллерии и пехоты. Ранее мы совершили ошибку, недооценив потенциал тяжелой артиллерии."
@@ -1874,6 +1875,7 @@ Australia_disestablish_the_cmf_desc:0 ""
  RUS_revolutionaries_in_duma_desc:0 "Russia must take a new direction in its politics."
 
  RUS_first_russian_constitution:0 "Первая Российская Конституция"
+ RUS_first_russian_constitution_desc:0 ""
 
  RUS_build_berlin_baghdad_railway:0 "Постройка Берлино-Багдатской железной дороги"
  RUS_build_berlin_baghdad_railway_desc:0 "Строительстве пути к Владивостоку."
@@ -1889,10 +1891,13 @@ Australia_disestablish_the_cmf_desc:0 ""
  RUS_safety_of_amur_road_tt:0 "§YManchuria will become a Russian protectorate if China were to collapse§!.\n\n"
  
  RUS_focus_on_scandinavia:0 "Фокус на Скандинавии"
+ RUS_focus_on_scandinavia_desc:0 ""
  
  RUS_vladivostok_defense:0 "Оборона Владивостока"
+ RUS_vladivostok_defense_desc:0 ""
 
  RUS_unite_ruthenia:0 "Объединить Малороссию"
+ RUS_unite_ruthenia_desc:0 ""
 
  RUS_complete_stolypin_reform:0 "Завершение Столыпинской реформы"
  RUS_complete_stolypin_reform_desc:0 "Доступно в мирное время. Россия не должна иметь негативный экономических идей."
@@ -2080,21 +2085,26 @@ Australia_disestablish_the_cmf_desc:0 ""
  RUS_finance_the_creation_of_aviation_staff:0 "Финансирование создания авиационных кадров"
 
  RUS_air_defense:0 "Штаб Противовоздушной обороны"
+ RUS_air_defense_desc:0 ""
 
  RUS_aircraft_design_offices:0 "Авиационные конструкторские бюро"
+ RUS_aircraft_design_offices:0 ""
 
  RUS_white_volunteer_army:0 "Добровольческая армия"
+ RUS_white_volunteer_army_desc:0 "Армия становится профессиональной, как это было в США."
 
  RUS_lessons_of_war:0 "Уроки войны"
+ RUS_lessons_of_war_desc:0 ""
 
  RUS_motorized_focus:0 "Фокус на мотопехоте"
+ RUS_motorized_focus_desc:0 ""
 
  RUS_armored_vehicles:0 "Бронетехника"
+ RUS_armored_vehicles_desc:0 ""
 
  RUS_reorg_general_staff:0 "Реорганизация генерального штаба"
+ RUS_reorg_general_staff_desc:0 ""
 
- RUS_white_volunteer_army_desc:0 "Армия становится профессиональной, как это было в США."
-  
  RUS_emergency_conscription:0 "Срочная воинская повинность"
  RUS_emergency_conscription_desc:0 "Каждый гражданин обязан отдать свой долг перед Отечеством! Победа или смерть!"
  
