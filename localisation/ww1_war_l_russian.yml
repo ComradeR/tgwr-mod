@@ -31,12 +31,12 @@
 
  #not READY
 
- WAR_NAME_HAN_GER:0 "Wiedervereinigungkrieg"
- WAR_NAME_GER_HAN:0 "Wiedervereinigungkrieg"
- WAR_NAME_BAY_GER:0 "Wiedervereinigungkrieg"
- WAR_NAME_GER_BAY:0 "Wiedervereinigungkrieg"
- WAR_NAME_HAN_BAY:0 "Wiedervereinigungkrieg"
- WAR_NAME_BAY_HAN:0 "Wiedervereinigungkrieg"
+ WAR_NAME_HAN_GER:0 "Война за воссоединение"
+ WAR_NAME_GER_HAN:0 "Война за воссоединение"
+ WAR_NAME_BAY_GER:0 "Война за воссоединение"
+ WAR_NAME_GER_BAY:0 "Война за воссоединение"
+ WAR_NAME_HAN_BAY:0 "Война за воссоединение"
+ WAR_NAME_BAY_HAN:0 "Война за воссоединение"
 
  #READY но не проверенно
 
