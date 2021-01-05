@@ -2088,7 +2088,7 @@ Australia_disestablish_the_cmf_desc:0 ""
  RUS_air_defense_desc:0 ""
 
  RUS_aircraft_design_offices:0 "Авиационные конструкторские бюро"
- RUS_aircraft_design_offices:0 ""
+ RUS_aircraft_design_offices_desc:0 ""
 
  RUS_white_volunteer_army:0 "Добровольческая армия"
  RUS_white_volunteer_army_desc:0 "Армия становится профессиональной, как это было в США."
