@@ -12,7 +12,8 @@
  GERMANY_UNITED_RULE_TOOLTIP:0 "§Y[GER.GetName]§! can't release §YGerman core states§!!"
  RUSSIAN_REVOLUTION_THREAT_RULE_TOOLTIP:0 "§Y[RUS.GetName]§! can't realase nations while there is a §RThreat of Revolution§! in the country."
  SCRAMBLE_FOR_AFRICA_RULE_TOOLTIP:0 "§Y[Root.GetName]§! is involved in the §YScramble for Africa§! and can't release colonies."
- BRAZIL_UNITED_RULE_TOOLTIP:0 "§Y[BRA.GetName]§! can't release §Brazilian core states§!!"
+ BRAZIL_UNITED_RULE_TOOLTIP:0 "§Y[BRA.GetName]§! can't release §YBrazilian core states§!!"
+ RISORGIMENTO_RULE_TOOLTIP:0 "§Y[ROOT.GetName]§! can't realase §YItalian core states§! with §GRisorgimento§!!"
  ww1_Scramble_for_Africa:0 "Scramble for Africa"
  ww1_Scramble_for_Africa_desc:0 "§WThe Scramble for Africa will end after§! §YThe Great War§!§W, or in§! §Y1919.§!\n\nThe rivalry of the European powers for control over the resources of the African colonies is the main reason for the growth of world tension in this era."
  scramble_for_africa_tt:0 "£trigger_no Can not release colonies\n"
@@ -38,6 +39,7 @@
  idea_mass_desertion:0 "Mass Desertion"
  idea_mass_desertion_desc:0 "Heavy casualties demoralize the army. Mass desertion covers the entire army."
  idea_victors_of_wwi:0 "Victors of the Great War"
+ GER_victors_of_wwi:0 "Victors of the Great War"
  collectivism:0 "Collectivism"
  individualism:0 "Individualism"
  idea_militarism:0 "Militarism"
@@ -960,6 +962,10 @@
  GER_german_staff_planning_desc:0 "Our headquarters sent several high-ranking generals to the location of the allied army."
  GER_state_in_blockade:0 "State in Blockade"
  GER_state_in_blockade_desc:0 "The country is in an enemy blockade. They expect total economic isolation to provoke famine undermine our morale."
+ GER_quenched_militarism:0 "Quenched Militarism"
+ GER_mitteleuropa:0 "Mitteleuropa"
+ GER_reformed_economy:0 "Reformed Economy"
+ GER_representative_reform_idea:0 "Representative Reform"
  
  #AUSTRIA-HUNGARY
  AUH_ww1_House_Habsburg_Lorraine:0 "House of Habsburg-Lorraine"
@@ -1530,7 +1536,12 @@
  KOR_idea_mass_conscription_desc:0 "All men are obliged to serve in the military for at least three years."
  KOR_idea_army_tradition:0 "Tradition of Righteous Army"
  KOR_idea_army_tradition_desc:0 "Million soldiers of New Korea,\nYour Fatherland calls for you!\nOur thirty million compatriots of three thousand miles\nIt's you and me who will save!"
+ KOR_modern_agriculture:0 "Modern Agriculture"
 
  #Denmark
  DEN_canadian_trade:0 "Canadian Trade Routes"
  DEN_canadian_trade_desc:0 "The Canadians have given us trading priority because we have given them Greenland."
+ 
+ #Azerbaijan POG
+ AZR_republic_founder:0 "Founder of the Republic"
+ AZR_republic_founder_desc:0 "Mammad, still to this day, is regarded as one of the most influential founders of the Azeri Democratic Republic. Due to this, he holds notable authority in the parliamentary democracy established in the chaos of the Russian Civil War."

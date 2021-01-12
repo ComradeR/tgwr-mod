@@ -40,7 +40,7 @@ country_event = {
 			country_event = { id = garibaldi.5 days = 19}
 			SRD = {
 				retire_ideology_leader = neutrality
-				create_country_leader = { 
+				create_country_leader = {
 					name = "Umberto II"
 					picture = "gfx/leaders/ITA/ITA_Umberto_II.dds"
 					expire="1935.1.1" 
@@ -77,7 +77,6 @@ country_event = {
 				limit = {
 					OR = {
 						state = 39
-						state = 157
 						state = 158
 						state = 159
 						state = 160
@@ -193,7 +192,6 @@ country_event = {
 			every_state = {
 				limit = {
 					OR = {
-						state = 157
 						state = 158
 						state = 159
 						state = 161
@@ -344,14 +342,12 @@ country_event = {
 	fire_only_once = yes
 	immediate = {
 		hidden_effect = {
-			ITA = {
-				set_politics = {
-					ruling_party = democratic
-				}
-				set_country_flag = ITA_republican_italy_flag
-				set_cosmetic_tag = ROI
-				add_popularity = { ideology = democratic popularity = 0.35 }
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
 			}
+			set_country_flag = ITA_republican_italy_flag
+			set_cosmetic_tag = ROI
 			set_popularities = {
 				democratic = 38
 				neutrality = 25
@@ -378,6 +374,7 @@ country_event = {
 						state = 115
 						state = 117
 						state = 156
+						state = 157
 					}
 					is_owned_by = ITA
 					is_controlled_by = ITA
@@ -451,6 +448,7 @@ country_event = {
 						state = 115
 						state = 117
 						state = 156
+						state = 157
 					}
 					is_owned_by = ROI
 					is_controlled_by = ROI
@@ -1525,6 +1523,7 @@ news_event = {
 					OR = {
 						tag = CAN
 						tag = AST
+						tag = ENG #Imperial Entente
 					}
 					is_faction_leader = yes
 				}
@@ -1618,7 +1617,6 @@ news_event = {
 			}
 			PAP = {
 				add_state_core = 2
-				add_state_core = 157
 				add_state_core = 161
 				add_state_core = 835
 				transfer_state = 2
@@ -1633,7 +1631,6 @@ news_event = {
 				ITS = {
 					OR = {
 						owns_state = 2
-						owns_state = 157
 						owns_state = 161
 						owns_state = 835
 					}
@@ -1642,7 +1639,7 @@ news_event = {
 
 			PAP = {
 				transfer_state = 2
-				transfer_state = 834
+				transfer_state = 835
 			}
 		}
 
@@ -1654,14 +1651,14 @@ news_event = {
 				ROI = {
 					OR = {
 						owns_state = 2
-						owns_state = 834
+						owns_state = 835
 					}
 				}
 			}
 
 			PAP = {
 				transfer_state = 2
-				transfer_state = 834
+				transfer_state = 835
 			}
 		}
 
@@ -1672,18 +1669,15 @@ news_event = {
 				}
 				SRI = {
 					OR = {
-						owns_state = 117
 						owns_state = 156
 					}
 				}
 			}
-
-			157 = { set_demilitarized_zone = yes }
 			835 = { set_demilitarized_zone = yes }
-
 			ITS = {
 				transfer_state = 117
 				transfer_state = 156
+				transfer_state = 157
 			}
 		}
 
@@ -1693,12 +1687,10 @@ news_event = {
 					exists = yes
 				}
 			}
-
 			ITS = {
 				add_to_faction = PAP
 			}
 		}
-
 		every_state = {
 			limit = {
 				is_owned_by = PAP
@@ -1978,6 +1970,7 @@ news_event = {
 							OR = {
 								tag = CAN
 								tag = AST
+								tag = ENG #Imperial Entente
 							}
 							is_faction_leader = yes
 						}
@@ -2115,6 +2108,7 @@ country_event = {
 							OR = {
 								tag = CAN
 								tag = AST
+								tag = ENG #Imperial Entente
 							}
 							is_faction_leader = yes
 						}
@@ -2231,7 +2225,6 @@ news_event = {
 					OR = {
 						state = 2
 						state = 835
-						state = 157
 						state = 161
 					}
 				}	

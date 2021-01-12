@@ -416,7 +416,8 @@
  SWE_neutrality_party:0 "House of Bernadotte"
  
  FIN_royal_house:0 "House of Hesse"
- FIN_neutrality_party:0 "State Regency"
+ FIN_regency:0 "State Regency"
+ FIN_neutrality_party:0 "Suomen senaatti"
  FIN_democratic_party:0 "KOK"
  FIN_democratic_party_long:0 "Kansallinen Kokoomus"
  FIN_democratic_liberal_party:0 "KE"
@@ -558,7 +559,8 @@
  SAF_communism_party_long:0 "International Socialist League"
  SAF_democratic_party:0 "SAP"
  SAF_democratic_party_long:0 "South African Party"
- SAF_fascism_party:0 "Boers"
+ SAF_fascism_party:0 "Bittereinders"
+ SAF_fascism_party_long:0 "Boer Bittereinders"
  
  NZL_neutrality_party:0 "Governorship of New Zealand"
  NZL_democratic_party:0 "Liberal Party"
@@ -1021,3 +1023,13 @@
  HKG_democratic_party:0 "Tongmenghui"
  HKG_communism_party:0 "SPC"
  HKG_communism_party_long:0 "Socialist Party of China"
+ 
+ TWN_fascism_party:0 "Militarists"
+ TWN_neutrality_party:0 "Independentists"
+ TWN_democratic_party:0 "Republicans"
+ TWN_communism_party:0 "Revolutionaries"
+
+ AIN_fascism_party:0 "Militarists"
+ AIN_neutrality_party:0 "Independentists"
+ AIN_democratic_party:0 "Democrats"
+ AIN_communism_party:0 "Bolsheviks"

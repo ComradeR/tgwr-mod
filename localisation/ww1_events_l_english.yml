@@ -1569,7 +1569,17 @@
  ww1_usa.126.t:0 "Mexican government expels Americans"
  ww1_usa.126.d:0 ""
  ww1_usa.126.a:0 "Finally, they are gone."
- 
+ ww1_usa.129.t:0 "Philippines Revolts!"
+ ww1_usa.129.d:0 "Due to our failure to win the Great War, our debts not payed by the defeated Entente, and rising nationalism, the Filipino people have begun a revolt, they've been wanting their independence since we invaded them in 1898."
+ ww1_usa.129.a:0 "We will resist their attempt"
+ ww1_usa.129.b:0 "Who cares lmao"
+ ww1_USA.130.t:0 "Withdrawal from Philippines"
+ ww1_USA.130.d:0 "We lost"
+ ww1_USA.130.a:0 "Fuck"
+ ww1_USA.131.t:0 "We beat the Americans"
+ ww1_USA.131.d:0 "Binarilan natin ang mga puting bayag nila!"
+ ww1_USA.131.a:0 "lol"
+
  ww1_usa.130.a:0 "Okay"
  ww1_usa.130.d:0 "Anti-American violence in the country of Haiti is threatening US business interests  especially considering that the local German community controls most of the Haitian industries., We must act quickly to preserve our economic dominance over Haiti."
  ww1_usa.130.t:0 "Occupation of Haiti"
@@ -1795,7 +1805,10 @@
  ww1_russia.32.t:0 "The Caucasian Federation proclaims independence"
  ww1_russia.32.d:0 "The Transcaucasian Seim proclaimed the independence of the region of Georgia, Armenia and Azerbaijan from Russia. This fragile alliance of Caucasian states does not recognize the Soviet power in the capital, but does not want to return to Russia, so as not to continue the war with foreign powers."
  ww1_russia.32.a:0 "Everything is lost."
- ww1_russia.33.t:0 "The collapse of the Caucasian Federation"
+ ww1_russia.33.t:0 "Treaty of Batumi"
+ ww1_russia.33.d:0 "The situation on the front line is terrible. With the turkish offensive our chances of surviving are the lowest. What should we do next?"
+ ww1_russia.33.a:0 "Looks like we have no other choice but to submit to turks this time..."
+ ww1_russia.33.b:0 "Never!"
  ww1_russia.34.t:0 "Ukraine proclaims independence"
  ww1_russia.34.d:0 "With the abdication of the Tsar, the Central Rada strengthened its influence and tried to separate Ukraine from Russia. As soon as the Bolsheviks revolted in the capital, we could no longer hold back the separatists, and Ukraine declared independence."
  ww1_russia.34.a:0 "There is no longer a unified Russia."
@@ -1973,6 +1986,10 @@
  ww1_russia.88.a:0 "Tsar Nicholas II dies"
  ww1_russia.88.d:0 "After the death of the direct heir to the Russian throne Nicholas's health deteriorated sharply. In recent years, the tsar-emperor suffered from headaches for a long time and actually stopped leaving his residence, staying with family until his death. The events in the Tsar family of recent years shocked Russia, but did not shake the authority of the institution of the monarchy. The new emperor will be crowned - Mikhail Alexandrovich, who will ascend the throne under the name Mikhail II."
  ww1_russia.88.a:0 "Bozhe, hrani Tsarya."
+
+ ww1_russia.90.t:0 "Second Treaty of Brest-Litovsk"
+ ww1_russia.90.d:0 "[GER.GetName] and [RUS.GetName] once again signed the treaty at the negotiating table in Brest-Litovsk. But this time, it was not the Bolsheviks, but the bitter humiliation of [RUS.GetNameDef]. With the intervention of the [GER.GetAdjective], [RUS.GetNameDef] won the civil war but had to pay for it."
+ ww1_russia.90.a:0 "Now [GER.GetName] is taking over the hegemony of Europe."
  
 
  # ROMANIA
@@ -2106,7 +2123,9 @@
  ww1_germany.25.t:0 "Offensive on Soviet Russia"
  ww1_germany.25.d:0 "The Bolshevik government refused to negotiate with us. Apparently, Lenin forgot that we did him a favor and helped him get to Petrograd. Then he will have to pay for his forgetfulness."
  ww1_germany.25.a:0 "It's time to end them."
- 
+ ww1_germany.26.t:0 "New Colonial Administration of Mittelafrika"
+ ww1_germany.26.d:0 "The vast African colonies obtained after the victory of the Great War were united under a single colonial administration, Mittelafrika. This will bring glory and wealth to our empire."
+ ww1_germany.26.a:0 "Forever, German Mittelafrika!"
  ww1_germany.27.t:0 "[GER.GetName] offers to revive the Swedish Empire"
  ww1_germany.27.d:0 "German Secretary for Foreign Affairs Arthur Zimmermann proposed an interesting agreement. They are asking to officially support Germany in the war. If we enter into an alliance with Germany, they vow to support our territorial expansion and even the revival of the Swedish Empire."
  ww1_germany.27.a:0 "Swedish Empire... Perfect."
@@ -2250,7 +2269,7 @@
  ww1_germany.74.b:0 "They will remain occupied."
  ww1_germany.75.t:0 "Finished French Civil War Intervention?"
  ww1_germany.75.d:0 "The French Civil War is over. Our army successfully defeated the Socialists who threatened the western border, and cut their buds off.\nBut we may be able to crush the French so that they can no longer reach us..."
- ww1_germany.75.a:0 "Let's not give them any chance for revenge."
+ ww1_germany.75.a:0 "§RLet's not give them any chance for revenge.§!"
  ww1_germany.75.b:0 "No more war!"
 
  #Undead Unicorn's super duper Germany collapse event chain
@@ -3302,7 +3321,7 @@
  garibaldi.6.a:0 "The spirir of Garibaldi lives on!"
  garibaldi.6.b:0 "Iddio conservi il Re!"
  garibaldi.7.t:0 "Italian Civil War"
- garibaldi.7.d:0 "A rival government was proclaimed in Napes in rejection of the republican government up north, The monarchist troops are fully mobilized and begun an advance on Rome plunging Italy into a civil war. With the House of Savoy abdicated, the future king of Italy is yet to be decided but the most probable one would be a Bourbon Italian dynasty.\n\nOther than that there speculations of a Socialist revolution being plotted in Bologna."
+ garibaldi.7.d:0 "A rival government was proclaimed in Naples in rejection of the republican government up north, The monarchist troops are fully mobilized and begun an advance on Rome plunging Italy into a civil war. With the House of Savoy abdicated, the future king of Italy is yet to be decided but the most probable one would be a Bourbon Italian dynasty.\n\nOther than that there speculations of a Socialist revolution being plotted in Bologna."
  garibaldi.7.a:0 "Will there be a Second Risorgimento?"
  garibaldi.8.t:0 "Coronation of the Kingdom of Italy"
  garibaldi.8.d:0 "Italy is in chaos, but we want to keep order. So we're going to crown our new king and fight against the Socialists and the Republicans. The Savoy family, which led us to the defeat of the last Great War, is not very popular within us. For now, the Bourbon-Two Sicilies family, which ruled South Italy before the Risorgimento, deserves to be king."

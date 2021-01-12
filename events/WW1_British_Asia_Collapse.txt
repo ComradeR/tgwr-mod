@@ -207,8 +207,8 @@ country_event = {
 						owner = PAK
 					}
 				}
-				# Northern Kashmir
-				787 = {
+				# Kashmir
+				441 = {
 					create_unit = {
 						division = "name = \"7. Pakistani Liberation Army\" division_template = \"Pakistani Liberation Army\" start_experience_factor = 0.5" 
 						owner = PAK
@@ -639,11 +639,13 @@ country_event = {
 		NZL = {
 			transfer_state = 636
 		}
+		USA = {
+			transfer_state = 270
+		}
 		GER = {
 			transfer_state = 634
 			transfer_state = 639
 			transfer_state = 643
-			transfer_state = 270
 			transfer_state = 710
 			transfer_state = 281
 			transfer_state = 709

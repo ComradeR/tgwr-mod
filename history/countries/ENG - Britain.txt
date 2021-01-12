@@ -602,17 +602,6 @@ if = {
 		type = battleship_2
 		parent_version = 0
 	}
-	create_equipment_variant = {
-		name = "Bellerophon Class"
-		type = battleship_1
-		parent_version = 0
-	}
-	create_equipment_variant = {
-		name = "Drednought Class"
-		type = battleship_1
-		parent_version = 0
-		obsolete = yes
-	}
 	# Pre-Drednoughts #
 	create_equipment_variant = {
 		name = "Lord Nelson Class"
@@ -669,17 +658,7 @@ if = {
 		obsolete = yes
 	}
 	# Battlecruisers #
-	create_equipment_variant = {
-		name = "Invincible Class"
-		type = battle_cruiser_1
-		parent_version = 0
-	}
 	# Armored Cruisers #
-	create_equipment_variant = {
-		name = "Minotaur Class"
-		type = heavy_cruiser_1
-		parent_version = 0
-	}
 	create_equipment_variant = {
 		name = "Warrior Class"
 		type = heavy_cruiser_1
@@ -717,11 +696,6 @@ if = {
 		obsolete = yes
 	}
 	# Protected Cruisers #
-	create_equipment_variant = {
-		name = "Topaze Class"
-		type = light_cruiser_1
-		parent_version = 0
-	}
 	create_equipment_variant = {
 		name = "Challenger Class"
 		type = light_cruiser_1
@@ -826,11 +800,6 @@ if = {
 	}
 	# Destroyers #
 	create_equipment_variant = {
-		name = "Tribal Class"
-		type = destroyer_2
-		parent_version = 0
-	}
-	create_equipment_variant = {
 		name = "River Class"
 		type = destroyer_2
 		parent_version = 0
@@ -861,12 +830,6 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "Cricket Class"
-		type = destroyer_1
-		parent_version = 0
-		obsolete = yes
-	}
-	create_equipment_variant = {
 		name = "TB 114 Class"
 		type = destroyer_1
 		parent_version = 0
@@ -879,11 +842,6 @@ if = {
 		obsolete = yes
 	}
 	# Submarines #
-	create_equipment_variant = {
-		name = "A/B/C/D Class"
-		type = submarine_1
-		parent_version = 0
-	}
 }
 if = {
 	limit = {
@@ -1178,7 +1136,6 @@ if = {
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_secondaries_slot = ship_secondaries_1
 			fixed_ship_armor_slot = ship_armor_cruiser_2
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			rear_1_custom_slot = ship_medium_battery_2
 		}
@@ -1196,7 +1153,6 @@ if = {
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_secondaries_slot = ship_secondaries_1
 			fixed_ship_armor_slot = ship_armor_cruiser_2
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			rear_1_custom_slot = ship_medium_battery_2
 		}
@@ -1215,7 +1171,6 @@ if = {
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_secondaries_slot = ship_secondaries_1
 			fixed_ship_armor_slot = ship_armor_cruiser_2
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			rear_1_custom_slot = ship_medium_battery_2
 		}
@@ -1234,7 +1189,6 @@ if = {
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_secondaries_slot = ship_secondaries_1
 			fixed_ship_armor_slot = ship_armor_cruiser_2
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			rear_1_custom_slot = ship_light_medium_battery_2
 		}
@@ -1253,7 +1207,6 @@ if = {
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_secondaries_slot = ship_secondaries_1
 			fixed_ship_armor_slot = ship_armor_cruiser_2
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			rear_1_custom_slot = empty
 		}
@@ -1272,7 +1225,6 @@ if = {
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_secondaries_slot = ship_secondaries_1
 			fixed_ship_armor_slot = ship_armor_cruiser_2
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			rear_1_custom_slot = ship_light_medium_battery_2
 		}
@@ -1291,7 +1243,6 @@ if = {
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_secondaries_slot = ship_secondaries_1
 			fixed_ship_armor_slot = ship_armor_cruiser_2
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			rear_1_custom_slot = ship_light_medium_battery_2
 		}
@@ -1310,7 +1261,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = empty
@@ -1328,7 +1278,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = empty
@@ -1347,7 +1296,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = empty
@@ -1366,7 +1314,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = empty
@@ -1385,7 +1332,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = ship_light_medium_battery_1
@@ -1404,7 +1350,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = empty
@@ -1423,7 +1368,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = ship_light_medium_battery_2
@@ -1442,7 +1386,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = ship_light_medium_battery_2
@@ -1461,7 +1404,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = empty
@@ -1480,7 +1422,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = ship_light_medium_battery_2
@@ -1499,7 +1440,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = ship_light_medium_battery_1
@@ -1518,7 +1458,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = ship_light_medium_battery_1
@@ -1537,7 +1476,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = ship_light_medium_battery_1
@@ -1556,7 +1494,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = empty
@@ -1575,7 +1512,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = empty
@@ -1594,7 +1530,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = empty
@@ -1613,7 +1548,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = empty
@@ -1632,7 +1566,6 @@ if = {
 			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			front_1_custom_slot = empty
 			mid_1_custom_slot = ship_torpedo_1
 			mid_2_custom_slot = ship_secondaries_1
 			rear_1_custom_slot = empty

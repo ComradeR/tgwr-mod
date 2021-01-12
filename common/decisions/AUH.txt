@@ -244,6 +244,7 @@ political_actions = {
 				owns_state = 733
 				owns_state = 734
 				owns_state = 737
+				owns_state = 798
 				AND = {
 					HOL = { is_subject_of = ROOT }
 					INS = { OR = { is_subject_of = HOl is_subject_of = ROOT } }
@@ -269,6 +270,7 @@ political_actions = {
 				owns_state = 733
 				owns_state = 734
 				owns_state = 737
+				owns_state = 798
 				AND = {
 					HOL = { is_subject_of = ROOT }
 					INS = { OR = { is_subject_of = HOl is_subject_of = ROOT } }
@@ -443,6 +445,16 @@ political_actions = {
 
 			if = {
 				limit = {
+					ROOT = { owns_state = 798 }
+				}
+
+				VIN = {
+					transfer_state = 798
+				}
+			}
+
+			if = {
+				limit = {
 					HOL = { is_subject_of = ROOT }
 					INS = { OR = { is_subject_of = HOl is_subject_of = ROOT } }
 				}
@@ -459,6 +471,51 @@ political_actions = {
 					}
 				}
 			}
+		}
+	}
+	AUH_decision_mittelafrika = {
+		icon = GFX_decision_generic_operation
+		allowed = { tag = AUH }
+		available = {
+			OR = {
+				GER = { exists = no }
+				GER = { is_subject_of = AUH }
+			}
+			OR = {
+				owns_state = 772
+				owns_state = 295
+				owns_state = 538
+				owns_state = 718
+				owns_state = 558
+				owns_state = 549
+				owns_state = 827
+				owns_state = 541
+			}
+		}
+		visible = {
+			OR = {
+				GER = { exists = no }
+				GER = { is_subject_of = AUH }
+			}
+			has_country_flag = great_war_winner
+			OR = {
+				owns_state = 772
+				owns_state = 295
+				owns_state = 538
+				owns_state = 718
+				owns_state = 558
+				owns_state = 549
+				owns_state = 827
+				owns_state = 541
+			}
+		}
+		fire_only_once = no
+		cost = 100
+		ai_will_do = {
+			factor = 1000
+		}
+		complete_effect = {
+			country_event = ww1_germany.26
 		}
 	}
 }

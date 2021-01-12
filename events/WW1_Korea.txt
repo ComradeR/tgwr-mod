@@ -303,10 +303,6 @@ country_event = {
 			create_dynamic_country = {
 				original_tag = JAP
 
-				add_state_core = 536
-				add_state_core = 537
-				add_state_core = 555
-
 				set_politics = {
 					ruling_party = neutrality
 					last_election = "1918.11.11"
@@ -325,6 +321,39 @@ country_event = {
 
 				set_country_flag = JAP_ainu_flag
 				set_cosmetic_tag = AIN
+			}
+			every_state = {
+				limit = { is_core_of = AIN }
+				remove_core_of = AIN
+			}
+			AIN = {
+				add_state_core = 536
+				add_state_core = 537
+				add_state_core = 555
+
+				set_party_name = {
+					ideology = fascism
+					long_name = AIN_fascism_party
+					name = AIN_fascism_party
+				}
+
+				set_party_name = {
+					ideology = neutrality
+					long_name = AIN_neutrality_party
+					name = AIN_neutrality_party
+				}
+
+				set_party_name = {
+					ideology = democratic
+					long_name = AIN_democratic_party
+					name = AIN_democratic_party
+				}
+
+				set_party_name = {
+					ideology = communism
+					long_name = AIN_communism_party
+					name = AIN_communism_party
+				}
 			}
 			every_owned_state = {
 				limit = {
@@ -525,29 +554,90 @@ country_event = {
 		name = ww1_korea.15.a
 
 		hidden_effect = {
-			create_dynamic_country = {
-				original_tag = CHI
+			if = {
+				limit = {
+					CHI = { exists = no }
+				}
+				create_dynamic_country = {
+					original_tag = QIN
 
+					set_politics = {
+						ruling_party = neutrality
+						last_election = "1918.11.11"
+						election_frequency = 60 
+						elections_allowed = no
+					}
+
+					set_popularities = {
+						democratic = 0
+						neutrality = 100
+						fascism = 0
+						communism = 0
+					}
+
+					set_capital = 524
+
+					set_country_flag = QIN_formosa_flag
+					set_cosmetic_tag = TWN
+				}
+			}
+			if = {
+				limit = {
+					CHI = { exists = yes }
+				}
+				create_dynamic_country = {
+					original_tag = CHI
+
+					set_politics = {
+						ruling_party = neutrality
+						last_election = "1918.11.11"
+						election_frequency = 60 
+						elections_allowed = no
+					}
+
+					set_popularities = {
+						democratic = 0
+						neutrality = 100
+						fascism = 0
+						communism = 0
+					}
+
+					set_capital = 524
+
+					set_country_flag = CHI_formosa_flag
+					set_cosmetic_tag = TWN
+				}
+			}
+			every_state = {
+				limit = { is_core_of = TWN }
+				remove_core_of = TWN
+			}
+			TWN = {
 				add_state_core = 524
 
-				set_politics = {
-					ruling_party = neutrality
-					last_election = "1918.11.11"
-					election_frequency = 60 
-					elections_allowed = no
+				set_party_name = {
+					ideology = fascism
+					long_name = TWN_fascism_party
+					name = TWN_fascism_party
 				}
 
-				set_popularities = {
-					democratic = 0
-					neutrality = 100
-					fascism = 0
-					communism = 0
+				set_party_name = {
+					ideology = neutrality
+					long_name = TWN_neutrality_party
+					name = TWN_neutrality_party
 				}
 
-				set_capital = 524
+				set_party_name = {
+					ideology = democratic
+					long_name = TWN_democratic_party
+					name = TWN_democratic_party
+				}
 
-				set_country_flag = CHI_formosa_flag
-				set_cosmetic_tag = TWN
+				set_party_name = {
+					ideology = communism
+					long_name = TWN_communism_party
+					name = TWN_communism_party
+				}
 			}
 			every_owned_state = {
 				limit = {
