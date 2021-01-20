@@ -97,6 +97,8 @@
  NFA_sue_for_peace_FRC:0 "Withdraw from the Metropolitan France"
 
  FRC_internationale:0 "Form Internationale"
+ FRC_valois_seize_the_power:0 "Seize the Power"
+ FRC_valois_seize_the_power_desc:0 "Georges Valois is a syndicalist, but he is also friendly to monarchy and does not want France to be overly left-winged. He's been acting like an anarcho-syndicalist, but now that he's got enough support, he's trying to put the National Syndicalism right in this country."
  
  AUH_franzferdinand:0 "Franz Ferdinand Matter"
  AUH_franzferdinand_desc:0 "Franz Ferdinand, the esteemed Archduke of Austria-Este, and crown prince of the Austro-Hungarian Empire, lies dead. His noble wife rests beside him. Franz Josef has lost another heir, and to the damned, vile, sons of bastards that are the Serbians. The Serbian government officially denies involvement with assassin Gavrilo Princip, blaming the Black Hand, though few believe a lack of government involvement."
@@ -295,6 +297,7 @@
  BUL_sue_for_peace_SER:0 "Offer Surrender Terms to League"
  ITA_sue_for_peace_TUR_desc:0 "The Turks retained control of Libya and launched an offensive. In order not to aggravate the situation, we need to officially recognize the defeat and stop the intervention."
  ITA_claim_corsica:0 "Claim on Corsica"
+ ITA_occupy_malta:0 "Occupy Malta"
  
 
  GRE_sue_for_peace_TUR:0 "Offer Surrender Terms to Turkey"
@@ -382,6 +385,7 @@
  CHI_FNG_form_guominjun:0 "Form Guominjun"
  CHI_GMJ_leave_FNG:0 "Leave Fengtian Alliance"
  CHI_XSM_take_ningxia:0 "Annex Ningxia"
+ CHI_SHX_take_suiyuan:0 "Annex Suiyuan"
  CHI_ANC_conquer_mongolia:0 "Annex Mongolia"
  CHI_unite_china_XSM:0 "Fate of [XSM.GetName]"
  CHI_unite_china_SHX:0 "Fate of [SHX.GetName]"
