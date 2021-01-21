@@ -1,4 +1,4 @@
-﻿l_russian:
+l_russian:
 
  urbanization_effort:0 "Urbanization Effort"
  railways_construction_effort:0 "Railways Construction Effort"
@@ -1743,7 +1743,7 @@ Australia_disestablish_the_cmf_desc:0 ""
  SOV_foreign_investment_desc:0 "Бонус на строительство заводов. За политвласть."
  SOV_evolutionary_industrialization:0 "Evolutionary Industrialization"
  SOV_evolutionary_industrialization_desc:0 "Частичная приватизация. Идея аграрная империя исчезнет через полгода."
- SOV_red_army:0 "Red Army"
+ SOV_red_army:0 "Красная Армия"
  SOV_red_fleet:0 "Red Fleet"
  SOV_red_fleet_desc:0 "Due to the large political role the Red Fleet plays in our young Soviet republic, we mustn't push on the navy too hard, lest we anger the sailors to the point of revolt."
  SOV_red_fleet_tt:0 "§RRevolutionary sailors can revolt§! if the Bolsheviks will weaken the fleet.\n\n"
@@ -1762,7 +1762,7 @@ Australia_disestablish_the_cmf_desc:0 ""
  SOV_military_all_education:0 "Military All-Education"
  SOV_design_bureau:0 "Design Bureau"
  SOV_artillery_god_of_war:0 "Artillery is God of War!"
- SOV_soviet_tanks:0 "Soviet Tanks"
+ SOV_soviet_tanks:0 "Советские танки"
  SOV_comirtern:0 "Comirtern"
  SOV_comintern:0 "Comintern"
  SOV_strategic_aviation:0 "Strategic Aviation"
@@ -1845,12 +1845,12 @@ Australia_disestablish_the_cmf_desc:0 ""
  SOV_dictatorship_of_the_proletariat:0 "Dictatorship of the Proletariat"
  SOV_decree_on_food_dictatorship:0 "Decree on the Food Dictatorship"
  SOV_decree_on_food_dictatorship_desc:0 "Сделать продразверстку как часть экономической политики."
- SOV_industrialization:0 "Industrialization"
+ SOV_industrialization:0 "Индустриализация"
  SOV_kulak_liquidation:0 "Kulak Liquidation"
  SOV_kulak_liquidation_desc:0 "Полное устранение недовольных крестьян."
  SOV_amtorg_trading_corporation:0 "Amtorg Trading Corporation"
  SOV_amtorg_trading_corporation_desc:0 "Открывает Амторг с наисильнейшими бонусами."
- SOV_peasant_communes:0 "Communes"
+ SOV_peasant_communes:0 "Коммуны"
  SOV_peasant_communes_desc:0 "Какой коммунизм без коммун? А потом можно и колхозы заебошить!"
  SOV_municipalization:0 "Municipalization"
  SOV_municipalization_desc:0 "Муниципализация - альтернатива меньшевиков полной национализации."
@@ -1858,7 +1858,7 @@ Australia_disestablish_the_cmf_desc:0 ""
  SOV_joint_enterprises:0 "Decree on the Joint Enterprises"
  SOV_cooperatives:0 "Cooperatives"
  SOV_ideological_control_of_science:0 "Ideological Control of Science"
- SOV_electronics_industry:0 "Electronics Industry"
+ SOV_electronics_industry:0 "Электронная промышленность"
 
  #RUS
 
@@ -1872,7 +1872,7 @@ Australia_disestablish_the_cmf_desc:0 ""
  RUS_doctrine_of_field_artillery_desc:0 "После поражения в войне с Японией началась разработка нового Полевого Устава, являвшегося основной доктриной царской армии. По сравнению со старым, новый устав должен учитывать взаимодействие артиллерии и пехоты. Ранее мы совершили ошибку, недооценив потенциал тяжелой артиллерии."
 
  RUS_revolutionaries_in_duma:0 "Революционеры в Думе"
- RUS_revolutionaries_in_duma_desc:0 "Russia must take a new direction in its politics."
+ RUS_revolutionaries_in_duma_desc:0 "Россия должна взять новое направление в своей политике."
 
  RUS_first_russian_constitution:0 "Первая Российская Конституция"
  RUS_first_russian_constitution_desc:0 ""
@@ -1902,13 +1902,11 @@ Australia_disestablish_the_cmf_desc:0 ""
  RUS_complete_stolypin_reform:0 "Завершение Столыпинской реформы"
  RUS_complete_stolypin_reform_desc:0 "Доступно в мирное время. Россия не должна иметь негативный экономических идей."
 
- RUS_convene_iv_state_duma:0 "Созыв в Государственную Думу"
+ RUS_convene_v_state_duma:0 "Созыв в Государственную Думу"
  RUS_convene_v_state_duma_desc:0 "We will not replace the Duma. Carry on with the elections, as we try to deal with a couple of issues back in Petrograd."
 
  RUS_centrist_duma:0 "Центристская дума"
  RUS_centrist_duma_desc:0 "Democratic party - Nationalist Coalition (conservative)"
-
- RUS_convene_v_state_duma:0 "Созыв Центральной Думы"
 
  RUS_amnesty_of_military_organization:0 "Амнистия Милитарических Организаций"
  RUS_amnesty_of_military_organization_desc:0 "Participants in the combat organization of the Social Revolutionaries will now be able to participate in legal political activities."
@@ -1935,24 +1933,29 @@ Australia_disestablish_the_cmf_desc:0 ""
  RUS_unity_of_entente_desc:0 ""
 
  RUS_rapprochement_with_kaiser:0 "Сближение с Кайзером"
+ RUS_rapprochement_with_kaiser_desc:0 ""
 
  RUS_negotiations_with_Lenin:0 "Переговоры с Ленином"
+ RUS_negotiations_with_Lenin_desc:0 ""
 
  RUS_Soviet_Russia:0 "Неожиданный Компромис"
  RUS_Soviet_Russia_desc:0 "Monarchist Communism? I don't how much alcohol I drank last night, but these reforms will greatly help our great nation, and push it to the direction of glory!"
 
  RUS_spirit_of_social_populism:0 "Дух Социального Популизма"
+ RUS_spirit_of_social_populism_desc:0 ""
 
  RUS_self_determination_of_nations:0 "Самоопределение Наций"
  RUS_self_determination_of_nations_desc:0 "The Russian Empire is a diverse multi ethnic empire, with many different ethnic groups and nationalities ranging from Poland to the Far East. We must resolve this issue now, as this threatens the very fabric of our empire."
  
  RUS_guardian_of_orthodoxy:0 "Хранитель Православия"
+ RUS_guardian_of_orthodoxy_desc:0 ""
 
  RUS_for_the_good_of_peasantry:0 "Во Благо Крестьянства"
  RUS_for_the_good_of_peasantry_desc:0 "Забастовки прекратятся."
  RUS_for_the_good_of_peasantry_tt:0 "Removes conditions from focus §YComplete Agrarian Reform§!.\n"
  
  RUS_legalization_of_marxist_literature:0 "Легализовать Марксистскую литературу"
+ RUS_legalization_of_marxist_literature_desc:0 ""
 
  RUS_crush_the_revolutionaries_movement:0 "Подавить Революционное Движение"
  RUS_crush_the_revolutionaries_movement_desc:0 "Жестокое подавление забастовок."
@@ -1961,8 +1964,10 @@ Australia_disestablish_the_cmf_desc:0 ""
  RUS_secure_asia_desc:0 "The Qing Dynasty has collapsed, and it would be wise for us to occupy Mongolia and Tannu Tuva."
  
  RUS_military_exhibitions:0 "Военные выставки"
+ RUS_military_exhibitions_desc:0 ""
 
  RUS_ultimatum_to_persia:0 "Ультиматум Персии"
+ RUS_ultimatum_to_persia_desc:0 ""
  
  RUS_greek_project:0 "Греческий Проект"
  RUS_greek_project_desc:0 "Греки получат корку Константинополя. Россия через ивент пригласит Грецию в Антанту, у Греции появится повод к войне."
@@ -1991,20 +1996,25 @@ Australia_disestablish_the_cmf_desc:0 ""
  RUS_modernize_transsib_desc:0 "RUS_modernize_transsib_desc"
 
  RUS_machine_building_association:0 "Машиностроительная ассоциация"
+ RUS_machine_building_association_desc:0 ""
 
  RUS_extension_of_the_putilov_factory:0 "Расширение Путиловского завода"
+ RUS_extension_of_the_putilov_factory_desc:0 ""
 
  RUS_german_capitals:0 "Немецкий капитал"
-
- RUS_german_capital:0 "Немецкий капитал"
+ RUS_german_capitals_desc:0 ""
 
  RUS_british_capital:0 "Британский капитал"
+ RUS_british_capital_desc:0 ""
 
- RUS_modernization_of_the_central_railways:0 "Модернизация центральных железных доро"
+ RUS_modernization_of_the_central_railways:0 "Модернизация центральных железных дорог"
+ RUS_modernization_of_the_central_railways_desc:0 ""
 
  RUS_tula_armor_plant:0 "Тульский оружейный завод"
+ RUS_tula_armor_plant_desc:0 ""
 
  RUS_north_caucasus_oil_basin:0 "Северо-Кавказский нефтяной бассейн"
+ RUS_north_caucasus_oil_basin_desc:0 ""
 
  RUS_shatter_of_empires:0 "Разрушение Империй"
  RUS_shatter_of_empires_desc:0 "With total control established, we must look to the rest of Europe, under reactionary domination. The old order must be TOPPLED AND DESTROYED!"
@@ -2016,73 +2026,106 @@ Australia_disestablish_the_cmf_desc:0 ""
  RUS_entrepreneurship_desc:0 "Снижает ограничения для бизнеса, привлекаются инвестиции."
 
  RUS_russian_state_library:0 "Российская Государственная библиотека"
+ RUS_russian_state_library_desc:0 ""
 
- RUS_AMO:0 "«АМО»"
+ RUS_AMO:0 "«А.М.О»"
  RUS_AMO_desc:0 "Автомобильное Московское Общество"
 
  RUS_Elektrostal:0 "Электросталь"
+ RUS_Elektrostal_desc:0 ""
 
  RUS_kazan_powder_factory:0 "Казанский пороховой завод"
+ RUS_kazan_powder_factory_desc:0 ""
  
  RUS_design_modern_locomotive_series:0 "Проектирование современных серий локомотивов"
+ RUS_design_modern_locomotive_series_desc:0 ""
 
  RUS_tver_railway_plant:0 "Верхневолжский железнодорожный завод"
+ RUS_tver_railway_plant_desc:0 ""
 
  RUS_vogau:0 "Торговый дом Вогау"
+ RUS_vogau_desc:0 ""
 
  RUS_nobel_partnership:0 "Нобелевское партнерство"
+ RUS_nobel_partnership_desc:0 ""
 
  RUS_territorial_recruitment_system:0 "Территориальная система набора"
+ RUS_territorial_recruitment_system_desc:0 ""
 
  RUS_the_revival_of_the_fleet:0 "Новая гордость флота"
+ RUS_the_revival_of_the_fleet_desc:0 ""
 
  RUS_ten_years_plan:0 "Восстановление военно-морского флота"
+ RUS_ten_years_plan_desc:0 ""
 
  RUS_north_shipyard:0 "Северная верфь"
+ RUS_north_shipyard_desc:0 ""
 
  RUS_development_of_the_north:0 "Развитие Севера"
+ RUS_development_of_the_north_desc:0 ""
 
  RUS_formation_of_the_submarine_fleet:0 "Формирование подводного флота"
+ RUS_formation_of_the_submarine_fleet_desc:0 ""
 
  RUS_focus_on_the_black_sea_fleet:0 "Фокус на Черноморском флоте"
+ RUS_focus_on_the_black_sea_fleet_desc:0 ""
 
  RUS_baltic_fleet:0 "Cрочное укрепление балтийского флота"
+ RUS_baltic_fleet_desc:0 ""
 
  RUS_pacific_fleet:0 "Тихоокеанский флот"
+ RUS_pacific_fleet_desc:0 ""
 
  RUS_innovation_in_the_navy:0 "Иновации во флоте"
+ RUS_innovation_in_the_navy_desc:0 ""
 
  RUS_aeronautics:0 "Воздухоплавание"
+ RUS_aeronautics_desc:0 ""
 
  RUS_achievements_of_the_radioengineering:0 "Достижения радиотехники"
+ RUS_achievements_of_the_radioengineering_desc:0 ""
 
  RUS_development_of_new_doctrine:0 "Разработка новой доктрины"
+ RUS_development_of_new_doctrine_desc:0 ""
 
  RUS_strengthening_baltic_cities:0 "Укрепление балтийских городов"
+ RUS_strengthening_baltic_cities_desc:0 ""
 
  RUS_crimea_fortress:0 "Крымская крепость"
+ RUS_crimea_fortress_desc:0 ""
 
  RUS_convoy_escort:0 "Сопровождение Конвоев"
+ RUS_convoy_escort_desc:0 ""
 
  RUS_first_avia_squad:0 "Первая Авиционная Команда"
+ RUS_first_avia_squad_desc:0 ""
 
  RUS_imperial_air_fleet:0 "Российский Имперский Воздушный Флот"
+ RUS_imperial_air_fleet_desc:0 ""
 
  RUS_army_rearmament:0 "Переворужение Императорской Армии"
+ RUS_army_rearmament_desc:0 ""
 
  RUS_engineering_troops:0 "Инженерные войска"
+ RUS_engineering_troops_desc:0 ""
 
  RUS_tighten_the_selection_of_officers:0 "Ужесточить отбор офицеров"
+ RUS_tighten_the_selection_of_officers_desc:0 ""
 
  RUS_aviation_school:0 "Авиационная школа"
+ RUS_aviation_school_desc:0 ""
 
  RUS_ilya_muromets:0 "C-22"
+ RUS_ilya_muromets_desc:0 ""
 
  RUS_urgent_strengthening_of_airfleet:0 "Cрочное укрепление воздушного флота"
+ RUS_urgent_strengthening_of_airfleet_desc:0 ""
 
  RUS_aviation_research_institute:0 "Авиационный научно-исследовательский институт"
+ RUS_aviation_research_institute_desc:0 ""
 
  RUS_finance_the_creation_of_aviation_staff:0 "Финансирование создания авиационных кадров"
+ RUS_finance_the_creation_of_aviation_staff_desc:0 ""
 
  RUS_air_defense:0 "Штаб Противовоздушной обороны"
  RUS_air_defense_desc:0 ""
@@ -2109,7 +2152,7 @@ Australia_disestablish_the_cmf_desc:0 ""
  RUS_emergency_conscription_desc:0 "Каждый гражданин обязан отдать свой долг перед Отечеством! Победа или смерть!"
  
  RUS_resist_the_duma:0 "Разобраться с Думой"
- RUS_resist_the_duma_desc:0 "The Duma has been a fatal mistake, the liberalisation of the Empire must be reverted!."
+ RUS_resist_the_duma_desc:0 "Дума была роковой ошибкой, либерализацию Империи нужно повернуть вспять!."
  RUS_resist_the_duma_tt:0 "§YIn the event of political crisis, Nicholas II won't abdicate.§! However, the revolutionaries will do everything to overthrow monarchy.\n\n"
  
  RUS_union_of_russian_people:0 "Союз русского народа"
@@ -2129,7 +2172,7 @@ Australia_disestablish_the_cmf_desc:0 ""
  RUS_treaty_of_the_Three_emperors_desc:0 "It is beneficial for us to establish strong ties with Germany and Britain."
  
  RUS_liberation_of_the_balkans:0 "Освобождение Балкан"
- RUS_liberation_of_the_balkans_desc:0 "We must liberate the Orthodox Christians in the Balkan region."
+ RUS_liberation_of_the_balkans_desc:0 "Мы должны освободить православных христиан на Балканах."
  
  RUS_colonial_claims:0 "Колониальные Амбиции"
  RUS_colonial_claims_desc:0 "Германия, Британия, Россия получают претензии на Французские и американские земли."
@@ -2138,10 +2181,10 @@ Australia_disestablish_the_cmf_desc:0 ""
  RUS_return_of_the_king_desc:0 "В Британии происходит империалистический переворот. Британские коммунисты поднимут восстание в Ливерпуле."
  
  RUS_back_to_america:0 "Возвращение в Америку"
- RUS_back_to_america_desc:0 "Selling Alaska was a mistake. The Yanks must return Alaska or face war."
+ RUS_back_to_america_desc:0 "Продажа Аляски была ошибкой. Янки должны вернуть Аляску или столкнуться с войной."
  
  RUS_united_russia:0 "Единная и Неделимая Россия"
- RUS_united_russia_desc:0 "We are all one people, destined to lead the world to a greater future!"
+ RUS_united_russia_desc:0 "Мы все - один народ, которому суждено вести мир к большему будущему!"
  
 
 
