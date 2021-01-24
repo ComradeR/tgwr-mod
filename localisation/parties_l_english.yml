@@ -140,8 +140,8 @@
  POL_democratic_party_long:0 "Polskie Stronnictwo Ludowe"
  POL_neutrality_party:0 "Rada Regencyjna"
  POL_pilsudski_party:0 "Sejm Ustawodawczy"
- POL_fascism_party:0 "ZLN"
- POL_fascism_party_long:0 "Związek Ludowo-Narodowy"
+ POL_fascism_party:0 "Endecja"
+ POL_fascism_party_long:0 "Narodowa Demokracja"
  
  ENG_communism_party:0 "Fabian Society"
  ENG_labour_party:0 "Labour Party"
@@ -188,6 +188,8 @@
  ENG_stupid_complicated_name:0 "UPRLAS"
  ENG_stupid_complicated_name_long:0 "United Pan-Royalist League of Anti-Socialism"
  ENG_churchill_pax_britannica:0 "Constitutionalist Party"
+ ENG_anti_martian_league_party:0 "BDCAMI"
+ ENG_anti_martian_league_party_long:0 "British Defence Coalition Against Martian Invaders"
 
  SCO_neutrality_party:0 "Jacobites"
  SCO_democratic_party:0 "SNL"
