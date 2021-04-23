@@ -21,7 +21,6 @@ GER_great_war = {
 				tag = FRA
 			}
 		}
-		is_good = yes
 		remove_effect = {
 			add_manpower = -86
 			BRA = {
@@ -32,9 +31,9 @@ GER_great_war = {
 				}			
 			}
 			FRA = {
-				country_event = {
-				   id = my_event.1
-				}
+				#country_event = {
+				#   id = my_event.1
+				#}
 			}	
 		}
 		ai_will_do = {
@@ -73,8 +72,23 @@ BRA_contestado_war = {
 			}	
 			
 		}
+		cancel_trigger = {
+			if = {
+				limit = {
+					BRA = {	is_ai = no}
+				}
+				divisions_in_state = {
+					state = 503	
+					size < 1
+				}
+			}
+		}
+		cancel_effect = {
+			clr_country_flag = BRA_intervention_in_progress
+		}
         complete_effect = {
             add_manpower = -50
+			set_country_flag = BRA_intervention_in_progress
         }
 		remove_effect = {
 			random_list = {
@@ -90,6 +104,7 @@ BRA_contestado_war = {
 					}
 				}	
 			}
+			clr_country_flag = BRA_intervention_in_progress
 		}
     }
 	BRA_contestado_war_2 = {
@@ -107,6 +122,17 @@ BRA_contestado_war = {
 			}
 			hidden_trigger = {NOT = {has_country_flag = BRA_intervention_in_progress}}
 		}
+		cancel_trigger = {
+			if = {
+				limit = {
+					BRA = {	is_ai = no}
+				}
+				divisions_in_state = {
+					state = 503	
+					size < 2
+				}
+			}
+		}
 		highlight_state_targets = {
 			state = 503	
 		}
@@ -123,8 +149,12 @@ BRA_contestado_war = {
 			}	
 			
 		}
+		cancel_effect = {
+			clr_country_flag = BRA_intervention_in_progress
+		}
         complete_effect = {
             add_manpower = -100
+			set_country_flag = BRA_intervention_in_progress
         }
 		remove_effect = {
 			random_list = {
@@ -140,6 +170,7 @@ BRA_contestado_war = {
 					}
 				}	
 			}
+			clr_country_flag = BRA_intervention_in_progress
 		}
     }
 	BRA_contestado_war_3 = {
@@ -157,6 +188,17 @@ BRA_contestado_war = {
 			}
 			hidden_trigger = {NOT = {has_country_flag = BRA_intervention_in_progress}}
 		}
+		cancel_trigger = {
+			if = {
+				limit = {
+					BRA = {	is_ai = no}
+				}
+				divisions_in_state = {
+					state = 503	
+					size < 3
+				}
+			}
+		}
 		highlight_state_targets = {
 			state = 503	
 		}
@@ -173,8 +215,12 @@ BRA_contestado_war = {
 			}	
 			
 		}
+		cancel_effect = {
+			clr_country_flag = BRA_intervention_in_progress
+		}
         complete_effect = {
             add_manpower = -200
+			set_country_flag = BRA_intervention_in_progress
         }
 		remove_effect = {
 			random_list = {
@@ -190,6 +236,7 @@ BRA_contestado_war = {
 					}
 				}	
 			}
+			clr_country_flag = BRA_intervention_in_progress
 		}
     }
 	BRA_contestado_war_4 = {
@@ -206,6 +253,17 @@ BRA_contestado_war = {
 				}	
 			}
 			hidden_trigger = {NOT = {has_country_flag = BRA_intervention_in_progress}}
+		}
+		cancel_trigger = {
+			if = {
+				limit = {
+					BRA = {	is_ai = no}
+				}
+				divisions_in_state = {
+					state = 503	
+					size < 4
+				}
+			}
 		}
         cancel_if_not_visible = yes
 		highlight_state_targets = {
@@ -224,8 +282,12 @@ BRA_contestado_war = {
 			}	
 			
 		}
+		cancel_effect = {
+			clr_country_flag = BRA_intervention_in_progress
+		}
         complete_effect = {
             add_manpower = -200
+			set_country_flag = BRA_intervention_in_progress
         }
 		remove_effect = {
 			random_list = {
@@ -241,6 +303,7 @@ BRA_contestado_war = {
 					}
 				}	
 			}
+			clr_country_flag = BRA_intervention_in_progress
 		}
     }
 	BRA_contestado_war_5 = {
@@ -258,6 +321,17 @@ BRA_contestado_war = {
 			}
 			hidden_trigger = {NOT = {has_country_flag = BRA_intervention_in_progress}}
 		}
+		cancel_trigger = {
+			if = {
+				limit = {
+					BRA = {	is_ai = no}
+				}
+				divisions_in_state = {
+					state = 503	
+					size < 5
+				}
+			}
+		}
 		highlight_state_targets = {
 			state = 503	
 		}
@@ -274,8 +348,12 @@ BRA_contestado_war = {
 			}	
 			
 		}
+		cancel_effect = {
+			clr_country_flag = BRA_intervention_in_progress
+		}
         complete_effect = {
             add_manpower = -200
+			set_country_flag = BRA_intervention_in_progress
         }
 		remove_effect = {
 			random_list = {
@@ -291,6 +369,7 @@ BRA_contestado_war = {
 					}
 				}	
 			}
+			clr_country_flag = BRA_intervention_in_progress
 		}
     }
 	BRA_contestado_war_6 = {
@@ -308,6 +387,17 @@ BRA_contestado_war = {
 			}
 			hidden_trigger = {NOT = {has_country_flag = BRA_intervention_in_progress}}
 		}
+		cancel_trigger = {
+			if = {
+				limit = {
+					BRA = {	is_ai = no}
+				}
+				divisions_in_state = {
+					state = 503	
+					size < 5
+				}
+			}
+		}
 		highlight_state_targets = {
 			state = 503	
 		}
@@ -324,8 +414,12 @@ BRA_contestado_war = {
 			}	
 			
 		}
+		cancel_effect = {
+			clr_country_flag = BRA_intervention_in_progress
+		}
         complete_effect = {
             add_manpower = -200
+			set_country_flag = BRA_intervention_in_progress
         }
 		remove_effect = {
 			random_list = {
@@ -341,6 +435,7 @@ BRA_contestado_war = {
 					}
 				}	
 			}
+			clr_country_flag = BRA_intervention_in_progress
 		}
     }
 	BRA_contestado_war_7 = {
@@ -358,6 +453,17 @@ BRA_contestado_war = {
 			}
 			hidden_trigger = {NOT = {has_country_flag = BRA_intervention_in_progress}}
 		}
+		cancel_trigger = {
+			if = {
+				limit = {
+					BRA = {	is_ai = no}
+				}
+				divisions_in_state = {
+					state = 503	
+					size < 5
+				}
+			}
+		}
 		highlight_state_targets = {
 			state = 503	
 		}
@@ -374,15 +480,19 @@ BRA_contestado_war = {
 			}	
 			
 		}
+		cancel_effect = {
+			clr_country_flag = BRA_intervention_in_progress
+		}
         complete_effect = {
             add_manpower = -200
+			set_country_flag = BRA_intervention_in_progress
         }
 		remove_effect = {
 			random_list = {
 				30 = {set_country_flag = BRA_contestado_war_7_failed}
 				70 = {
 					remove_ideas = BRA_contestado_war
-					hidden_effect = {	
+					hidden_effect = {
 						clr_country_flag = BRA_contestado_war
 						set_country_flag = BRA_contestado_war_end
 						503 = {
@@ -391,6 +501,7 @@ BRA_contestado_war = {
 					}
 				}	
 			}
+			clr_country_flag = BRA_intervention_in_progress
 		}
     }
 	BRA_contestado_war_8 = {
@@ -408,6 +519,17 @@ BRA_contestado_war = {
 			}
 			hidden_trigger = {NOT = {has_country_flag = BRA_intervention_in_progress}}
 		}
+		cancel_trigger = {
+			if = {
+				limit = {
+					BRA = {	is_ai = no}
+				}
+				divisions_in_state = {
+					state = 503	
+					size < 5
+				}
+			}
+		}
 		highlight_state_targets = {
 			state = 503	
 		}
@@ -423,14 +545,18 @@ BRA_contestado_war = {
 			}	
 			
 		}
+		cancel_effect = {
+			clr_country_flag = BRA_intervention_in_progress
+		}
         complete_effect = {
             add_manpower = -200
         }
 		remove_effect = {
 			remove_ideas = BRA_contestado_war
+			clr_country_flag = BRA_intervention_in_progress
+			clr_country_flag = BRA_contestado_war
+			set_country_flag = BRA_contestado_war_end
 			hidden_effect = {	
-				clr_country_flag = BRA_contestado_war
-				set_country_flag = BRA_contestado_war_end
 				503 = {
 					set_border_war = no
 				}
@@ -454,6 +580,17 @@ BRA_military_interventions_category = {
 		    }
 			hidden_trigger = {NOT = {has_country_flag = BRA_intervention_in_progress}}
 		}
+		cancel_trigger = {
+			if = {
+				limit = {
+					BRA = {	is_ai = no}
+				}
+				divisions_in_state = {
+					state = 501	
+				    size < 4
+			    }	
+		    }
+		}
         cancel_if_not_visible = yes
 		highlight_state_targets = {
 			state = 501
@@ -474,6 +611,10 @@ BRA_military_interventions_category = {
 				}
 			    NOT = {has_country_flag = BRA_sao_paulo_intervention_successful}	
 			}	
+		}
+		cancel_effect = {
+			clr_country_flag = BRA_intervention_in_progress
+			country_event = { id = ww1_brazil.12 days = 1}
 		}
         complete_effect = {
             add_stability = -0.03
@@ -507,6 +648,17 @@ BRA_military_interventions_category = {
 			}	
 			hidden_trigger = {NOT = {has_country_flag = BRA_intervention_in_progress}}
 		}
+		cancel_trigger = {
+			if = {
+				limit = {
+					BRA = {	is_ai = no}
+				}
+				divisions_in_state = {
+					state = 498
+				    size < 2
+			    }	
+		    }
+		}
 
 		highlight_state_targets = {
 			state = 498
@@ -528,6 +680,10 @@ BRA_military_interventions_category = {
 				}
 			    NOT = {has_country_flag = BRA_pernambuco_intervention_successful}	
 			}	
+		}
+		cancel_effect = {
+			clr_country_flag = BRA_intervention_in_progress
+			country_event = { id = ww1_brazil.12 days = 1}
 		}
         complete_effect = {
             add_stability = -0.01
@@ -561,6 +717,17 @@ BRA_military_interventions_category = {
 			}	
 			hidden_trigger = {NOT = {has_country_flag = BRA_intervention_in_progress}}
 		}
+		cancel_trigger = {
+			if = {
+				limit = {
+					BRA = {	is_ai = no}
+				}
+				divisions_in_state = {
+					state = 498	
+				    size < 2
+			    }	
+		    }
+		}
         cancel_if_not_visible = yes
 		highlight_state_targets = {
 			state = 498
@@ -581,6 +748,10 @@ BRA_military_interventions_category = {
 				}
 			    NOT = {has_country_flag = BRA_ceara_intervention_successful}	
 			}	
+		}
+		cancel_effect = {
+			clr_country_flag = BRA_intervention_in_progress
+			country_event = { id = ww1_brazil.12 days = 1}
 		}
         complete_effect = {
             add_stability = -0.01
@@ -614,6 +785,17 @@ BRA_military_interventions_category = {
 			}	
 			hidden_trigger = {NOT = {has_country_flag = BRA_intervention_in_progress}}
 		}
+		cancel_trigger = {
+			if = {
+				limit = {
+					BRA = {	is_ai = no}
+				}
+				divisions_in_state = {
+					state = 498	
+				    size < 1
+			    }	
+		    }
+		}
         cancel_if_not_visible = yes
 		highlight_state_targets = {
 			state = 498
@@ -634,6 +816,10 @@ BRA_military_interventions_category = {
 				}
 			    NOT = {has_country_flag = BRA_alagoas_intervention_successful}	
 			}	
+		}
+		cancel_effect = {
+			clr_country_flag = BRA_intervention_in_progress
+			country_event = { id = ww1_brazil.12 days = 1}
 		}
         complete_effect = {
             add_stability = -0.01
@@ -668,6 +854,17 @@ BRA_military_interventions_category = {
 				}
 			}	
 		}
+		cancel_trigger = {
+			if = {
+				limit = {
+					BRA = {	is_ai = no}
+				}
+				ships_in_state_ports = {
+ 					state = 499
+					size < 2
+				}
+			}	
+		}
         cancel_if_not_visible = yes
 		highlight_state_targets = {
 			state = 499
@@ -689,6 +886,10 @@ BRA_military_interventions_category = {
 				}
 			    NOT = {has_country_flag = BRA_bahia_intervention_successful}	
 			}	
+		}
+		cancel_effect = {
+			clr_country_flag = BRA_intervention_in_progress
+			country_event = { id = ww1_brazil.12 days = 1}
 		}
         complete_effect = {
             add_stability = -0.04
@@ -800,7 +1001,6 @@ operations = {
 			NOT = { is_in_faction_with = RGS}
 		}
 	
-		is_good = yes
 		war_with_on_remove = RGS
 	
 		remove_effect = {

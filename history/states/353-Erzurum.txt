@@ -5,18 +5,16 @@ state={
 		victory_points = {
 			11853 3
 		}
-		victory_points = {
-			9868 1
-		}
 		owner=TUR
 		add_core_of=TUR
+		add_core_of=ARM
 		buildings={
 			infrastructure=3
 		}
 	}
 	provinces={ 
-		6976 9868 9886 11797 11853
+		6976 9886 11797 11853
 	}
-	manpower = 645700
+	manpower = 145700
 	state_category=rural
 }

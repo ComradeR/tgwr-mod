@@ -1,5 +1,5 @@
 ﻿capital = 656
-
+set_research_slots = 1
 set_stability = 0.55
 1910.1.1 = {
 set_politics = {
@@ -19,11 +19,12 @@ create_country_leader = {
 	picture = "gfx/leaders/KUW/KUW_mubarak_al_sabah.dds" 
 	expire = "1915.11.28" 
 	ideology = autocracy  
-	 
+	traits = { trait_autocracy } 
 }
 # Starting tech
 set_technology = {
 	infantry_weapons = 1
+	camelry = 1
 }
 set_cosmetic_tag = KUW_TUR
 give_military_access = TUR

@@ -21,7 +21,7 @@ country_event = {
 			name = "Roque Sáenz Peña"
 			picture = "gfx/leaders/ARG/ARG_roque_saenz_pena.dds"
 			expire = "1914.8.8"
-			ideology = moderatism
+			ideology = authoritarian_democracy
 			traits = { democratic_reformer }			
 		}
 		set_country_flag = dont_trigger_political_event
@@ -109,6 +109,7 @@ country_event = {
 				ruling_party = democratic
 				elections_allowed = yes
 			}
+			kill_country_leader=yes
 		}
 		set_party_name = {
     		ideology = democratic 

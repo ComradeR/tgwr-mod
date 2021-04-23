@@ -2,13 +2,14 @@ state={
 	id=805
 	name="STATE_805"
 	provinces={
-		657 687 3076 9635 12711 12842
+		657 687 3076 9635 12842
 	}
 	manpower=380430	
 	history={	
 		victory_points = { 657 3 }	
 		owner = ROM
 		add_core_of = ROM
+		add_core_of = TUR
 		buildings = {
 			infrastructure = 4
 			657 = {

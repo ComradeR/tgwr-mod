@@ -9,7 +9,9 @@ state={
 			3653 3 
 		}
 		owner=RUS
+		add_core_of = RUS
 		add_core_of=GEO
+		add_claim_by = TUR
 		buildings={
 			infrastructure=3
 			3653 = {

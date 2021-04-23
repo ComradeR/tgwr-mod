@@ -117,6 +117,8 @@ political_actions = {
 			GER = { is_subject_of = AUH }
 			has_war = no
 			has_country_flag = great_war_winner
+			has_global_flag = great_war_ends
+			has_global_flag = frankfurt_treaty
 			has_global_flag = interbellum
 		}
 		visible = {
@@ -155,7 +157,7 @@ political_actions = {
 					}
 					create_country_leader = {
 						name = "Wilhelm II"
-						desc = GER_wilhelm_ii_DESC
+						desc = GER_wilhelm_ii_desc
 						picture = "gfx/leaders/GER/GER_wilhelm_ii.dds" 
 						expire = "1935.1.1"
 						ideology = autocracy
@@ -485,6 +487,7 @@ political_actions = {
 				owns_state = 296
 				owns_state = 297
 				owns_state = 298
+				owns_state = 449
 				owns_state = 538
 				owns_state = 539
 				owns_state = 540
@@ -531,6 +534,7 @@ political_actions = {
 				owns_state = 296
 				owns_state = 297
 				owns_state = 298
+				owns_state = 449
 				owns_state = 538
 				owns_state = 539
 				owns_state = 540

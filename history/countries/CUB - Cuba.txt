@@ -10,8 +10,8 @@ create_country_leader = {
 	name = "José Miguel Gómez"
 	picture="gfx/leaders/CUB/CUB_jose_miguel_gomez.dds" 
 	expire="1935.1.1" 
-	ideology=liberalism 
-	traits={  } 
+	ideology=classical_liberalism 
+	traits = { trait_classical_liberalism }
 }
 create_corps_commander = {  
 	name = "José Miguel Gómez"

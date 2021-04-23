@@ -13,14 +13,12 @@ set_convoys = 10
 #-------------------------------------------------------
 create_country_leader = { 
 	name = "Antanas Smetona" 
-	picture = "gfx/leaders/LIT_antanas_smetona.dds" 
+	picture = "gfx/leaders/LIT/LIT_antanas_smetona.dds" 
 	expire = "1935.1.1" 
-	ideology = centrism 
-	traits = {} 
+	ideology = authoritarian_democracy 
+	traits = { trait_authoritarian_democracy } 
 }
 1910.1.1 = {
-	oob = "LIT_1910"
-
 	set_technology = {
 		#infantry
 		infantry_weapons = 1
@@ -70,8 +68,4 @@ create_country_leader = {
 	    communism = 16
 	    neutrality = 80
 	}
-
-	add_ideas = {
-
-	}	
 }

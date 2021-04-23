@@ -1,49 +1,6 @@
-TUR_do_not_broil_units_in_libya = {
-	allowed = { tag = TUR }
-	enable = {
-		date > 1910.9.1
-	}
-	abort = {
-		OR = {
-			has_global_flag = italo_turkish_war_ends
-			NOT = { owns_state = 451 }
-			has_war_with = ENG
-			has_war_with = FRA
-			date > 1912.5.1
-		}
-	}
-
-	ai_strategy = {
-		type = area_priority
-		id = africa
-		value = -1000
-	}
-	ai_strategy = {
-		type = area_priority
-		id = middle_east
-		value = -50
-	}
-	ai_strategy = {
-		type = force_defend_ally_borders
-		value = -1000
-		target = africa
-	}
-	ai_strategy = {
-		type = front_unit_request
-		strategic_region = 126
-		value = -100
-	}
-	ai_strategy = {
-		type = front_unit_request
-		state = 451
-		value = -1000
-	}
-
-}
 TUR_ignore_italy_until_intervention = {
-	allowed = { tag = TUR }
 	enable = {
-		date < 1910.6.1
+		original_tag = TUR
 	}
 	abort = {
 		has_war_with = ITA
@@ -137,47 +94,6 @@ TUR_dangerous_to_stay_in_revolting_balkans = {
 	}
 	
 }
-TUR_contain_balkans = {
-	allowed = { original_tag = TUR }
-	enable = {
-		date > 1910.1.1
-	}
-	abort = {
-		OR = {
-			has_country_flag = great_war_loser
-			has_country_flag = great_war_winner
-			SER = { is_puppet_of = TUR }
-			BUL = { is_puppet_of = TUR }
-			GRE = { is_puppet_of = TUR }
-			MNT = { is_puppet_of = TUR }
-		}
-	}
-	ai_strategy = {
-		type = alliance
-		id = "SER"
-		value = -100
-	}
-	ai_strategy = {
-		type = antagonize
-		id = "SER"
-		value = 100
-	}
-	ai_strategy = {
-		type = befriend
-		id = "BUL"
-		value = -100
-	}
-	ai_strategy = {
-		type = befriend
-		id = "GRE"
-		value = -100
-	}
-	ai_strategy = {
-		type = befriend
-		id = "MNT"
-		value = -100
-	}
-}
 balkans_contain_ottomans = {
 	allowed = {
 		OR = {
@@ -269,63 +185,29 @@ TUR_do_not_involve_protectorates = {
 			}
 			is_subject_of = TUR
 		}
-		NOT = { has_global_flag = kis_war }
+		NOT = { 
+			has_global_flag = kis_war 
+			has_war_with = SAU
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
-		type = diplo_action_acceptance
+		type = diplo_action_desire
 		id = KUW
 		target = call_allies
 		value = -99999
 	}
 	ai_strategy = {
-		type = diplo_action_acceptance
+		type = diplo_action_desire
 		id = QAT
 		target = call_allies
 		value = -99999
 	}
 	ai_strategy = {
-		type = diplo_action_acceptance
+		type = diplo_action_desire
 		id = JBS
 		target = call_allies
 		value = -99999
-	}
-}
-TUR_peaceful_protectorates = {
-	allowed = {
-		OR = {
-			tag = KUW
-			tag = EGY
-			tag = OMA
-			tag = QAT
-			has_autonomy_state = autonomy_tgwr_protectorate
-		}
-	}
-	enable = {
-		OR = {
-			is_subject_of = ENG
-			has_autonomy_state = autonomy_tgwr_protectorate
-		}
-		NOT = { has_global_flag = kis_war }
-	}
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = diplo_action_desire
-		id = TUR
-		target = join_allies
-		value = -99999
-	}
-	ai_strategy = {
-		type = diplo_action_acceptance
-		id = TUR
-		target = call_allies
-		value = -99999
-	}
-	ai_strategy = {
-		type = dont_join_wars_with
-		id = TUR
-		value = 99999
 	}
 }
 TUR_waiting_good_moment_to_fight_russia = {
@@ -340,11 +222,150 @@ TUR_waiting_good_moment_to_fight_russia = {
 			NOT = { has_completed_focus = TUR_pearl_of_the_black_sea }
 			date < 1914.11.1
 		}
+		NOT = { has_war_with = RUS }
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = GER
+		target_country = RUS
 		value = 99999
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = AUH
+		target_country = RUS
+		value = 99999
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = BUL
+		target_country = RUS
+		value = 99999
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = ITA
+		target_country = RUS
+		value = 99999
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = ENG
+		target_country = RUS
+		value = 99999
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = ETH
+		target_country = RUS
+		value = 99999
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = POL
+		target_country = RUS
+		value = 99999
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = POL
+		target_country = RUS
+		value = 99999
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = BRA
+		target_country = RUS
+		value = 99999
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = SWE
+		target_country = RUS
+		value = 99999
+	}
+	ai_strategy = {
+		type = declare_war
+		id = RUS			
+		value = -2000 
+	}
+}
+TUR_no_invasions = {
+	enable = {
+		original_tag = TUR
+	}
+	ai_strategy = {
+        type = invasion_unit_request
+        country_trigger = { always = yes }
+        value = -100
+    }
+}	
+TUR_no_troops_in_europe_until_bw1 = {
+	enable = {
+		original_tag = TUR
+	}
+	abort = {
+		any_other_country  = {
+			capital_scope = {
+				is_on_continent = europe
+			}
+			NOT = { tag = ITA }
+			OR = {
+				is_subject_of = ROOT
+				has_subject = ROOT
+				has_war_with = ROOT 
+				has_wargoal_against = ROOT
+				focus_progress = {
+					focus = SER_war_with_ottomans
+					progress > 0.8
+				}
+				ROOT = {
+					has_wargoal_against = PREV				
+					is_justifying_wargoal_against = PREV
+					has_country_flag = great_war_loser
+					has_country_flag = great_war_winner
+				}
+			}
+		}	
+	}
+	ai_strategy = {
+        type = front_unit_request
+        area = europe
+        value = -200
+    }
+	ai_strategy = {
+		type = put_unit_buffers
+		
+		order_id = 1
+		
+		states = { 
+			756 
+			341 
+			731 
+		}
+		
+		ratio = 0.1
+		
+		area = europe
+		
+		subtract_invasions_from_need = yes
+	}
+	ai_strategy = {
+		type = put_unit_buffers
+		
+		order_id = 1
+		
+		# Albania
+		states = {
+			44
+			803
+		}
+		
+		ratio = 0.19
+		
+		area = europe
+		
+		subtract_invasions_from_need = yes
 	}
 }

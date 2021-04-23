@@ -425,7 +425,7 @@ focus_tree = {
 	focus = {
 		id = CAN_commonwealth_research
 		#For the Empire
-		icon = GFX_goal_CAN_commonwealth_research
+		icon = GFX_focus_CAN_for_the_empire_shine
 		cost = 10.00
 		prerequisite = {
 			focus = CAN_Loyalty
@@ -612,7 +612,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		
 		completion_reward = {
-			custom_effect_tooltip = 1111_CAN_tt
+			#custom_effect_tooltip = 1111_CAN_tt
 			#CAN = { create_ship = { type = ship_hull_dreadnought equipment_variant = "North Carolina Class" creator = USA name = "RCS Northern Pride" } }
 			#CAN = { create_ship = { type = ship_hull_dreadnought equipment_variant = "North Carolina Class" creator = USA name = "RCS Ottawa" } }
 			#CAN = { create_ship = { type = ship_hull_dreadnought equipment_variant = "North Carolina Class" creator = USA name = "RCS Mackenzie" } }
@@ -653,7 +653,7 @@ focus_tree = {
 			#CAN = { create_ship = { type = ship_hull_destroyer equipment_variant = "Class" creator = CAN name = "RCS" } }
 			#CAN = { create_ship = { type = ship_hull_destroyer equipment_variant = "Class" creator = CAN name = "RCS" } }
 			
-			custom_effect_tooltip = 1111_CAN_tt
+			#custom_effect_tooltip = 1111_CAN_tt
 		}
 	}
 	
@@ -1425,7 +1425,7 @@ focus_tree = {
 		
 		
 		completion_reward = {
-			custom_effect_tooltip = 1111_CAN_tt
+			#custom_effect_tooltip = 1111_CAN_tt
 		}
 	}
 	
@@ -1479,7 +1479,7 @@ focus_tree = {
 		
 		
 		completion_reward = {
-			custom_effect_tooltip = 1111_CAN_tt
+			#custom_effect_tooltip = 1111_CAN_tt
 		}
 	}
 	
@@ -2135,7 +2135,6 @@ focus_tree = {
 					cost_factor = 0
 					equipment = {
 						type = infantry_equipment_1
-						version = 0
 					}
 				}
 			}

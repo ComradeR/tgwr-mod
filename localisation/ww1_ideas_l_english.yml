@@ -567,6 +567,15 @@
  moscow_automotive_society:0 "Moscow Automotive Society"
  dux_plant:0 "Dux Airplane Factory"
  amtorg_trading:0 "Amtorg Trading Corporation"
+ CHI_jiangnan_shipyard_group:0 "Jiangnan Shipbuilding Works"
+ CHI_dagu_shipyard:0 "Dagu Shipyard"
+ CHI_hanyang_arsenal:0 "Hanyang Arsenal"
+ CHI_mauser:0 "Mauser"
+ CHI_chang_an_factory:0 "Chang'an Factory"
+ CHI_guangzhou_factory:0 "Guangzhou Factory"
+ CHI_aioc:0 "AIOC"
+ CHI_hong_kong_electric_co_ltd:0 "Hong Kong Electric Co. Ltd"
+ CHI_shanghai_international_tram_authority:0 "Shanghai International Tram Authority"
 
  #MEXICO
  idea_mexico_1910:0 "Mexican Revolution"
@@ -584,7 +593,8 @@
  #ITALY
  ITA_ww1_Risorgimento:0 "Risorgimento"
  ITA_ww1_Risorgimento_desc:0 "Risorgimento (also known as the Italian Unification) was the political and social movement that consolidated different states of the Italian peninsula into the single state of the Kingdom of Italy. The memory of this event, as well as the Irridentism that followed, is a driving force in both Italian unity and politics."
- idea_italy_emanuell_iii:0 "Emanuel III"
+ victor_emmanuel_ww1:0 "Victor Emmanuel III"
+ victor_emmanuel_ww1_desc:0 "The only advice that his father Umberto ever gave him was that to be a king, all he needed to know is how to sign his name, read a newspaper, and mount a horse. And even though his father was killed by an anarchist, he is a king committed to constitutional government."
  idea_german_investors:0 "German Investments"
  idea_french_investors:0 "Entente Investments"
  idea_italy_triple_alliance:0 "Disagreement with Triple Alliance"
@@ -603,6 +613,8 @@
  ITA_idea_mafia:0 "Powerful Mafia"
  ITA_idea_camicie_nere:0 "Le Camicie Nere"
  ITA_death_before_surrender:0 "Death Before Surrender"
+ vickers_terni:0 "Vickers-Terni"
+ universita_torino:0 "Università degli Studi di Torino"
  
  #TURKEY
  TUR_sick_man:0 "Sick Man of Europe"
@@ -811,6 +823,8 @@
  SOV_idea_scientific_atheism:0 "Scientific Atheism"
  SOV_idea_revival_of_russia:0 "Revival of Russia"
  SOV_idea_kronstadt:0 "Kronstadt Rebellion"
+ SOV_idea_socialism_in_one_country:0 "Socialism In One Country"
+ SOV_idea_cult_of_personality:0 "Cult of Personality"
  
  intervention_in_russia:0 "Intervention in Russia"
  SOV_great_revolution:0 "The Great Socialist Revolution"
@@ -900,6 +914,7 @@
  GER_idea_nazism:0 "Rise of Nazism"
  GER_idea_nazism2:0 "Nazi Agitation"
  GER_idea_nazi_purge:0 "Night of Long Knives"
+ GER_idea_nazi_purge:0 "After Adolf Hitler came to power, he purged the rebelious within the Sturmabteilung, the paramilitary of the Nazi Party, and the German Wehrmacht, and other Anti-Nazis. Now no one can challenge his authority in Germany."
  GER_idea_reparations:0 "Reparations"
  GER_idea_german_factories:0 "German Investments"
  GER_idea_german_techs:0 "German Technologies"
@@ -956,8 +971,8 @@
  tokyo_pact:0 "§YGerman-Japanese Pact§!"
  GER_legation_profits:0 "Legation Profits"
  GER_legation_profits_desc:0 "We have set up the International Concession Government, and we are reaping the rewards."
- SHL_kiel_canal_profits:0 "Kiel Canal Profits"
- SHL_kiel_canal_profits_desc:0 "The Kiel Canal is a vital area for Baltic trade, and we are reaping the benefits greatly."
+ SHL_kiel_canal_profits:0 "Kaiser-Wilhelm-Canal Profits"
+ SHL_kiel_canal_profits_desc:0 "The Kaiser-Wilhelm-Canal is a vital area for Baltic trade, and we are reaping the benefits greatly."
  GER_german_staff_planning_auh:0 "German Staff Planning"
  GER_german_staff_planning_auh_desc:0 "German headquarters focused on our front."
  GER_german_staff_planning:0 "Joint Planning"
@@ -968,6 +983,10 @@
  GER_mitteleuropa:0 "Mitteleuropa"
  GER_reformed_economy:0 "Reformed Economy"
  GER_representative_reform_idea:0 "Representative Reform"
+ GER_idea_hitler_arrested:0 "Beer Hall Putsch Failed"
+ GER_idea_hitler_arrested_desc:0 "Adolf Hitler was arrested for the failure of the Munich Beer Hall putsch. But his supporters are still out there, and he has been seen as a true patriot even in court."
+ GER_ss_idea:0 "Schutzstaffel"
+ GER_ss_idea_desc:0 "Schutzstaffel(SS) is the major paramilitary organization under Adolf Hitler and the Nazi Party in Nazi Germany."
  
  #AUSTRIA-HUNGARY
  AUH_ww1_House_Habsburg_Lorraine:0 "House of Habsburg-Lorraine"
@@ -1220,6 +1239,9 @@
  ENG_two_power_standard:0 "The Two-Power Standard"
  ENG_lords_opposition:0 "Lords Opposition"
  ENG_lords_opposition_desc:0 "The House of Lords is being frustratingly opposed to our government. They are continuously blocking bills and acts, and have brought our lawmaking effectively to a halt. Increasingly, it is being believed that radical action is going to have to be taken to rein them in, unless they change their attitude and change it quick."
+ ENG_golden_age_espionage:0 "Golden Age of Espionage"
+ ENG_golden_age_espionage_desc:0 "This is the Golden Age of British Espionage! Skulduggery, secrets and hijinks are abound, loyal Imperial assets across the globe gathering vital intelligence for King and Country.\n\nHowever, we are not alone, as the Hun, the Frank and the Russian engage in similar activities right under our noses.\n\n\nEven the Japanese are getting involved, now! How terribly exciting."
+
 
  #CANADA
  CAN_idea_quebec_tension:0 "Quebec Tension"
@@ -1335,6 +1357,7 @@
  QIN_idea_payments_of_indemnities_4:0 "Payments of Indemnities"
  QIN_idea_payments_of_indemnities_5:0 "Payments of Indemnities"
  QIN_idea_payments_of_indemnities_6:0 "Payments of Indemnities"
+ QIN_idea_xuantong:0 "Xuantong Emperor"
  CHI_idea_support_for_revolution:0 "Revolutionary Support"
  CHI_idea_xinhai_revolution:0 "Xinhai Revolution"
  CHI_idea_labour_corps:0 "Chinese Labour Corps"
@@ -1351,6 +1374,9 @@
  CHI_idea_inflation2:0 "Inflation"
  CHI_idea_inflation:0 "Low Inflation"
  CHI_idea_beiyang_government:0 "Beiyang Government"
+ CHI_idea_communist_movement:0 "Communist Movement"
+ CHI_idea_communist_movement_desc:0 "Since the founding of the Communist Party of China, they have been working with us for now. But they will try to establish their communist country if they have a chance."
+ CHI_idea_warlord_neutrality:0 "Warlord Neutrality"
  
  #USA
  USA_idea_volunteer_corps:0 "Volunteer Corps"
@@ -1557,9 +1583,18 @@
  
  #Azerbaijan POG
  AZR_republic_founder:0 "Founder of the Republic"
- AZR_republic_founder_desc:0 "Mammad, still to this day, is regarded as one of the most influential founders of the Azeri Democratic Republic. Due to this, he holds notable authority in the parliamentary democracy established in the chaos of the Russian Civil War."
+ AZR_republic_founder_desc:0 "Mammad Rasulzade founded the first parliamentary democracy in the entire muslim world's history, during the age where the muslim world was mostly covered with deeply reactionary and autocratic regime. The armies fighting for this republic feel a sense of duty and nationhood."
 
  #Greece
  GRE_idea_national_schism:0 "National Schism"
  GRE_idea_national_schism_desc:0 "The National Schism is one of the most important events in the First World War. Greece finds itself split into two as a foreign policy crisis envelops the country. The Prime Minister sees Greece as being a member of the Entente Powers, while the King sees Greece better off with the Central Powers."
  GRE_idea_dual_power:0 "Dual Power"
+ 
+ #Sennusi
+ LBA_Senussi_Order:0 "Senussi Order"
+ LBA_Senussi_Order_desc:0 "We win or we die."
+ LBA_traders_of_east_sahara:0 "Traders of East Sahara"
+ 
+ #Wadai
+ CHA_elite_cavalry:0 "Elite Cavalry"
+ CHA_elite_cavalry_desc:0 "Wadai has a capable and highly experienced military, well versed in mobile combat and the constant raiding which marked traditional warfare in the region. The core of its army is elite cavalry troops, many of whom belong to a warrior nobility."

@@ -19,7 +19,7 @@ italoturkish_war = {
 	ai_strategy = {
 		type = area_priority
 		id = middle_east
-		value = -50
+		value = -5000
 	}
 	ai_strategy = {
 		type = area_priority
@@ -33,13 +33,29 @@ italoturkish_war = {
 		
 		# Lybia
 		states = {
-			451
+			661
 			450
 			#449 its so smart to invade desert
 			448
 		}
 		ratio = 0.2
-		area = europe
+		area = africa
 		subtract_invasions_from_need = no
 	}
+}
+dont_join_italian_federation = {
+	enable = {
+		has_global_flag = italian_civil_war
+		any_country = {
+			original_tag = ITA
+			has_country_flag = ITA_monarchist_italy_flag
+            is_faction_leader = yes
+		}
+	}
+	
+	ai_strategy = {
+		type = alliance
+		id = "ITS"
+		value = -2000
+	}	
 }

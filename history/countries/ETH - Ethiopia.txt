@@ -9,9 +9,10 @@ create_country_leader = {
 	name = "Menelik II"
 	picture="gfx/leaders/ETH/ETH_menelik_ii.dds" 
 	expire="1935.1.1" 
-	ideology=autocracy  
+	ideology = autocracy  
 	traits={  
     	lion_of_judah
+		trait_autocracy
 	} 
 }
 
@@ -68,6 +69,7 @@ create_corps_commander = {
 		infantry_weapons = 1
 		infantry_weapons1 = 1
 		support_weapons = 1
+		camelry = 1
 		
 		#support
 		tech_support = 1
@@ -93,8 +95,4 @@ create_corps_commander = {
 		democratic = 0
 		neutrality = 100
 	}
-
-	add_ideas = {
-
-	}	
 }

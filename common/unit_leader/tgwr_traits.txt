@@ -83,11 +83,62 @@ leader_traits = {
 			factor = 0
 		}
 	}
+	trait_TUR_ittihadist_radical_sympathies = {
+
+		type = all
+		trait_type = personality_trait
+
+		new_commander_weight = {
+			factor = 0
+		}
+	}
+	TUR_Loyal_Reformist = {
+
+		type = all
+		trait_type = personality_trait
+
+		new_commander_weight = {
+			factor = 0
+		}
+	}
 	trait_TUR_reactionaries_sympathies = {
 
 		type = all
 		trait_type = personality_trait
 
+		new_commander_weight = {
+			factor = 0
+		}
+	}
+	trait_TUR_reactionaries_political_sympathies = {
+
+		type = all
+		trait_type = personality_trait
+
+		new_commander_weight = {
+			factor = 0
+		}
+	}
+	CHI_loyalist = { 
+		type = all
+		trait_type = personality_trait
+		gain_xp = {
+			always = no # not gainable
+		}
+		allowed = {
+			FROM = {
+				OR = {
+					original_tag = QIN
+					original_tag = CHI
+				}
+			}
+		}
+		modifier = {
+			
+		}
+		ai_will_do = {
+			factor = 1
+		}
 		new_commander_weight = {
 			factor = 0
 		}

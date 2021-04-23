@@ -243,11 +243,11 @@ foreign_politics = {
 			original_tag = RUS
 		}
 		available = {
-			controls_state = 525
-			controls_state = 527
-			controls_state = 800
-			controls_state = 801
-			controls_state = 802
+			has_full_control_of_state = 525
+			has_full_control_of_state = 527
+			has_full_control_of_state = 800
+			has_full_control_of_state = 801
+			has_full_control_of_state = 802
 			NOT = { country_exists = KOR }
 		}
 		ai_will_do = {
@@ -255,11 +255,14 @@ foreign_politics = {
 		}
 		cost = 0
 		visible = {
-			controls_state = 525
-			controls_state = 527
-			controls_state = 800
-			controls_state = 801
-			controls_state = 802
+			OR = {
+				controls_state = 525
+				controls_state = 527
+				controls_state = 800
+				controls_state = 801
+				controls_state = 802
+				has_war_with = JAP
+			}
 			NOT = { country_exists = KOR }
 		}
 		fire_only_once = no
@@ -576,14 +579,14 @@ economy_decisions = {
 			production_speed_dockyard_factor = 0.25
 			production_speed_naval_base_factor = 0.25
 		}
-		activation = {
-			tag = RUS
-			has_completed_focus = RUS_denounce_portsmouth
-		}
+		#activation = {
+		#	tag = RUS
+		#	has_completed_focus = RUS_denounce_portsmouth
+		#}
 		fire_only_once = yes
 		days_remove = 500
 		#days_mission_timeout = 500  
-		is_good = yes
+		#is_good = yes
 	}
 }
 RUS_tsar_decision = {
@@ -617,25 +620,9 @@ RUS_tsar_decision = {
 				has_idea = RUS_threat_of_revolution3
 			}
 			has_stability < 0.35
-			OR = {
-				AND = {
-					has_war = no
-					custom_trigger_tooltip = {
-						tooltip = RUS_constitution_support
-						set_temp_variable = { RUS_constitution_support = party_popularity@democratic }
-						add_to_temp_variable = { RUS_constitution_support = party_popularity@neutrality }
-						check_variable = { RUS_constitution_support < 0.5 }
-					}
-				}
-				AND = {
-					has_war = yes
-					OR = {
-						has_war_support < 0.35
-						surrender_progress > 0.1
-						casualties > 2500000
-					}
-				}
-			}
+			has_war = yes
+			surrender_progress > 0.1
+			casualties > 2500000
 			SOV = { exists = no }
 			hidden_trigger = {
 				NOT = { has_completed_focus = RUS_force_tsar_abdtication }
@@ -1930,7 +1917,7 @@ RUS_release_country = {
 				set_country_flag = released_by_russia
 				transfer_state = 13
 				hidden_effect = {
-					load_oob = "EST_army"
+					#load_oob = "EST_army"
 					RUS = {
 						remove_state_core = 13
 					}
@@ -1991,7 +1978,7 @@ RUS_release_country = {
 				transfer_state = 191
 				add_state_core = 191
 				hidden_effect = {
-					load_oob = "LAT_army"
+					#load_oob = "LAT_army"
 					RUS = {
 						remove_state_core = 191
 						remove_state_core = 12
@@ -2053,7 +2040,7 @@ RUS_release_country = {
 				transfer_state = 189
 				transfer_state = 784
 				hidden_effect = {
-					load_oob = "LIT_army"
+					#load_oob = "LIT_army"
 					RUS = {
 						remove_state_core = 11
 						remove_state_core = 189
@@ -2128,7 +2115,7 @@ RUS_release_country = {
 			}
 			hidden_effect = {
 				POL = {
-					load_oob = "POL_1910"
+					load_oob = "POL_divisions"
 				}	
 			}		
 			add_stability = 0.05
@@ -2338,7 +2325,7 @@ RUS_release_country = {
 				transfer_state = 748
 				transfer_state = 816
 				hidden_effect = {
-					load_oob = "GEO_1910"
+					#load_oob = "GEO_1910"
 				}			
 			}
 			add_stability = 0.05
@@ -2504,7 +2491,7 @@ RUS_release_country = {
 		}
 		fire_only_once = yes
 		days_remove = 180 
-		is_good = no
+		#is_good = no
 	}
 	RUS_mission_self_determination_FIN = {
 		icon = generic_nationalism	
@@ -2522,6 +2509,7 @@ RUS_release_country = {
 				}
 				has_global_flag = finland_released
 				has_completed_focus = RUS_russification_of_non_titular_nations
+				has_stability > 0.1
 			}
 		}		
 		activation = {
@@ -2530,13 +2518,7 @@ RUS_release_country = {
 				is_fully_controlled_by = RUS
 				is_core_of = FIN
 			}
-			OR = {
-				has_completed_focus = RUS_self_determination_of_nations
-				AND = {
-					NOT = { has_completed_focus = RUS_russification_of_non_titular_nations }
-					has_stability < 0.1
-				}
-			}
+			has_completed_focus = RUS_self_determination_of_nations
 		}
 		highlight_states = {
 			state = 111
@@ -2560,11 +2542,9 @@ RUS_release_country = {
 					}
 					create_country_leader = {
 						name = "Pehr Evind Svinhufvud" 
-						desc = FIN_pehr_evind_svinhufvud_DESC 
 						picture = "gfx/leaders/FIN/FIN_pehr_evind_svinhufvud.dds" 
 						expire = "1935.1.1" 
 						ideology = oligarchism 
-						traits = {}
 					}
 					remove_unit_leader = 100
 					drop_cosmetic_tag = yes
@@ -2594,19 +2574,14 @@ RUS_release_country = {
 				EST = { exists = yes }
 				NOT = { owns_state = 13 }
 				has_global_flag = estonia_released
-				has_global_flag = estonia_russification
+				#has_global_flag = estonia_russification
+				has_stability > 0.1
 			}
 		}		
 		activation = {
 			owns_state = 13
 			EST = { exists = no }
-			OR = {
-				has_completed_focus = RUS_self_determination_of_nations
-				AND = {
-					NOT = { has_completed_focus = RUS_russification_of_non_titular_nations }
-					has_stability < 0.1
-				}
-			}
+			has_completed_focus = RUS_self_determination_of_nations
 		}
 		timeout_effect = {
 			set_global_flag = estonia_released
@@ -2614,7 +2589,7 @@ RUS_release_country = {
 				transfer_state = 13
 				transfer_state = 191
 				hidden_effect = {
-					load_oob = "EST_army"
+					#load_oob = "EST_army"
 				}			
 			}
 			ESR = {
@@ -2641,17 +2616,12 @@ RUS_release_country = {
 				LAT = { exists = yes }
 				NOT = { owns_state = 12 }
 				has_global_flag = latvia_released
+				has_stability > 0.1
 			}
 		}		
 		activation = {
 			LAT = { exists = no }
-			OR = {
-				has_completed_focus = RUS_self_determination_of_nations
-				AND = {
-					NOT = { has_completed_focus = RUS_russification_of_non_titular_nations }
-					has_stability < 0.1
-				}
-			}
+			has_completed_focus = RUS_self_determination_of_nations
 		}
 		timeout_effect = {
 			set_global_flag = latvia_released
@@ -2660,7 +2630,7 @@ RUS_release_country = {
 				transfer_state = 190
 				transfer_state = 96
 				hidden_effect = {
-					load_oob = "LAT_army"
+					#load_oob = "LAT_army"
 				}			
 			}
 			LTR = {
@@ -2687,17 +2657,12 @@ RUS_release_country = {
 				LIT = { exists = yes }
 				NOT = { owns_state = 11 }
 				has_global_flag = litva_released
+				has_stability > 0.1
 			}
 		}		
 		activation = {
 			owns_state = 11
-			OR = {
-				has_completed_focus = RUS_self_determination_of_nations
-				AND = {
-					NOT = { has_completed_focus = RUS_russification_of_non_titular_nations }
-					has_stability < 0.1
-				}
-			}
+			has_completed_focus = RUS_self_determination_of_nations
 		}
 		timeout_effect = {
 			set_global_flag = litva_released
@@ -2706,7 +2671,7 @@ RUS_release_country = {
 				transfer_state = 189
 				transfer_state = 784
 				hidden_effect = {
-					load_oob = "LIT_army"
+					#load_oob = "LIT_army"
 				}			
 			}
 			LIT = {
@@ -2735,36 +2700,46 @@ RUS_release_country = {
 					any_owned_state = {
 						is_fully_controlled_by = RUS
 				   		is_core_of = POL
+						NOT = {
+							is_core_of = BEL
+							is_core_of = UKR
+							is_core_of = LIT
+						}
 			    	}
 				}
 				has_global_flag = poland_released
+				has_stability > 0.1
 			}
 		}		
 		activation = { #Начинается кризис, если есть Самоопределение, либо стаб<10% и нет Руссификации.
-			OR = {
-				has_completed_focus = RUS_self_determination_of_nations
-				AND = {
-					NOT = { has_completed_focus = RUS_russification_of_non_titular_nations }
-					has_stability < 0.1
-				}
-			}
+			has_completed_focus = RUS_self_determination_of_nations
 			any_owned_state = {
 				is_core_of = POL
+				NOT = {
+					is_core_of = BEL
+					is_core_of = UKR
+					is_core_of = LIT
+				}
 			}
 		}
 		timeout_effect = {
 			set_global_flag = poland_released
-			POL = {
-				transfer_state = 10
-				transfer_state = 87
-				transfer_state = 90
-				transfer_state = 92
-				transfer_state = 97
-				transfer_state = 98
-				hidden_effect = {
-					load_oob = "POL_1910"
-				}		
-			}
+			every_owned_state = {
+				limit = {
+					is_core_of = POL
+					NOT = {
+						is_core_of = BEL
+						is_core_of = UKR
+						is_core_of = LIT
+					}
+				}
+			    POL = {
+                    transfer_state = PREV
+					hidden_effect = {
+					    load_oob = "POL_divisions"
+				    }    
+                }					
+			}			
 			POL = {
 				declare_war_on = {
 					target = RUS
@@ -2790,17 +2765,12 @@ RUS_release_country = {
 				NOT = { owns_state = 231 }
 				has_global_flag = georgia_released
 				has_global_flag = caucasus_released
+				has_stability > 0.1
 			}
 		}		
 		activation = {
 			owns_state = 231
-			OR = {
-				has_completed_focus = RUS_self_determination_of_nations
-				AND = {
-					NOT = { has_completed_focus = RUS_russification_of_non_titular_nations }
-					has_stability < 0.1
-				}
-			}
+			has_completed_focus = RUS_self_determination_of_nations
 		}
 		timeout_effect = {
 			set_global_flag = georgia_released
@@ -2809,7 +2779,7 @@ RUS_release_country = {
 				transfer_state = 748
 				transfer_state = 816
 				hidden_effect = {
-					load_oob = "GEO_1910"
+					#load_oob = "GEO_1910"
 				}		
 			}
 			GEO = {
@@ -2837,17 +2807,12 @@ RUS_release_country = {
 				NOT = { owns_state = 229 }
 				has_global_flag = azerbaijan_released
 				has_global_flag = caucasus_released
+				has_stability > 0.1
 			}
 		}		
 		activation = {
 			owns_state = 229
-			OR = {
-				has_completed_focus = RUS_self_determination_of_nations
-				AND = {
-					NOT = { has_completed_focus = RUS_russification_of_non_titular_nations }
-					has_stability < 0.1
-				}
-			}
+			has_completed_focus = RUS_self_determination_of_nations
 		}
 		timeout_effect = {
 			set_global_flag = azerbaijan_released
@@ -2856,7 +2821,7 @@ RUS_release_country = {
 				transfer_state = 818
 				transfer_state = 823
 				hidden_effect = {
-					load_oob = "AZR_1910"
+					#load_oob = "AZR_1910"
 				}		
 			}
 			AZR = {
@@ -2883,16 +2848,11 @@ RUS_release_country = {
 				ARM = { exists = yes }
 				has_global_flag = armenia_released
 				has_global_flag = caucasus_released
+				has_stability > 0.1
 			}
 		}		
 		activation = {
-			OR = {
-				has_completed_focus = RUS_self_determination_of_nations
-				AND = {
-					NOT = { has_completed_focus = RUS_russification_of_non_titular_nations }
-					has_stability < 0.1
-				}
-			}
+			has_completed_focus = RUS_self_determination_of_nations
 		}
 		timeout_effect = {
 			set_global_flag = armenia_released
@@ -2901,7 +2861,7 @@ RUS_release_country = {
 				transfer_state = 806
 				transfer_state = 787
 				hidden_effect = {
-					load_oob = "ARM_1910"
+					#load_oob = "ARM_1910"
 				}		
 			}
 			ARM = {
@@ -2927,17 +2887,12 @@ RUS_release_country = {
 			OR = {
 				KAZ = { exists = yes }
 				has_global_flag = alash_released
+				has_stability > 0.1
 			}
 		}		
 		activation = {
 			KAZ = { exists = no }
-			OR = {
-				has_completed_focus = RUS_self_determination_of_nations
-				AND = {
-					NOT = { has_completed_focus = RUS_russification_of_non_titular_nations }
-					has_stability < 0.1
-				}
-			}
+			has_completed_focus = RUS_self_determination_of_nations
 		}
 		timeout_effect = {
 			set_global_flag = alash_released
@@ -2982,7 +2937,8 @@ RUS_release_country = {
 						is_core_of = TMS
 						is_fully_controlled_by = RUS
 					}
-			    }				
+			    }
+			    has_stability > 0.1				
 			}
 		}	
 		highlight_states = {
@@ -2994,13 +2950,7 @@ RUS_release_country = {
 				is_core_of = TMS
 				is_fully_controlled_by = RUS
 			}
-			OR = {
-				has_completed_focus = RUS_self_determination_of_nations
-				AND = {
-					NOT = { has_completed_focus = RUS_russification_of_non_titular_nations }
-					has_stability < 0.1
-				}
-			}
+			has_completed_focus = RUS_self_determination_of_nations
 		}
 		timeout_effect = {
 			set_global_flag = basmach_released
