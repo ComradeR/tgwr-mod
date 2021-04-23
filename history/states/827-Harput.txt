@@ -2,15 +2,19 @@ state={
 	id=827
 	name="STATE_827" 
 	history={
-		owner = ENG
-		add_core_of = SUD		
+		owner = DAR
+		add_core_of = DAR
+		victory_points = {
+			10739 1
+		}
 		buildings = {
-			infrastructure = 1
+			infrastructure = 2
+			industrial_complex = 1
 		}
 	}
 	provinces={
 		1960 5060 8052 10739
 	}
-	manpower=160000
+	manpower=900000
 	state_category=rural
 }

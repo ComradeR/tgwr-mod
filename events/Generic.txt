@@ -556,7 +556,6 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = alliance_applicant@ROOT
 			FROM = { set_country_flag = alliance_inviter@ROOT }
-			news_event = { id = news.289 hours = 12 }
 		}
 	}
 	option = { #Agree / Both Fascist
@@ -587,7 +586,6 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = alliance_applicant@ROOT
 			FROM = { set_country_flag = alliance_inviter@ROOT }
-			news_event = { id = news.289 hours = 12 }
 		}
 	}
 	option = { #Agree / Both Communist
@@ -685,7 +683,6 @@ country_event = {
 		hidden_effect = {
 			set_country_flag = alliance_applicant@ROOT
 			FROM = { set_country_flag = alliance_inviter@ROOT }
-			news_event = { id = news.289 hours = 12 }
 		}
 	}
 	
@@ -1416,7 +1413,7 @@ unit_leader_event = {
 }
 
 # Notification event that leader has been wounded
-country_event = {
+unit_leader_event = {
 	id = generic.18
 	title = generic.18.t
 	desc = generic.18.d
@@ -1437,6 +1434,7 @@ country_event = {
 		}
 	}	
 }
+
 
 # Notification event that FROM has sent industrial support
 country_event = {

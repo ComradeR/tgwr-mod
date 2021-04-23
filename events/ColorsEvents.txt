@@ -7,8 +7,10 @@ country_event = {
 	
 	trigger = {
 		is_puppet_of = SOV
-		NOT = { has_cosmetic_tag = SOV_puppet }
-		NOT = { orginal_tag = POL}
+		NOT = { 
+			has_cosmetic_tag = SOV_puppet 
+			original_tag = POL
+		}
 	}	
 	mean_time_to_happen = {
 		days = 0
@@ -40,55 +42,6 @@ country_event = {
 		drop_cosmetic_tag = yes
 	}
 }
-
-# Democratic Italy
-####################
-country_event = {
-	id = color.4
-	
-	trigger = {
-		original_tag = ITA
-		has_government = democratic
-		NOT = {
-		    has_cosmetic_tag = ITA_dem 
-			has_cosmetic_tag = SRI
-			has_cosmetic_tag = ROI
-			has_cosmetic_tag = ITS
-			has_cosmetic_tag = ITS_bourbon
-		}
-	}	
-	mean_time_to_happen = {
-		days = 0
-	}
-
-	hidden = yes
-
-	immediate = {
-		set_cosmetic_tag = ITA_dem
-	}
-}
-
-# Democratic Italy
-####################
-country_event = {
-	id = color.5
-	
-	trigger = {
-		original_tag = ITA
-		NOT = { has_government = democratic }
-		has_cosmetic_tag = ITA_dem
-	}	
-	mean_time_to_happen = {
-		days = 0
-	}
-
-	hidden = yes
-
-	immediate = {
-		drop_cosmetic_tag = yes
-	}
-}
-
 # Communist Germany
 ####################
 country_event = {
@@ -184,8 +137,24 @@ country_event = {
 	trigger = {
 		original_tag = ROM
 		MOL = { exists = yes }
-		NOT = { owns_state = 79 }
-		NOT = { has_cosmetic_tag = WAL }	
+		NOT = {
+		    any_state = {
+				is_core_of = MOL
+				NOT = { state = 80 }
+                is_owned_by = ROM
+            } 
+		}
+        NOT = {
+            AND = {		
+                TRA = { exists = no }
+				any_state = {
+					is_core_of = TRA
+					NOT = { state = 80 }
+                    is_owned_by = ROM
+                }
+            }
+        }
+        NOT = { has_cosmetic_tag = WAL }		
         has_civil_war = no
 	}	
 	mean_time_to_happen = {
@@ -206,7 +175,21 @@ country_event = {
 	trigger = {
 		original_tag = ROM
 		has_cosmetic_tag = WAL
-		owns_state = 79
+		OR = {
+		    any_state = {
+				is_core_of = MOL
+				NOT = { state = 80 }
+                is_owned_by = ROM
+            }
+			AND = {
+				TRA = { exists = no }
+				any_state = {
+					is_core_of = TRA
+					NOT = { state = 80 }
+                    is_owned_by = ROM
+                }
+			}
+        }			
 	}	
 	mean_time_to_happen = {
 		days = 0

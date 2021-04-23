@@ -5,20 +5,14 @@ state={
 
 	history={
 		victory_points = {
-			11842 5 
+			11842 10 
 		}
 		owner = TUR
 		add_core_of = TUR
-		1913.5.30 = {
-			owner = BUL
-
-		}
-		1913.8.10 = {
-			owner = TUR
-
-		}
 		buildings = {
 			infrastructure = 4
+			industrial_complex = 1
+			arms_factory=1
 			11842 = {
 				bunker = 2
 
@@ -33,5 +27,5 @@ state={
 	}
 	manpower=75000
 	buildings_max_level_factor=1.000
-	state_category=rural
+	state_category=city
 }

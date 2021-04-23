@@ -17,7 +17,7 @@ country_event = {
 			has_country_flag = great_war_winner
 		}
 		FRA = {
-			owns_state = 42
+			owns_state = 28
 		}
 		NOT = { has_global_flag = russian_revolution }
 	}
@@ -87,21 +87,25 @@ country_event = {
 	id = prussian.3
 	title = prussian.3.t
 	desc = prussian.3.d
-	fire_only_once = yes
 	is_triggered_only = yes
 	option = {
 		name = prussian.3.a
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0
+				has_opinion = {
+					target = RUS
+					value > 0
+				}
+			}
+		}
 		set_country_flag = agreed_on_treaty_of_berlin
 	}
 	option = {
 		name = prussian.3.b
 		ai_chance = {
-			factor = 0
-			modifier = {
-				factor = 100
-				has_opinion = { target = RUS value < 0 }
-			}
+			base = 0
 		}
 	}
 }
@@ -149,7 +153,7 @@ news_event = {
 				}
 				create_dynamic_country = {
 					original_tag = GER
-					set_capital = 55
+					set_capital = 51 #Koln
 					set_politics = {
 						ruling_party = democratic
 						elections_allowed = yes
@@ -242,15 +246,15 @@ news_event = {
 						name = "French Military Government"
 						picture = "gfx/leaders/FRA/FRA_provisional_government.dds" 
 						expire = "1935.1.1"
-						ideology = military_dictatorship
-						
+						ideology = stratocracy
+						traits = { trait_stratocracy }
 					}
 					create_country_leader = {
 						name = "Konrad Adenauer"
 						picture = "gfx/leaders/GER/GER_Konrad_Adenauer.dds"
 						expire = "1935.1.1"
 						ideology = conservatism
-						
+						traits = { trait_conservatism }
 					}
 					add_ideas = democratic_influence
 				}
@@ -300,17 +304,17 @@ news_event = {
 					picture = "gfx/leaders/GER/GER_friedrich_ebert.dds" 
 					expire = "1935.1.1" 
 					ideology = socialism
-					 
+					traits = { trait_socialism }
 				}
+				set_capital = 58 #Hamburg, because it is not Hannover
 				set_cosmetic_tag = HAN_niederdeutschland
+				add_ideas = SHL_kiel_canal_profits
 			}
 			if = {
 				limit = {
 					ENG = { has_country_flag = agreed_on_treaty_of_berlin }
 				}
 				ENG = {
-					puppet = HAN
-
 					if = {
 						limit = {
 							has_dlc = "Together for Victory"
@@ -320,6 +324,9 @@ news_event = {
 							autonomous_state = autonomy_supervised_state
 							freedom_level = 0.5
 						}
+					}
+					else = {
+						puppet = HAN
 					}
 				}
 			}
@@ -445,7 +452,7 @@ news_event = {
 									picture="gfx/leaders/GER/GER_Theobald_von_Hollweg.dds"
 									expire = "1935.1.1"
 									ideology = conservatism
-									
+									traits = { trait_conservatism }
 								}
 							}
 							if = {
@@ -458,7 +465,7 @@ news_event = {
 									picture="gfx/leaders/GER/GER_Georg_Michaelis.dds"
 									expire = "1935.1.1"
 									ideology = conservatism
-									
+									traits = { trait_conservatism }
 								}
 							}
 							if = {
@@ -471,7 +478,7 @@ news_event = {
 									picture="gfx/leaders/GER/GER_Georg_von_Hertling.dds"
 									expire = "1935.1.1"
 									ideology = conservatism
-									
+									traits = { trait_conservatism }
 								}
 							}
 							if = {
@@ -483,7 +490,7 @@ news_event = {
 									picture="gfx/leaders/GER/GER_Maximilian_von_Baden.dds"
 									expire = "1935.1.1"
 									ideology = conservatism
-									
+									traits = { trait_conservatism }
 								}
 							}
 							add_ideas = GER_idea_wilhelm_ii
@@ -494,12 +501,14 @@ news_event = {
 						limit = {
 							has_dlc = "Together for Victory"
 						}
-						puppet = GER
 						set_autonomy = {
 							target = GER
 							autonomous_state = autonomy_supervised_state
 							freedom_level = 0.5
 						}
+					}
+					else = {
+						puppet = GER
 					}
 
 					if = {
@@ -542,18 +551,19 @@ news_event = {
 					POL = {
 						add_state_core = 85
 						add_state_core = 86
+						add_state_core = 404
+						add_state_core = 762
 						transfer_state = 85
 						transfer_state = 86
+						transfer_state = 404
+						transfer_state = 762
 					}
 				}
-				if = {
-					limit = {
-						POL = { exists = no }
-					}
-
+				else = {
 					RUS = {
 						transfer_state = 85
 						transfer_state = 86
+						transfer_state = 404
 					}
 				}
 			}
@@ -595,8 +605,6 @@ news_event = {
 				}
 			}
 			GER = {
-				puppet = SAX
-
 				if = {
 					limit = {
 						has_dlc = "Together for Victory"
@@ -606,6 +614,9 @@ news_event = {
 						autonomous_state = autonomy_dominion
 						freedom_level = 0.5
 					}
+				}
+				else = {
+					puppet = SAX
 				}
 			}
 			if = {
@@ -623,28 +634,6 @@ news_event = {
 					annex_country = {
 						target = GAL
 					}
-				}
-			}
-			if = {
-				limit = {
-					AUS = {
-						exists = yes
-						NOT = { owns_state = 102 }
-					}
-				}
-
-				AUS = {
-					transfer_state = 102
-				}
-				RUS = {
-					give_guarantee = AUS
-					give_guarantee = SER
-				}
-				if = {
-					limit = {
-						SER = { has_cosmetic_tag = SER_YUG }
-					}
-					SER = { set_cosmetic_tag = YUG }
 				}
 			}
 			if = {
@@ -727,6 +716,13 @@ news_event = {
 						modifier = HOI4TGW_Opinion_alliance_malus
 					}
 				}
+
+				SER = {
+					add_opinion_modifier = {
+						target = RUS
+						modifier = HOI4TGW_Opinion_alliance_malus
+					}
+				}
 			}
 			if = {
 				limit = {
@@ -740,6 +736,40 @@ news_event = {
 				DEN = {
 					transfer_state = 751
 				}
+			}
+			if = {
+				limit = {
+					FRA = { NOT = { has_country_flag = agreed_on_treaty_of_berlin } }
+					GER = {
+						owns_state = 42
+					}
+				}
+				FRA = {
+					transfer_state = 42
+				}
+			}
+			if = {
+				limit = {
+					FRA = { NOT = { has_country_flag = agreed_on_treaty_of_berlin } }
+					GER = {
+						owns_state = 51
+					}
+				}
+				FRA = {
+					transfer_state = 51
+				}
+			}
+			if = {
+				limit = {
+					GER = { owns_state = 541 }
+				}
+				SAF = { transfer_state = 541 }
+			}
+			if = {
+				limit = {
+					GER = { owns_state = 794 }
+				}
+				ENG = { transfer_state = 794 }
 			}
 		}
 	}
@@ -938,7 +968,7 @@ country_event = {
 			picture = "gfx/leaders/HUN/HUN_bela_kun.dds"
 			expire = "1935.1.1"
 			ideology = vanguardism
-			
+			traits = { trait_vanguardism }
 		}
 		set_cosmetic_tag = HUN_communism
 		add_named_threat = {
@@ -1234,7 +1264,8 @@ country_event = {
 			division_template = {
 				name = "Militia"
 				regiments = {
-					infantry = { x=0  y=0 }
+					militia = { x=0  y=0 }
+					militia = { x=0  y=1 }
 				}
 			}
 			341 = {
@@ -1606,7 +1637,7 @@ country_event = {
 			picture="gfx/leaders/GER/GER_Georg_Michaelis.dds"
 			expire = "1935.1.1"
 			ideology = conservatism
-			
+			traits = { trait_conservatism }
 		}
 	}
 }
@@ -1631,7 +1662,7 @@ country_event = {
 			picture="gfx/leaders/GER/GER_Georg_von_Hertling.dds"
 			expire = "1935.1.1"
 			ideology = conservatism
-			
+			traits = { trait_conservatism }
 		}
 	}
 }
@@ -1656,7 +1687,7 @@ country_event = {
 			picture="gfx/leaders/GER/GER_Maximilian_von_Baden.dds"
 			expire = "1935.1.1"
 			ideology = conservatism
-			
+			traits = { trait_conservatism }
 		}
 	}
 }
@@ -1684,7 +1715,7 @@ country_event = {
 			picture="gfx/leaders/GER/GER_Alfred_Tirpitz.dds"
 			expire = "1935.1.1"
 			ideology = conservatism
-			
+			traits = { trait_conservatism }
 		}
 	}
 }
@@ -1715,7 +1746,7 @@ country_event = {
 			picture = "gfx/leaders/GER/GER_friedrich_ebert.dds"
 			expire = "1935.1.1"
 			ideology = socialism
-			
+			traits = { trait_socialism }
 		}
 		set_party_name = {
 			ideology = democratic
@@ -1743,11 +1774,11 @@ country_event = {
 		retire_ideology_leader = democratic
 		create_country_leader = {
 			name = "Erich Ludendorff"
-			desc=GER_erich_ludendorff_DESC
-			picture="gfx/leaders/GER/GER_Erich_Ludendorff.dds"
+			desc = GER_erich_ludendorff_DESC
+			picture = "gfx/leaders/GER/GER_Erich_Ludendorff.dds"
 			expire = "1935.1.1"
 			ideology = conservatism
-			
+			traits = { trait_conservatism }
 		}
 		set_party_name = {
 			ideology = democratic
@@ -1777,7 +1808,7 @@ country_event = {
 				picture="gfx/leaders/GER/GER_Kuno_Graf_von_Westarp.dds"
 				expire = "1935.1.1"
 				ideology = conservatism
-				
+				traits = { trait_conservatism }
 			}
 			set_party_name = {
 				ideology = democratic

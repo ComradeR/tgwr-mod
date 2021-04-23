@@ -26,18 +26,19 @@ if = {
 	set_autonomy = {
 		target = PAN
 		autonomous_state = autonomy_integrated_puppet
-		freedom_level = 0.87
+		freedom_level = 0.85
 	}
 	set_autonomy = {
 		target = CUB
 		autonomous_state = autonomy_dominion
-		freedom_level = 0.7
+		freedom_level = 0.85
 	}
 	else = {
 		puppet = PAN
 		puppet = CUB
 	}
 }
+
 #Monro
 give_guarantee = CAN
 give_guarantee = MEX
@@ -67,8 +68,8 @@ create_country_leader = {
 	name = "Leonard Wood" 
 	picture = "gfx/leaders/USA/USA_leonard_wood.dds" 
 	expire = "1935.1.1" 
-	ideology = moderatism
-	 
+	ideology = authoritarian_democracy
+	traits = { trait_authoritarian_democracy } 
 }
 
 create_country_leader = { 
@@ -76,31 +77,22 @@ create_country_leader = {
 	picture = "gfx/leaders/USA/USA_eugene_v_debs.dds" 
 	expire = "1935.1.1" 
 	ideology = reformist_socialism
-	 
+	traits = { trait_reformist_socialism }  
 }
 
 create_country_leader = { 
 	name = "William H. Taft" 
 	picture = "gfx/leaders/USA/USA_william_h_taft.dds" 
 	expire = "1935.1.1" 
-	ideology = conservatism 
-	 
+	ideology = classical_liberalism 
+	traits = { trait_classical_liberalism }  
 }
 
 create_country_leader = { 
 	name = "William Joseph Simmons" 
 	picture = "gfx/leaders/USA/USA_william_simmons.dds" 
 	expire = "1935.1.1" 
-	ideology = nazism
-	 
-}
-
-create_country_leader = { 
-	name = "Leonard Wood" 
-	picture = "gfx/leaders/USA/USA_leonard_wood.dds" 
-	expire = "1935.1.1" 
-	ideology = moderatism
-	 
+	ideology = nazism 
 }
 
 create_field_marshal = {
@@ -341,6 +333,7 @@ create_navy_leader = {
 		
 		#air
 		early_fighter = 1
+		scout_plane = 1
 		
 		#engineering
 		electrical_engineering = 1

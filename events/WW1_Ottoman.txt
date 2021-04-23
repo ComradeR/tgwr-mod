@@ -1,6 +1,8 @@
 add_namespace = ottoman
 add_namespace = ww1_ottoman
-
+add_namespace = ww1_ottoman_trial
+add_namespace = ottomanasembly
+add_namespace = ottoman_arabia
 # Meclis-i Mebus Elections - CUP prepares coup
 ####
 country_event = {
@@ -8,13 +10,13 @@ country_event = {
 	title = ww1_ottoman.1.t
 	desc = ww1_ottoman.1.d
 	picture = GFX_report_event_generic_rally
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = ottoman.1.a
 		activate_mission = TUR_conspiracy_against_the_accord_and_freedom
-		ai_chance = { factor = 1 }
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
 
@@ -25,143 +27,46 @@ country_event = {
 	title = ww1_ottoman.2.t
 	desc = ww1_ottoman.2.d
 	picture = GFX_report_event_spain_civil_war_soldiers
-	
 	trigger = {
-	    tag = TUR
+		tag = TUR
 		has_defensive_war_with = SER
-        has_defensive_war_with = GRE
-        has_defensive_war_with = BUL
+		has_defensive_war_with = GRE
+		has_defensive_war_with = BUL
 	}
 	fire_only_once = yes
-	
 	option = {
 		name = ottoman.55.a
-		add_popularity = { 
-			ideology = fascism 
-			popularity = 0.05 
+		add_popularity = {
+			ideology = fascism
+			popularity = 0.05
 		}
-		ai_chance = { factor = 1 }
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
 
-# Turkish national movement
+# Turkish National Movement
 ##########################
 country_event = {
 	id = ww1_ottoman.3
 	title = ww1_ottoman.3.t
 	desc = ww1_ottoman.3.d
-
+	picture = GFX_report_event_fascist_gathering
 	fire_only_once = yes
 	trigger = {
 		original_tag = TUR
-		NOT = { has_cosmetic_tag = TUR_REP }
-		has_country_flag = TUR_enver_pasha_escaped
-		AND = {
-			has_country_flag = great_war_loser
-			has_country_flag = interbellum
+		NOT = {
+			has_cosmetic_tag = TUR_REP
 		}
-	}
-	mean_time_to_happen = {
-		days = 60
-	}
-
-	option = {
-		name = ww1_ottoman.3.a
-		set_stability = 0.10
-		set_war_support = 0.10
-		ai_chance = { factor = 100 }
-		set_country_flag = TUR_turkey_national_movement
-		#activate_mission = TUR_turkish_national_movement
-	}
-}
-
-# KEMAL' REVOLUTION
-###################
-country_event = {
-	id = ww1_ottoman.4
-	title = ww1_ottoman.4.t
-	desc = ww1_ottoman.4.d
-
-	fire_only_once = yes
-	trigger = {
-		original_tag = TUR
 		OR = {
-			has_global_flag = interwar_greco_turkish_war
-			NOT = { owns_state = 339 }
-			NOT = { owns_state = 340 }
+			has_country_flag = TUR_enver_pasha_escaped
+			has_country_flag = TUR_puppet_government
+			is_puppet = yes
 		}
-		has_country_flag = TUR_turkey_national_movement
-	}
-	mean_time_to_happen = {
-		days = 30
-	}
-	option = {
-		name = ww1_ottoman.3.a
-		set_cosmetic_tag = TUR_REP
-		set_global_flag = TUR_become_republic
-		create_country_leader = {
-			name = "Mustafa Kemal"
-			picture="Portrait_Turkey_Mustafa_Kemal_Ataturk_Military.dds" 
-			expire="1935.1.1" 
-			ideology = centrism
-			traits = { nationalist_symbol } 
-		}
-		hidden_effect = {
-			add_popularity = { 
-				ideology = neutrality
-				popularity = 0.25
-			}
-		}
-		set_capital = 49
-		set_global_flag = kemal_revolution
-		ai_chance = { factor = 100 }
-	}
-}
-
-# GRECO-TURKISH WAR - WHITE PEACE
-##############################
-country_event = {
-	id = ww1_ottoman.5
-	title = ww1_ottoman.5.t
-	desc = ww1_ottoman.5.d
-	
-	fire_only_once = yes
-	is_triggered_only = yes
-
-	option = {
-	    name = ww1_ottoman.5.a
-		white_peace = GRE
-		transfer_state = 340
-		transfer_state = 339
-	    ai_chance = {
-	        factor = 100
-	    }		
-	}
-	
-	# WE NEED ALL OUR LANDS!
-	option = {
-		name = ww1_ottoman.5.b
-		news_event = { id = interwar_news.10 days = 2 }
-		ai_chance = { factor = 0 }
-	}
-}
-# ATATURK REVOLUTION - GREECE
-##############################
-country_event = {
-	id = ww1_ottoman.6
-	title = ww1_ottoman.6.t
-	desc = ww1_ottoman.6.d
-	
-	fire_only_once = yes
-	trigger = {
-		original_tag = TUR
-		is_puppet = no
-		has_country_leader = {
-			name = "Mustafa Kemal"
-			ruling_only = yes
-		}
-		NOT = { has_war_with = GRE }
-		GRE = {
+		has_global_flag = interbellum
+		any_other_country = {
+			has_country_flag = great_war_winner
 			any_owned_state = {
 				is_core_of = TUR
 			}
@@ -171,66 +76,132 @@ country_event = {
 		days = 14
 	}
 	option = {
-	    name = ww1_ottoman.6.a
-		every_state = {
-			limit = { 
-				is_owned_by = GRE
-				OR = {
-					state = 756
-					state = 339
-					state = 825
-				}
+		name = ww1_ottoman.3.a
+		set_stability = 0.1
+		set_war_support = 0.1
+		set_country_flag = TUR_turkey_national_movement
+		hidden_effect = {
+			country_event = {
+				id = ww1_turkey.1
+				days = 90
 			}
-			TUR = { transfer_state = PREV }
 		}
-		GRE = { country_event = ww1_ottoman.11 }
-	    ai_chance = {
-	        factor = 100
-	    }		
-	}
-}
-# ATATURK REVOLUTION - REMOVE CORE IN ANATOLIYA
-##############################
-country_event = {
-	id = ww1_ottoman.7
-	title = ww1_ottoman.7.t
-	desc = ww1_ottoman.7.d
-	
-	fire_only_once = yes
-	trigger = {
-		original_tag = TUR
-		is_puppet = no
-		has_war = no
-		has_country_leader = {
-			name = "Mustafa Kemal"
-			ruling_only = yes
-		}	
-		any_state = {
-			is_core_of = TUR
-			region = 129
-			NOT = { is_owned_by = TUR }
+		ai_chance = {
+			factor = 100
 		}
-	}
-	mean_time_to_happen = {
-		days = 21
-	}
-	option =  {
-	    name = ww1_ottoman.7.a
-		every_other_country = {
-			limit = {
-				any_owned_state = {
-					region = 129
-					is_core_of = TUR
-				}
-			}
-			country_event = { id = ww1_ottoman.11 hours = 48 random = 20 }
-		}
-	    ai_chance = {
-	        factor = 100
-	    }		
 	}
 }
 
+# Puppet Government after Great War
+##########################
+country_event = {
+	id = ww1_ottoman.4
+	title = ww1_ottoman.4.t
+	desc = ww1_ottoman.4.d
+	picture = GFX_report_event_tur_sultan_and_pashas
+	fire_only_once = yes
+	trigger = {
+		original_tag = TUR
+		NOT = {
+			has_country_leader = {
+				name = "Ismail Enver Paşa"
+				ruling_only = yes
+			}
+			has_country_leader = {
+				name = "Enver-Cemal-Talat Triumvirate"
+				ruling_only = yes
+			}
+			has_country_leader = {
+				name = "Mustafa-Enver-Cemal Triumvirate"
+				ruling_only = yes
+			}
+		}
+		has_country_flag = great_war_loser
+	}
+	mean_time_to_happen = {
+		days = 14
+	}
+	option = {
+		name = ww1_ottoman.4.a
+		retire_country_leader = yes
+		set_politics = {
+			ruling_party = neutrality
+			elections_allowed = no
+		}
+		hidden_effect = {
+			set_popularities = {
+				democratic = 0
+				fascism = 0
+				communism = 0
+				neutrality = 100
+			}
+			remove_ideas = TUR_sultan_mehmed_v
+			remove_ideas = TUR_sultan_mehmed_vi
+		}
+		create_country_leader = {
+			name = "Ahmet Tefvik Paşa"
+			picture = "gfx/leaders/TUR/TUR_ahmet_tevfik_politican.dds"
+			expire = "1935.1.1"
+			ideology = oligarchism
+			traits = {
+				trait_oligarchism
+				tevfik
+				grand_vizier
+			}
+		}
+		set_country_flag = TUR_puppet_government
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+###Civil war over, recovery idea
+country_event = {
+	id = ww1_ottoman.5
+	hidden = yes
+	trigger = {
+		tag = TUR
+		OR = {
+			has_country_flag = TUR_hareket_ordusu_uprising
+			has_country_flag = TUR_reactionary_revolt
+		}
+		has_civil_war = no
+		NOT = {
+			has_idea = TUR_idea_recovery_civil_war
+		}
+		NOT = {
+			has_country_flag = TUR_recovered_from_civil_war
+		}
+	}
+	immediate = {
+		add_timed_idea = {
+			idea = TUR_idea_recovery_civil_war
+			days = 360
+		}
+		country_event = { id = ww1_ottoman.6 days = 360 }
+	}
+}
+country_event = {
+	id = ww1_ottoman.6
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = TUR_recovered_from_civil_war
+		remove_ideas = TUR_idea_recovery_civil_war
+	}
+}
+country_event = {
+	id = ww1_ottoman.7
+	hidden = yes
+	trigger = {
+		tag = TUR
+		has_country_flag = TUR_recovered_from_civil_war
+		has_civil_war = yes
+	}
+	immediate = {
+		clr_country_flag = TUR_recovered_from_civil_war
+	}
+}
 # Mehmed V death
 ####
 country_event = {
@@ -238,7 +209,6 @@ country_event = {
 	title = ww1_ottoman.8.t
 	desc = ww1_ottoman.8.d
 	picture = GFX_report_event_europe_funeral
-
 	trigger = {
 		tag = TUR
 		date > 1918.7.2
@@ -249,10 +219,11 @@ country_event = {
 				ruling_only = yes
 			}
 		}
-	}	
-	mean_time_to_happen = { days = 1 }
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
 	fire_only_once = yes
-
 	immediate = {
 		set_global_flag = interwar_mehmed_vi_succeeded_mehmed_v
 		set_country_flag = TUR_mehmed_v_dies
@@ -261,126 +232,77 @@ country_event = {
 				kill_country_leader = yes
 				create_country_leader = {
 					name = "Mehmed VI"
-					picture = "gfx/leaders/TUR/TUR_mehmed_vi.dds" 
-					expire = "1935.1.1" 
+					picture = "gfx/leaders/TUR/TUR_mehmed_vi.dds"
+					expire = "1935.1.1"
 					ideology = autocracy
-					 
+					traits = {
+						trait_autocracy
+					}
 				}
 			}
 			if = {
-				limit = { has_idea = TUR_sultan_mehmed_v }
+				limit = {
+					has_idea = TUR_sultan_mehmed_v
+				}
 				remove_ideas = TUR_sultan_mehmed_v
 				add_ideas = TUR_sultan_mehmed_vi
 			}
 		}
 	}
-
 	option = {
 		name = ww1_ottoman.8.a
 	}
 }
 
-# ATATURK REVOLUTION - PRESURE ON TURKEY
-##############################
-country_event = {
-	id = ww1_ottoman.11
-	title = ww1_ottoman.11.t
-	desc = ww1_ottoman.11.d
-
-	is_triggered_only = yes
-	
-	option = {
-	    name = ww1_ottoman.11.a
-		every_owned_state = {
-			limit = { region = 129 is_core_of = TUR }
-			TUR = { transfer_state = PREV }
-		}
-		diplomatic_relation = {
-			country = TUR
-			relation = non_aggression_pact
-			active = yes
-		}
-	    ai_chance = {
-	        factor = 100
-	    }		
-	}
-	option = {
-	    name = ww1_ottoman.11.b
-		add_political_power = -200
-		TUR = {
-			add_ai_strategy = {
-				type = antagonize
-				id = ROOT
-				value = 300 
-			}
-		}
-	    ai_chance = {
-	        factor = 0
-	    }		
-	}
-}
-# AL SANUSSI REVOLT
-##############################
-country_event = {
-	id = ww1_ottoman.12
-	title = ww1_ottoman.12.t
-	desc = ww1_ottoman.12.d
-
-	is_triggered_only = yes
-	
-	option = {
-	    name = ww1_ottoman.12.a
-		declare_war_on = {
-			target = LBA
-			type = annex_everything
-		}
-	    ai_chance = {
-	        factor = 100
-	    }		
-	}
-}
 # EGYPT REBELLION
 ##############################
 country_event = {
 	id = ww1_ottoman.13
 	title = ww1_ottoman.13.t
 	desc = ww1_ottoman.13.d
-
 	is_triggered_only = yes
-	
 	option = {
-	    name = ww1_ottoman.13.a
+		name = ww1_ottoman.13.a
 		start_civil_war = {
 			ideology = fascism
 			size = 0.25
-			states = { 453 }
+			states = {
+				453
+			}
 		}
 		hidden_effect = {
 			random_other_country = {
 				limit = {
 					original_tag = EGY
 					has_government = fascism
-				}	
-				TUR = { puppet = PREV }
+				}
+				TUR = {
+					puppet = PREV
+				}
 			}
 		}
-	    ai_chance = {
-	        factor = 1
-	    }		
+		ai_chance = {
+			factor = 1
+		}
 	}
 	option = {
-	    name = ww1_ottoman.13.b
-		TUR = { puppet = EGY }
+		name = ww1_ottoman.13.b
+		TUR = {
+			puppet = EGY
+		}
 		start_civil_war = {
 			ideology = democratic
 			size = 0.25
-			states = { 447 }
+			states = {
+				447
+			}
 		}
-	    ai_chance = {
-	        factor = 100
-	    }		
+		ai_chance = {
+			factor = 100
+		}
 	}
 }
+
 # OTOTMAN COUP
 ################
 news_event = {
@@ -388,13 +310,13 @@ news_event = {
 	title = ww1_ottoman.14.t
 	desc = ww1_ottoman.14.d
 	picture = GFX_news_event_032
-
 	major = yes
-	is_triggered_only = yes	
-
+	is_triggered_only = yes
 	option = {
 		name = ww1_ottoman.14.a
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 	}
 }
 
@@ -414,6 +336,7 @@ country_event = {
 		set_country_flag = ottomans_hold_cairo_and_alexandria
 	}
 }
+
 #We take Egypt after WW1- also by UU ;)
 country_event = {
 	id = ww1_ottoman.16
@@ -432,7 +355,7 @@ country_event = {
 			ENG = {
 				end_puppet = EGY
 			}
-			EGY = { 
+			EGY = {
 				country_lock_all_division_template = no
 				transfer_state = 551
 				transfer_state = 767
@@ -442,7 +365,9 @@ country_event = {
 					picture = "gfx/leaders/EGY/EGY_fuad_i.dds"
 					expire = "1935.1.1"
 					ideology = despotism
-					
+					traits = {
+						trait_despotism
+					}
 				}
 			}
 		}
@@ -454,13 +379,16 @@ country_event = {
 				set_autonomy = {
 					target = EGY
 					autonomous_state = autonomy_dominion
-					freedom_level = 0.80
+					freedom_level = 0.8
 				}
 			}
-			else = { puppet = EGY }
+			else = {
+				puppet = EGY
+			}
 		}
 	}
 }
+
 #Germany asked about Turkish Egypt- UU once more :DDDDDDDDDD
 country_event = {
 	id = ww1_ottoman.17
@@ -471,15 +399,29 @@ country_event = {
 	#Blank Cheque
 	option = {
 		name = ww1_ottoman.17.a
-		ai_chance = { factor = 45 }
-		TUR = { country_event = { id = ww1_ottoman.18 days = 1 } }
+		ai_chance = {
+			factor = 45
+		}
+		TUR = {
+			country_event = {
+				id = ww1_ottoman.18
+				days = 1
+			}
+		}
 	}
 	#Demand Egyptian Neutrality
 	option = {
 		name = ww1_ottoman.17.b
-		ai_chance = { factor = 55 }
+		ai_chance = {
+			factor = 55
+		}
 		give_guarantee = EGY
-		TUR = { country_event = { id = ww1_ottoman.19 days = 1 } }
+		TUR = {
+			country_event = {
+				id = ww1_ottoman.19
+				days = 1
+			}
+		}
 	}
 }
 
@@ -493,22 +435,42 @@ country_event = {
 	#ebic B)
 	option = {
 		name = ww1_ottoman.18.a
-		ai_chance = { factor = 95 }
-		create_wargoal = {
-    			type = puppet_wargoal_focus
-    			target = EGY
+		ai_chance = {
+			factor = 95
 		}
-		give_resource_rights = { receiver = GER state = 291 }
-		give_resource_rights = { receiver = GER state = 676 }
-		give_resource_rights = { receiver = GER state = 292 }
-		give_resource_rights = { receiver = GER state = 678 }
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = EGY
+		}
+		give_resource_rights = {
+			receiver = GER
+			state = 291
+		}
+		give_resource_rights = {
+			receiver = GER
+			state = 676
+		}
+		give_resource_rights = {
+			receiver = GER
+			state = 292
+		}
+		give_resource_rights = {
+			receiver = GER
+			state = 678
+		}
+		hidden_effect = {
+			set_global_flag = ottoman_egypt_guaranteed
+		}
 	}
 	#on second thoughts...
 	option = {
 		name = ww1_ottoman.18.b
-		ai_chance = { factor = 5 }
+		ai_chance = {
+			factor = 5
+		}
 	}
 }
+
 #Germany demands Egyptian neutrality- you know the drill
 country_event = {
 	id = ww1_ottoman.19
@@ -522,6 +484,7 @@ country_event = {
 		add_political_power = -3
 	}
 }
+
 # Iraqi Revolt against Ottomans
 ##########################
 country_event = {
@@ -529,35 +492,55 @@ country_event = {
 	title = ww1_ottoman.20.t
 	desc = ww1_ottoman.20.d
 	picture = GFX_report_event_spr_civil_war_faction_defeated
-	
 	fire_only_once = yes
 	trigger = {
 		tag = TUR
 		has_country_flag = great_war_loser
 		OR = {
-			IRQ = { is_subject_of = TUR }
-			any_owned_state = { is_core_of = IRQ }
+			IRQ = {
+				is_subject_of = TUR
+			}
+			any_owned_state = {
+				is_core_of = IRQ
+			}
 		}
 		ENG = {
 			NOT = {
-				any_owned_state = { is_core_of = IRQ }
-				any_state = { is_core_of = IRQ is_claimed_by = ENG }
+				any_owned_state = {
+					is_core_of = IRQ
+				}
+				any_state = {
+					is_core_of = IRQ
+					is_claimed_by = ENG
+				}
 			}
 		}
 	}
-	mean_time_to_happen = { days = 7 }
+	mean_time_to_happen = {
+		days = 7
+	}
 	option = {
 		name = ww1_ottoman.20.a
 		every_state = {
-			limit = { is_core_of = IRQ }
-			IRQ = { transfer_state = PREV }
+			limit = {
+				is_core_of = IRQ
+			}
+			IRQ = {
+				transfer_state = PREV
+			}
 			remove_core_of = TUR
 		}
 		if = {
-			limit = { IRQ = { is_subject_of = TUR } }
+			limit = {
+				IRQ = {
+					is_subject_of = TUR
+				}
+			}
 			end_puppet = IRQ
 		}
-		ai_chance = { factor = 5 }
+		ai_chance = {
+			factor = 5
+		}
 	}
 }
 
@@ -568,31 +551,46 @@ country_event = {
 	title = ww1_ottoman.21.t
 	desc = ww1_ottoman.21.d
 	picture = GFX_report_event_spr_civil_war_faction_defeated
-	
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
-			TUR = { set_country_flag = TUR_arab_independence }
-			every_owned_state = {
-				limit = { is_core_of = ASR }
-				ASR = { transfer_state = PREV }
+			TUR = {
+				set_country_flag = TUR_arab_independence
 			}
 			every_owned_state = {
-				limit = { is_core_of = HJZ }
-				HJZ = { transfer_state = PREV }
+				limit = {
+					is_core_of = ASR
+				}
+				ASR = {
+					transfer_state = PREV
+				}
 			}
 			every_owned_state = {
-				limit = { is_core_of = YEM }
-				YEM = { transfer_state = PREV }
+				limit = {
+					is_core_of = HJZ
+				}
+				HJZ = {
+					transfer_state = PREV
+				}
+			}
+			every_owned_state = {
+				limit = {
+					is_core_of = YEM
+				}
+				YEM = {
+					transfer_state = PREV
+				}
 			}
 		}
 	}
-	
 	option = {
 		name = ww1_ottoman.21.a
-		ai_chance = { factor = 1 }
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
+
 # Crisis: Hareket Ordusu (Third Army) against Islamists
 ####
 country_event = {
@@ -600,65 +598,80 @@ country_event = {
 	title = ww1_ottoman.22.t
 	desc = ww1_ottoman.22.d
 	picture = GFX_report_event_tur_sultan_in_istanbul
-	
 	is_triggered_only = yes
-	
-	option = {
-		name = ww1_ottoman.22.a
-		set_country_flag = { flag = TUR_socialist_revolution_timer days = 120 value = 1 }
-		start_civil_war = {
-			ideology = fascism 
-			size = 0.35
-			states = { 
-				356 340 339 342 164 790 
-				348 354 355 353 352 758 
-				803 106 760 761 759 788 
-				184 731 454 756 757
-			}
-			keep_unit_leaders_trigger = {
-				NOT = { has_trait = trait_TUR_ittihadist_sympathies }
+	immediate = {
+		hidden_effect = {
+			start_civil_war = {
+				ideology = fascism
+				size = 0.35
+				states = {
+					356
+					340
+					339
+					342
+					164
+					790
+					348
+					354
+					355
+					353
+					352
+					758
+					803
+					106
+					760
+					761
+					759
+					788
+					184
+					731
+					454
+					756
+					757
+				}
+				keep_unit_leaders_trigger = {
+					NOT = {
+						has_trait = trait_TUR_ittihadist_sympathies
+					}
+				}
+				set_party_name = {
+					ideology = fascism
+					long_name = TUR_nationalist_against_islamist_long
+					name = TUR_nationalist_party_against_islamists
+				}
+				set_popularities = {
+					democratic = 0
+					fascism = 82
+					communism = 0
+					neutrality = 18
+				}
+				create_country_leader = {
+					name = "Ismail Enver Paşa"
+					picture = "gfx/leaders/TUR/TUR_enver_pasha.dds"
+					expire = "1935.1.1"
+					ideology = stratocracy
+					traits = {
+						tur_hero_of_freedom
+						trait_stratocracy
+					}
+				}
+				set_country_flag = TUR_revolter_flag
 			}
 		}
 		set_country_flag = TUR_hareket_ordusu_uprising
-		hidden_effect = {
-			random_other_country = {
-				limit = {
-					original_tag = TUR
-					has_government = fascism
-				}
-				set_party_name = { 
-					ideology = fascism 
-					long_name = TUR_nationalist_against_islamist_long
-					name = TUR_nationalist_party_against_islamists
-				}	
-				create_country_leader = {
-					name = "Ismail Enver Paşa"
-					picture="gfx/leaders/TUR/TUR_enver_pasha.dds"
-					expire = "1935.1.1"
-					ideology = military_dictatorship
-					traits = { turanist tur_hero_of_freedom }
-				}
-				#create Mustafa Kemal
+	}
+	option = {
+		name = ww1_ottoman.22.a
+		news_event = ww1_ottoman.49
+		every_unit_leader = {
+			limit = {
+				has_trait = trait_TUR_ittihadist_sympathies
 			}
+			set_nationality = OTM
 		}
 	}
 }
 
-# Ottomans leave Balkan - message
-####
-country_event = {
-	id = ww1_ottoman.23
-	title = ww1_ottoman.23.t
-	desc = ww1_ottoman.23.d
-	picture = GFX_report_event_spr_civil_war_faction_defeated
-	
-	is_triggered_only = yes
-
-	
-	option = {
-		name = ww1_ottoman.23.a
-	}
-}
 # Accord and Freedom 1911
 ####
 country_event = {
@@ -666,173 +679,14 @@ country_event = {
 	title = ww1_ottoman.24.t
 	desc = ww1_ottoman.24.d
 	picture = GFX_report_event_tur_politician_march
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = ww1_ottoman.24.a
-		add_ideas = TUR_ittihadist_plot 
+		add_ideas = TUR_ittihadist_plot
 		activate_mission = TUR_CUP_prepares_coup_mission
-		ai_chance = { factor = 1 }
-	}
-}
-# Leave the Balkan - focus
-####
-country_event = {
-	id = ww1_ottoman.25
-	title = ww1_ottoman.25.t
-	desc = ww1_ottoman.25.d
-	picture = GFX_report_event_generic_rally
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = ww1_ottoman.25.a #pro-serbian
-		trigger = { SER = { exists = yes } }
-		SER = { country_event = ww1_ottoman.23 }
-		every_owned_state = {
-			limit = { 
-				OR = {
-					is_core_of = SER 
-					state = 106
-					state = 44
-				}
-			}
-			SER = { transfer_state = PREV }
-			TUR = { remove_state_claim = PREV remove_state_core = PREV }
+		ai_chance = {
+			factor = 1
 		}
-		every_owned_state = {
-			limit = { 
-				is_core_of = MNT
-			}
-			MNT = { transfer_state = PREV }
-			TUR = { remove_state_claim = PREV remove_state_core = PREV }
-		}
-		every_owned_state = {
-			limit = { 
-				OR = {
-					is_core_of = BUL
-					state = 757
-				}
-			}
-			BUL = { transfer_state = PREV }
-			TUR = { remove_state_claim = PREV remove_state_core = PREV }
-		}
-		every_owned_state = {
-			limit = { 
-				OR = {
-					is_core_of = GRE
-					state = 803
-				}
-				NOT = { state = 790 }
-				NOT = { region = 129 }
-			}
-			GRE = { transfer_state = PREV }
-			TUR = { remove_state_claim = PREV remove_state_core = PREV }
-		}
-		add_manpower = 95000
-		ai_chance = { factor = 1 }
-	}
-	option = {
-		name = ww1_ottoman.25.b #pro-bulgarian
-		trigger = { BUL = { exists = yes } }
-		BUL = { country_event = ww1_ottoman.23 }
-		every_owned_state = {
-			limit = { 
-				OR = {
-					is_core_of = BUL
-					state = 757
-					state = 184
-					state = 731
-				}
-			}
-			BUL = { transfer_state = PREV }
-			TUR = { remove_state_claim = PREV remove_state_core = PREV }
-		}
-		every_owned_state = {
-			limit = { 
-				is_core_of = ALB
-			}
-			ALB = { transfer_state = PREV }
-			TUR = { remove_state_claim = PREV remove_state_core = PREV }
-		}
-		every_owned_state = {
-			limit = { 
-				OR = {
-					is_core_of = SER
-				}
-			}
-			SER = { transfer_state = PREV }
-			TUR = { remove_state_claim = PREV remove_state_core = PREV }
-		}
-		every_owned_state = {
-			limit = { 
-				is_core_of = MNT
-			}
-			MNT = { transfer_state = PREV }
-			TUR = { remove_state_claim = PREV remove_state_core = PREV }
-		}		
-		every_owned_state = {
-			limit = { 
-				is_core_of = GRE
-				NOT = { state = 790 }
-				NOT = { region = 129 }
-			}
-			GRE = { transfer_state = PREV }
-			TUR = { remove_state_claim = PREV remove_state_core = PREV }
-		}
-		add_manpower = 95000
-		ai_chance = { factor = 1 }
-	}
-	option = {
-		name = ww1_ottoman.25.c #pro-greek
-		trigger = { GRE = { exists = yes } }
-		GRE = { country_event = ww1_ottoman.23 }
-		every_owned_state = {
-			limit = { 
-				OR = {
-					is_core_of = GRE
-					state = 803
-				}
-				NOT = { state = 790 }
-				NOT = { region = 129 }
-			}
-			GRE = { transfer_state = PREV }
-			TUR = { remove_state_claim = PREV remove_state_core = PREV }
-		}
-		every_owned_state = {
-			limit = { 
-				OR = {
-					is_core_of = SER
-					state = 106
-				}
-			}
-			SER = { transfer_state = PREV }
-			TUR = { remove_state_claim = PREV remove_state_core = PREV }
-		}
-		every_owned_state = {
-			limit = { 
-				is_core_of = BUL
-			}
-			BUL = { transfer_state = PREV }
-			TUR = { remove_state_claim = PREV remove_state_core = PREV }
-		}
-		every_owned_state = {
-			limit = { 
-				is_core_of = ALB
-			}
-			ALB = { transfer_state = PREV }
-			TUR = { remove_state_claim = PREV remove_state_core = PREV }
-		}		
-		every_owned_state = {
-			limit = { 
-				is_core_of = MNT
-			}
-			MNT = { transfer_state = PREV }
-			TUR = { remove_state_claim = PREV remove_state_core = PREV }
-		}		
-		add_manpower = 95000
-		ai_chance = { factor = 1 }
 	}
 }
 # Crisis: Hareket Ordusu against Sultan
@@ -842,42 +696,57 @@ country_event = {
 	title = ww1_ottoman.26.t
 	desc = ww1_ottoman.26.d
 	picture = GFX_report_event_tur_sultan_in_istanbul
-	
 	is_triggered_only = yes
-	option = {
-		name = ww1_ottoman.26.a
-		set_country_flag = { flag = TUR_socialist_revolution_timer days = 120 value = 1 }
-		start_civil_war = {
-			ideology = fascism
-			size = 0.25
-			states = { 356 345 355 49 }
-			keep_unit_leaders_trigger = {
-				NOT = { has_trait = trait_TUR_ittihadist_sympathies }
-			}
-		}
+	immediate = {
 		hidden_effect = {
-			random_other_country = {
-				limit = {
-					original_tag = TUR
-					has_government = fascism
+			start_civil_war = {
+				ideology = fascism
+				size = 0.25
+				states = {
+					356
+					345
+					355
+					49
 				}
-				set_party_name = { 
-					ideology = fascism 
+				keep_unit_leaders_trigger = {
+					NOT = {
+						has_trait = trait_TUR_ittihadist_sympathies
+					}
+				}
+				set_party_name = {
+					ideology = fascism
 					long_name = TUR_nationalist_against_islamist_long
 					name = TUR_nationalist_party_against_islamists
-				}	
+				}
 				create_country_leader = {
 					name = "Ismail Enver Paşa"
-					picture="gfx/leaders/TUR/TUR_enver_pasha.dds"
+					picture = "gfx/leaders/TUR/TUR_enver_pasha.dds"
 					expire = "1935.1.1"
 					ideology = fascism_ideology
-					traits = { turanist tur_hero_of_freedom }
+					traits = {
+						tur_hero_of_freedom
+						trait_stratocracy
+					}
 				}
+				set_country_flag = TUR_revolter_flag
 			}
 		}
-		ai_chance = { factor = 1 }
+	}
+	option = {
+		name = ww1_ottoman.26.a
+		news_event = ww1_ottoman.49
+		every_unit_leader = {
+			limit = {
+				has_trait = trait_TUR_ittihadist_sympathies
+			}
+			set_nationality = OTM
+		}
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
+
 # CUP Coup
 ####
 country_event = {
@@ -885,17 +754,24 @@ country_event = {
 	title = ww1_ottoman.27.t
 	desc = ww1_ottoman.27.d
 	picture = GFX_report_event_generic_rally
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = ww1_ottoman.27.a
 		news_event = ww1_ottoman.14
 		remove_unit_leader = 90513
-		hidden_effect = { country_event = { id = ww1_ottoman.28 days = 120 } set_cosmetic_tag = TUR_CUP }
-		ai_chance = { factor = 1 }
+		hidden_effect = {
+			country_event = {
+				id = ww1_ottoman.28
+				days = 120
+			}
+			set_cosmetic_tag = TUR_CUP
+		}
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
+
 # Shevket Assassination
 ####
 country_event = {
@@ -903,38 +779,45 @@ country_event = {
 	title = ww1_ottoman.28.t
 	desc = ww1_ottoman.28.d
 	picture = GFX_report_event_tur_sultan_and_pashas
-	
 	is_triggered_only = yes
 	immediate = {
 		set_global_flag = shevket_pasha_dead
+		remove_unit_leader = 90507
 	}
-	
 	option = {
 		name = ww1_ottoman.28.a
 		kill_country_leader = yes
 		create_country_leader = {
 			name = "Enver-Cemal-Talat Triumvirate"
-			picture = "gfx/leaders/TUR/TUR_talat_enver_cemal.dds" 
+			picture = "gfx/leaders/TUR/TUR_talat_enver_cemal.dds"
 			expire = "1935.1.1"
 			ideology = oligarchism
-			traits = { three_pashas }
+			traits = {
+				three_pashas
+				trait_oligarchism
+			}
 		}
 		set_country_flag = talat_enver_cemal
-		ai_chance = { factor = 1 }
+		ai_chance = {
+			factor = 1
+		}
 	}
 	option = {
 		name = ww1_ottoman.28.b
 		kill_country_leader = yes
 		create_country_leader = {
 			name = "Mustafa-Enver-Cemal Triumvirate"
-			picture = "gfx/leaders/TUR/TUR_mustafa_enver_cemal.dds" 
+			picture = "gfx/leaders/TUR/TUR_mustafa_enver_cemal.dds"
 			expire = "1935.1.1"
 			ideology = oligarchism
-			traits = { three_pashas_2 }
+			traits = {
+				three_pashas_2
+				trait_oligarchism
+			}
 		}
 		set_country_flag = mustafa_enver_cemal
-		ai_chance = { 
-			factor = 1 
+		ai_chance = {
+			factor = 1
 			modifier = {
 				is_historical_focus_on = yes
 				factor = 0
@@ -942,6 +825,7 @@ country_event = {
 		}
 	}
 }
+
 # CUP Coup - Enverists
 ####
 news_event = {
@@ -949,15 +833,16 @@ news_event = {
 	title = ww1_ottoman.29.t
 	desc = ww1_ottoman.29.d
 	picture = GFX_news_event_032
-	
 	is_triggered_only = yes
 	major = yes
-	
 	option = {
 		name = ww1_ottoman.29.a
-		ai_chance = { factor = 1 }
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
+
 # Osman or Abdulmecid II
 ####
 country_event = {
@@ -965,20 +850,23 @@ country_event = {
 	title = ww1_ottoman.30.t
 	desc = ww1_ottoman.30.d
 	picture = GFX_report_event_tur_sultan_and_pashas
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = ww1_ottoman.30.a
 		retire_country_leader = yes
 		create_country_leader = {
-			name = "Abdulmejid Efendi"
+			name = "Abdülmecid Efendi"
 			picture = "gfx/leaders/TUR/TUR_Abdulmecid_II.dds"
 			expire = "1935.1.1"
 			ideology = autocracy
-			traits = { legitimate_heir }
+			traits = {
+				legitimate_heir
+				trait_autocracy
+			}
 		}
-		ai_chance = { factor = 1 }
+		ai_chance = {
+			factor = 1
+		}
 	}
 	option = {
 		name = ww1_ottoman.30.b
@@ -988,52 +876,107 @@ country_event = {
 			picture = "gfx/leaders/TUR/TUR_osman_fuad.dds"
 			expire = "1935.1.1"
 			ideology = autocracy
-			traits = { legitimate_heir inexperienced_imperialist }
+			traits = {
+				legitimate_heir
+				inexperienced_imperialist
+				trait_autocracy
+			}
 		}
-		ai_chance = { factor = 1 }
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
-# Civil war Aftermath - Caliph Abdulhamid I
-####
+
+country_event = {
+	id = ww1_ottoman_trial.30
+	title = ww1_ottoman_trial.30.t
+	desc = ww1_ottoman_trial.30.d
+	picture = GFX_report_event_tur_sultan_and_pashas
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman_trial.30.b
+		add_stability = 0.05
+		add_political_power = 85
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = {
+	id = ww1_ottoman_trial.31
+	title = ww1_ottoman_trial.31.t
+	desc = ww1_ottoman_trial.31.d
+	picture = GFX_report_event_tur_sultan_and_pashas
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman_trial.31.b
+		add_stability = 0.05
+		add_political_power = 85
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+####islamist civil war over
 country_event = {
 	id = ww1_ottoman.31
 	title = ww1_ottoman.31.t
 	desc = ww1_ottoman.31.d
 	picture = GFX_report_event_generic_rally
-	
 	fire_only_once = yes
 	trigger = {
 		tag = TUR
-		has_country_flag = TUR_hareket_ordusu_uprising
 		has_civil_war = no
 		has_completed_focus = TUR_ittihadi_muhammedi
-	}
-	
-	option = {
-		name = ww1_ottoman.31.a
-		create_country_leader = {
-			name = "Halife Abdülhamid"
-			picture = "gfx/leaders/TUR/TUR_abdulhamid_ii.dds"
-			expire = "1935.1.1"
-			ideology = autocracy
-			traits = { caliph }
+		OR = {
+			has_country_flag = TUR_hareket_ordusu_uprising
+			has_completed_focus = TUR_compromise_with_ittihadists
 		}
-		add_stability = -0.2
-		add_war_support = 0.1
-		ai_chance = { factor = 10 }
 	}
 	option = {
 		name = ww1_ottoman.31.b
+		remove_ideas = TUR_sultan_mehmed_v
 		create_country_leader = {
 			name = "Yusuf Izzeddin"
 			picture = "gfx/leaders/TUR/TUR_yusuf_izzedidin_efendi.dds"
 			expire = "1935.1.1"
 			ideology = autocracy
-			traits = { caliph }
+			traits = {
+				tgwr_caliph
+				trait_autocracy
+			}
 		}
-		ai_chance = { factor = 1 }
+		ai_chance = {
+			factor = 1
+		}
+	}
+	option = {
+		###easter egg)))
+		name = ww1_ottoman.31.c
+		trigger = {
+			has_country_flag = TUR_hareket_ordusu_uprising
+		}
+		create_country_leader = {
+			name = "Abdulhamid II"
+			picture = "gfx/leaders/TUR/TUR_abdulhamid_ii.dds"
+			expire = "1935.1.1"
+			ideology = autocracy
+			traits = {
+				tgwr_caliph
+				abdulhamid
+				trait_autocracy
+			}
+		}
+		remove_ideas = TUR_sultan_mehmed_v
+		ai_chance = {
+			factor = 0
+		}
 	}
 }
+
 # Crisis: Millet-i Osmaniye against Socialists
 ####
 country_event = {
@@ -1041,44 +984,65 @@ country_event = {
 	title = ww1_ottoman.32.t
 	desc = ww1_ottoman.32.d
 	picture = GFX_report_event_tur_sultan_and_pashas
-	
 	is_triggered_only = yes
-	
-	option = {
-		name = ww1_ottoman.32.a
-		start_civil_war = {
-			ideology = fascism
-			size = 0.15
-			states = { 356 345 355 49 }
-			keep_unit_leaders_trigger = {
-				NOT = { has_trait = trait_TUR_ittihadist_sympathies }
-				NOT = { has_trait = trait_TUR_reactionaries_sympathies }
-			}
-		}
+	fire_only_once = yes
+	immediate = {
 		hidden_effect = {
-			random_other_country = {
-				limit = {
-					original_tag = TUR
-					has_government = fascism
+			start_civil_war = {
+				ideology = fascism
+				keep_political_leader = yes
+				size = 0.15
+				states = {
+					356
+					345
+					355
+					49
 				}
-				set_party_name = { 
-					ideology = fascism 
-					long_name = TUR_nationalist_against_islamist_long
-					name = TUR_nationalist_party_against_islamists
-				}	
 				create_country_leader = {
 					name = "Ismail Enver Paşa"
-					picture="gfx/leaders/TUR/TUR_enver_pasha.dds"
+					picture = "gfx/leaders/TUR/TUR_enver_pasha.dds"
 					expire = "1935.1.1"
-					ideology = fascism_ideology
-					traits = { turanist tur_hero_of_freedom }
+					ideology = stratocracy
+					traits = {
+						tur_hero_of_freedom
+						trait_stratocracy
+					}
+				}
+				add_ideas = TUR_sultan_mehmed_v
+				set_party_name = {
+					ideology = fascism
+					long_name = TUR_nationalist_against_islamist_long
+					name = TUR_nationalist_party_against_islamists
+				}
+				set_country_flag = TUR_revolter_flag
+				keep_unit_leaders_trigger = {
+					NOT = {
+						has_trait = trait_TUR_ittihadist_sympathies
+						has_trait = trait_TUR_reactionaries_sympathies
+					}
 				}
 			}
-			set_country_flag = TUR_hareket_ordusu_uprising
 		}
-		ai_chance = { factor = 1 }
+	}
+	option = {
+		name = ww1_ottoman.32.a
+		news_event = ww1_ottoman.49
+		every_unit_leader = {
+			limit = {
+				OR = {
+					has_trait = trait_TUR_reactionaries_sympathies
+					has_trait = trait_TUR_ittihadist_sympathies
+				}
+			}
+			set_nationality = OTM
+		}
+		set_country_flag = TUR_hareket_ordusu_uprising
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
+
 # Crisis: Ittihadists against Freedom and Accord
 ####
 country_event = {
@@ -1086,43 +1050,57 @@ country_event = {
 	title = ww1_ottoman.33.t
 	desc = ww1_ottoman.33.d
 	picture = GFX_report_event_tur_politician_march
-	
 	is_triggered_only = yes
-	immediate = { set_country_flag = TUR_nationalist_uprising }
-	option = {
-		name = ww1_ottoman.33.a
-		set_country_flag = { flag = TUR_socialist_revolution_timer days = 120 value = 1 }
-		start_civil_war = {
-			ideology = fascism
-			size = 0.15
-			states = { 356 345 355 49 }
-			keep_unit_leaders_trigger = {
-				NOT = { has_trait = trait_TUR_ittihadist_sympathies }
-			}
-		}
+	immediate = {
+		set_country_flag = TUR_nationalist_uprising
 		hidden_effect = {
-			random_other_country = {
-				limit = {
-					original_tag = TUR
-					has_government = fascism
+			start_civil_war = {
+				ideology = fascism
+				size = 0.15
+				states = {
+					356
+					345
+					355
+					49
 				}
-				set_party_name = { 
-					ideology = fascism 
+				keep_unit_leaders_trigger = {
+					NOT = {
+						has_trait = trait_TUR_ittihadist_sympathies
+					}
+				}
+				set_party_name = {
+					ideology = fascism
 					long_name = TUR_nationalist_against_islamist_long
 					name = TUR_nationalist_party_against_islamists
 				}
 				create_country_leader = {
 					name = "Ismail Enver Paşa"
-					picture="gfx/leaders/TUR/TUR_enver_pasha.dds"
+					picture = "gfx/leaders/TUR/TUR_enver_pasha.dds"
 					expire = "1935.1.1"
 					ideology = fascism_ideology
-					traits = { turanist tur_hero_of_freedom }
+					traits = {
+						tur_hero_of_freedom
+					}
 				}
+				set_country_flag = TUR_revolter_flag
 			}
 		}
-		ai_chance = { factor = 1 }
+	}
+	option = {
+		name = ww1_ottoman.33.a
+		news_event = ww1_ottoman.49
+		every_unit_leader = {
+			limit = {
+				has_trait = trait_TUR_ittihadist_sympathies
+			}
+			set_nationality = OTM
+		}
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
+
 # Yildiz officers sieze power
 ####
 country_event = {
@@ -1130,15 +1108,16 @@ country_event = {
 	title = ww1_ottoman.34.t
 	desc = ww1_ottoman.34.d
 	picture = GFX_report_event_tur_politician_march
-	
 	is_triggered_only = yes
-
 	option = {
 		name = ww1_ottoman.33.a
 		activate_mission = TUR_harbiyeli_officers_plot
-		ai_chance = { factor = 1 }
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
+
 # Crisis: Officers civil war
 ####
 country_event = {
@@ -1146,44 +1125,58 @@ country_event = {
 	title = ww1_ottoman.35.t
 	desc = ww1_ottoman.35.d
 	picture = GFX_report_event_tur_politician_march
-	
 	is_triggered_only = yes
-	immediate = { set_country_flag = TUR_nationalist_uprising }
-	option = {
-		name = ww1_ottoman.33.a
-		set_country_flag = { flag = TUR_socialist_revolution_timer days = 120 value = 1 }
-		start_civil_war = {
-			ideology = fascism
-			size = 0.35
-			states = { 356 345 355 49 }
-			keep_unit_leaders_trigger = {
-				NOT = { has_trait = trait_TUR_ittihadist_sympathies }
-			}
-		}
+	immediate = {
+		set_country_flag = TUR_nationalist_uprising
 		hidden_effect = {
-			random_other_country = {
-				limit = {
-					original_tag = TUR
-					has_government = fascism
+			start_civil_war = {
+				ideology = fascism
+				size = 0.35
+				states = {
+					356
+					345
+					355
+					49
+				}
+				keep_unit_leaders_trigger = {
+					NOT = {
+						has_trait = trait_TUR_ittihadist_sympathies
+					}
 				}
 				set_cosmetic_tag = TUR_CUP
-				set_party_name = { 
-					ideology = fascism 
+				set_party_name = {
+					ideology = fascism
 					long_name = TUR_nationalist_against_islamist_long
 					name = TUR_nationalist_party_against_islamists
-				}	
+				}
 				create_country_leader = {
 					name = "Ismail Enver Paşa"
-					picture="gfx/leaders/TUR/TUR_enver_pasha.dds"
+					picture = "gfx/leaders/TUR/TUR_enver_pasha.dds"
 					expire = "1935.1.1"
 					ideology = fascism_ideology
-					traits = { turanist tur_hero_of_freedom }
+					traits = {
+						tur_hero_of_freedom
+					}
 				}
+				set_country_flag = TUR_revolter_flag
 			}
 		}
-		ai_chance = { factor = 1 }
+	}
+	option = {
+		name = ww1_ottoman.35.a
+		news_event = ww1_ottoman.49
+		every_unit_leader = {
+			limit = {
+				has_trait = trait_TUR_ittihadist_sympathies
+			}
+			set_nationality = OTM
+		}
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
+
 # Asia Corps arrived
 ####
 country_event = {
@@ -1191,15 +1184,15 @@ country_event = {
 	title = ww1_ottoman.36.t
 	desc = ww1_ottoman.36.d
 	picture = GFX_report_event_spr_army_of_africa
-	
 	trigger = {
 		tag = TUR
 		is_in_faction_with = GER
 		has_war_with = ENG
 	}
 	fire_only_once = yes
-	mean_time_to_happen = { days = 20 }
-
+	mean_time_to_happen = {
+		days = 20
+	}
 	option = {
 		name = ww1_ottoman.36.a
 		division_template = {
@@ -1207,21 +1200,50 @@ country_event = {
 			division_names_group = TUR_INF_01
 			is_locked = yes
 			regiments = {
-				infantry = { x = 0 y = 0 }
-				infantry = { x = 0 y = 1 }
-				infantry = { x = 0 y = 2 }
-				infantry = { x = 1 y = 0 }
-				infantry = { x = 1 y = 1 }
-				infantry = { x = 1 y = 2 }
+				infantry = {
+					x = 0
+					y = 0
+				}
+				infantry = {
+					x = 0
+					y = 1
+				}
+				infantry = {
+					x = 0
+					y = 2
+				}
+				infantry = {
+					x = 1
+					y = 0
+				}
+				infantry = {
+					x = 1
+					y = 1
+				}
+				infantry = {
+					x = 1
+					y = 2
+				}
 			}
 			support = {
-				engineer = { x = 0 y = 0 }
-				recon = { x = 0 y = 1 }
-				artillery = { x = 0 y = 2 }
+				engineer = {
+					x = 0
+					y = 0
+				}
+				recon = {
+					x = 0
+					y = 1
+				}
+				artillery = {
+					x = 0
+					y = 2
+				}
 			}
 		}
 		random_owned_controlled_state = {
-			prioritize = { 341 }
+			prioritize = {
+				341
+			}
 			create_unit = {
 				division = "name = \"1. German Schutzkorp\" division_template = \"Levante-Korp\" start_experience_factor = 0.4"
 				owner = TUR
@@ -1243,9 +1265,12 @@ country_event = {
 				owner = TUR
 			}
 		}
-		ai_chance = { factor = 10 }
+		ai_chance = {
+			factor = 10
+		}
 	}
 }
+
 # Enver Pasha escaped
 ##########################
 country_event = {
@@ -1253,21 +1278,28 @@ country_event = {
 	title = ww1_ottoman.37.t
 	desc = ww1_ottoman.37.d
 	picture = GFX_report_event_tur_sultan_and_pashas
-
 	fire_only_once = yes
 	trigger = {
 		original_tag = TUR
 		OR = {
-			has_country_leader = { name = "Ismail Enver Paşa" ruling_only = yes }
-			has_country_leader = { name = "Enver-Cemal-Talat Triumvirate" ruling_only = yes }
-			has_country_leader = { name = "Mustafa-Enver-Cemal Triumvirate" ruling_only = yes }
+			has_country_leader = {
+				name = "Ismail Enver Paşa"
+				ruling_only = yes
+			}
+			has_country_leader = {
+				name = "Enver-Cemal-Talat Triumvirate"
+				ruling_only = yes
+			}
+			has_country_leader = {
+				name = "Mustafa-Enver-Cemal Triumvirate"
+				ruling_only = yes
+			}
 		}
 		has_country_flag = great_war_loser
 	}
 	mean_time_to_happen = {
 		days = 14
 	}
-
 	option = {
 		name = ww1_ottoman.37.a
 		retire_country_leader = yes
@@ -1282,34 +1314,46 @@ country_event = {
 				communism = 0
 				neutrality = 100
 			}
-			remove_ideas = TUR_sultan_mehmed_v 
+			remove_ideas = TUR_sultan_mehmed_v
 			remove_ideas = TUR_sultan_mehmed_vi
-		}		
-		if = {
-			limit = { NOT = { has_country_flag = TUR_mehmed_v_dies } }
-			create_country_leader = {
-				name = "Mehmed V"
-				picture = "gfx/leaders/TUR/TUR_mehmed_v.dds" 
-				expire = "1935.1.1"
-				ideology = autocracy
-				
-			}
-			
 		}
 		if = {
-			limit = { has_country_flag = TUR_mehmed_v_dies }
+			limit = {
+				NOT = {
+					has_country_flag = TUR_mehmed_v_dies
+				}
+			}
+			create_country_leader = {
+				name = "Mehmed V"
+				picture = "gfx/leaders/TUR/TUR_mehmed_v.dds"
+				expire = "1935.1.1"
+				ideology = autocracy
+				traits = {
+					trait_autocracy
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = TUR_mehmed_v_dies
+			}
 			create_country_leader = {
 				name = "Mehmed VI"
-				picture = "gfx/leaders/TUR/TUR_mehmed_vi.dds" 
-				expire = "1935.1.1" 
+				picture = "gfx/leaders/TUR/TUR_mehmed_vi.dds"
+				expire = "1935.1.1"
 				ideology = autocracy
-				 
+				traits = {
+					trait_autocracy
+				}
 			}
 		}
 		set_country_flag = TUR_enver_pasha_escaped
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 	}
 }
+
 # Anglo-Ottoman Convention - Britain
 #########################
 country_event = {
@@ -1317,28 +1361,38 @@ country_event = {
 	title = ww1_ottoman.38.t
 	desc = ww1_ottoman.38.d
 	picture = GFX_report_event_generic_sign_treaty1
-	
 	is_triggered_only = yes
 	fire_only_once = yes
-	
 	option = {
-		name = ww1_ottoman.38.a #Take Kuwait
-		ai_chance = { 
+		name = ww1_ottoman.38.a		#Take Kuwait
+		ai_chance = {
 			factor = 30
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
 			}
 		}
-		TUR = { country_event = { id = ww1_ottoman.39 days = 1 } }
+		TUR = {
+			country_event = {
+				id = ww1_ottoman.39
+				days = 1
+			}
+		}
 	}
 	option = {
-		name = ww1_ottoman.38.b #Take Kuwait and Qatar
-		ai_chance = { factor = 65 }
-		TUR = { country_event = { id = ww1_ottoman.40 days = 1 } }
+		name = ww1_ottoman.38.b		#Take Kuwait and Qatar
+		ai_chance = {
+			factor = 65
+		}
+		TUR = {
+			country_event = {
+				id = ww1_ottoman.40
+				days = 1
+			}
+		}
 	}
 	option = {
-		name = ww1_ottoman.38.c #Stop negotiations
+		name = ww1_ottoman.38.c		#Stop negotiations
 		add_political_power = -15
 		ai_chance = {
 			factor = 5
@@ -1347,9 +1401,15 @@ country_event = {
 				is_historical_focus_on = yes
 			}
 		}
-		TUR = { country_event = { id = ww1_ottoman.41 days = 1 } }
+		TUR = {
+			country_event = {
+				id = ww1_ottoman.41
+				days = 1
+			}
+		}
 	}
 }
+
 # Anglo-Ottoman Convention - Kuwait
 #########################
 country_event = {
@@ -1357,37 +1417,45 @@ country_event = {
 	title = ww1_ottoman.39.t
 	desc = ww1_ottoman.39.d
 	picture = GFX_report_event_generic_sign_treaty1
-	
 	is_triggered_only = yes
-	
 	option = {
-		name = ww1_ottoman.39.a #Agree
+		name = ww1_ottoman.39.a		#Agree
 		add_political_power = 150
 		set_global_flag = anglo_ottoman_convention_kuwait
 		if = {
-			limit = { KUW = { is_ai = yes } }
-			ENG = { transfer_state = 656 }
-			KUW = { clr_country_flag = protectorate }
+			limit = {
+				KUW = {
+					is_ai = yes
+				}
+			}
+			ENG = {
+				transfer_state = 656
+			}
+			KUW = {
+				clr_country_flag = protectorate
+			}
 			else = {
 				KUW = {
-					add_autonomy_ratio = { value = -0.25 }
-				}	
+					add_autonomy_ratio = {
+						value = -0.25
+					}
+				}
 			}
 		}
 		hidden_effect = {
-		    KUW = {
-			    drop_cosmetic_tag = yes
+			KUW = {
+				drop_cosmetic_tag = yes
 			}
 			diplomatic_relation = {
-			    country = KUW
-			    relation = guarantee
-			    active = no
+				country = KUW
+				relation = guarantee
+				active = no
 			}
 			diplomatic_relation = {
-			    country = KUW
-			    relation = military_access
-			    active = no
-			}			
+				country = KUW
+				relation = military_access
+				active = no
+			}
 		}
 		add_resource = {
 			type = oil
@@ -1422,16 +1490,21 @@ country_event = {
 		}
 		#reduce economy debuff
 		news_event = ww1_ottoman.42
-		ai_chance = { 
-			factor = 25 
+		ai_chance = {
+			factor = 25
 		}
 	}
 	option = {
-		name = ww1_ottoman.39.b #Stop negotiations
+		name = ww1_ottoman.39.b		#Stop negotiations
 		add_political_power = -15
-		ENG = { country_event = { id = ww1_ottoman.41 days = 1 } }
-		ai_chance = { 
-			factor = 1 
+		ENG = {
+			country_event = {
+				id = ww1_ottoman.41
+				days = 1
+			}
+		}
+		ai_chance = {
+			factor = 1
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
@@ -1439,6 +1512,7 @@ country_event = {
 		}
 	}
 }
+
 # Anglo-Ottoman Convention - Kuwait and Qatar
 #########################
 country_event = {
@@ -1446,39 +1520,47 @@ country_event = {
 	title = ww1_ottoman.40.t
 	desc = ww1_ottoman.40.d
 	picture = GFX_report_event_generic_sign_treaty1
-	
 	is_triggered_only = yes
-	
 	option = {
-		name = ww1_ottoman.40.a #Agree
-		set_global_flag = anglo_ottoman_convention_kuwait_and_watar
+		name = ww1_ottoman.40.a		#Agree
+		set_global_flag = anglo_ottoman_convention_kuwait_and_qatar
 		add_political_power = 200
 		if = {
-			limit = { KUW = { is_ai = yes } }
-			ENG = { transfer_state = 656 }
-			KUW = { clr_country_flag = protectorate }
+			limit = {
+				KUW = {
+					is_ai = yes
+				}
+			}
+			ENG = {
+				transfer_state = 656
+			}
+			KUW = {
+				clr_country_flag = protectorate
+			}
 			else = {
 				KUW = {
-					add_autonomy_ratio = { value = -0.25 }
-				}	
+					add_autonomy_ratio = {
+						value = -0.25
+					}
+				}
 			}
 		}
 		hidden_effect = {
-		    KUW = {	
-			    drop_cosmetic_tag = yes
+			KUW = {
+				drop_cosmetic_tag = yes
 			}
 			diplomatic_relation = {
-			    country = KUW
-			    relation = guarantee
-			    active = no
+				country = KUW
+				relation = guarantee
+				active = no
 			}
 			diplomatic_relation = {
-			    country = KUW
-			    relation = military_access
-			    active = no
-			}			
+				country = KUW
+				relation = military_access
+				active = no
+			}
 			every_country = {
-				limit = { 
+				limit = {
 					OR = {
 						has_war_with = KUW
 						has_war_with = QAT
@@ -1521,26 +1603,38 @@ country_event = {
 		}
 		if = {
 			limit = {
-			    QAT = { is_subject_of = TUR }
-			}		
+				QAT = {
+					is_subject_of = TUR
+				}
+			}
 			TUR = {
-				set_autonomy = { target = QAT autonomy_state = autonomy_free }
+				set_autonomy = {
+					target = QAT
+					autonomy_state = autonomy_free
+				}
 				add_state_claim = 765
 			}
-			QAT = {clr_country_flag = protectorate}
-		}	
+			QAT = {
+				clr_country_flag = protectorate
+			}
+		}
 		#reduce economy debuff
 		news_event = ww1_ottoman.42
-		ai_chance = { 
-			factor = 25 
+		ai_chance = {
+			factor = 25
 		}
 	}
 	option = {
-		name = ww1_ottoman.39.b #Stop negotiations
+		name = ww1_ottoman.39.b		#Stop negotiations
 		add_political_power = -15
-		ENG = { country_event = { id = ww1_ottoman.41 days = 1 } }
-		ai_chance = { 
-			factor = 10 
+		ENG = {
+			country_event = {
+				id = ww1_ottoman.41
+				days = 1
+			}
+		}
+		ai_chance = {
+			factor = 10
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
@@ -1548,6 +1642,7 @@ country_event = {
 		}
 	}
 }
+
 # Anglo-Ottoman Convention - Negotiations are broken
 #########################
 country_event = {
@@ -1555,20 +1650,23 @@ country_event = {
 	title = ww1_ottoman.41.t
 	desc = ww1_ottoman.41.d
 	picture = GFX_report_event_generic_sign_treaty1
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = ww1_ottoman.41.a
 		add_political_power = -15
-		trigger = { tag = ENG }
+		trigger = {
+			tag = ENG
+		}
 	}
 	option = {
 		name = ww1_ottoman.41.b
 		add_political_power = -15
-		trigger = { tag = TUR }
+		trigger = {
+			tag = TUR
+		}
 	}
 }
+
 # Anglo-Ottoman Convention 1913
 ################
 news_event = {
@@ -1576,16 +1674,17 @@ news_event = {
 	title = ww1_ottoman.42.t
 	desc = ww1_ottoman.42.d
 	picture = GFX_news_event_042
-
 	major = yes
-	is_triggered_only = yes	
+	is_triggered_only = yes
 	fire_only_once = yes
-
 	option = {
 		name = ww1_ottoman.42.a
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 	}
 }
+
 # Sadakat pact - Defense union with Persia
 ###################
 country_event = {
@@ -1593,20 +1692,42 @@ country_event = {
 	title = ww1_ottoman.43.t
 	desc = ww1_ottoman.43.d
 	picture = GFX_report_event_tur_sultan_in_istanbul
-	
 	is_triggered_only = yes
 	option = {
 		name = ww1_ottoman.43.a
-		ai_chance = { factor = 25 }
-		TUR = { give_guarantee = PER }
-		PER = { give_guarantee = TUR }
+		ai_chance = {
+			factor = 25
+		}
+		TUR = {
+			give_guarantee = PER
+		}
+		PER = {
+			give_guarantee = TUR
+		}
 	}
 	option = {
-		name = ww1_ottoman.43.b	
-		TUR = { country_event = { id = ww1_ottoman.44 hours = 7 } }
-		ai_chance = { factor = 5 }
+		name = ww1_ottoman.43.a
+		ai_chance = {
+			factor = 20
+		}
+		TUR = {
+			add_to_faction = ROOT
+		}
+	}
+	option = {
+		name = ww1_ottoman.43.b
+		TUR = {
+			country_event = {
+				id = ww1_ottoman.44
+				hours = 7
+			}
+		}
+		ai_chance = {
+			factor = 5
+		}
 	}
 }
+
 # Sadakat pact - Defense union with Persia
 ###################
 country_event = {
@@ -1614,13 +1735,15 @@ country_event = {
 	title = ww1_ottoman.44.t
 	desc = ww1_ottoman.44.d
 	picture = GFX_report_event_soldiers_marching
-	
 	is_triggered_only = yes
 	option = {
 		name = ww1_ottoman.44.a
-		ai_chance = { factor = 25 }
+		ai_chance = {
+			factor = 25
+		}
 	}
 }
+
 # Great War ends - Arab Kingdom of Syria
 ###################
 country_event = {
@@ -1628,7 +1751,6 @@ country_event = {
 	title = ww1_ottoman.45.t
 	desc = ww1_ottoman.45.d
 	picture = GFX_report_event_spr_army_of_africa
-	
 	fire_only_once = yes
 	trigger = {
 		tag = TUR
@@ -1640,56 +1762,73 @@ country_event = {
 				}
 				is_owned_by = TUR
 			}
-			SYR = { 
-				is_subject_of = TUR 
+			SYR = {
+				is_subject_of = TUR
 				NOT = {
 					owns_state = 455
-					owns_state = 554 
+					owns_state = 554
 				}
 			}
 		}
 		has_war = no
-		HJZ = { exists = yes }
+		HJZ = {
+			exists = yes
+		}
 		has_country_flag = great_war_loser
 	}
-	mean_time_to_happen = { days = 7 }
+	mean_time_to_happen = {
+		days = 7
+	}
 	immediate = {
 		hidden_effect = {
 			every_state = {
-				limit = { 
-					is_owned_by = TUR 
+				limit = {
+					is_owned_by = TUR
 					OR = {
 						state = 455
 						state = 554
 					}
 				}
-				SYR = { transfer_state = PREV }
-				TUR = { remove_state_core = PREV }
+				SYR = {
+					transfer_state = PREV
+				}
+				TUR = {
+					remove_state_core = PREV
+				}
 			}
 			if = {
-				limit = { SYR = { is_subject_of = TUR } }
+				limit = {
+					SYR = {
+						is_subject_of = TUR
+					}
+				}
 				set_autonomy = {
 					target = SYR
 					autonomous_state = autonomy_free
 				}
 			}
-			SYR = { 
-				set_country_flag = great_war_loser 
+			SYR = {
+				set_country_flag = great_war_loser
 				create_country_leader = {
-					name = "Faisal I" 	
-					picture = "gfx/leaders/IRQ/IRQ_faisal_i.dds" 
-					expire = "1935.1.1" 
-					ideology = despotism 
-					traits = {  } 
+					name = "Faisal I"
+					picture = "gfx/leaders/IRQ/IRQ_faisal_i.dds"
+					expire = "1935.1.1"
+					ideology = despotism
+					traits = {
+						trait_despotism
+					}
 				}
 			}
 		}
 	}
 	option = {
 		name = ww1_ottoman.45.a
-		ai_chance = { factor = 25 }
+		ai_chance = {
+			factor = 25
+		}
 	}
 }
+
 # Arabian Revolt - Deal with Faisal
 ###################
 country_event = {
@@ -1697,7 +1836,6 @@ country_event = {
 	title = ww1_ottoman.46.t
 	desc = ww1_ottoman.46.d
 	picture = GFX_report_event_tur_sultan_and_pashas
-	
 	fire_only_once = yes
 	trigger = {
 		tag = TUR
@@ -1706,21 +1844,35 @@ country_event = {
 				is_core_of = SYR
 				is_owned_by = TUR
 			}
-			SYR = { is_subject_of = TUR }
+			SYR = {
+				is_subject_of = TUR
+			}
 		}
 		has_war_with = HJZ
 		has_global_flag = great_arabian_revolt
-		SYR = { exists = no }
-		NOT = { has_country_flag = great_war_loser }
+		SYR = {
+			exists = no
+		}
+		NOT = {
+			has_country_flag = great_war_loser
+		}
 	}
-	mean_time_to_happen = { days = 7 }
-	
+	mean_time_to_happen = {
+		days = 7
+	}
 	option = {
-		name = ww1_ottoman.46.a #Independence for Syria
+		name = ww1_ottoman.46.a		#Independence for Syria
 		every_state = {
-			limit = { is_owned_by = TUR is_core_of = SYR }
-			SYR = { transfer_state = PREV }
-			TUR = { remove_state_core = PREV }
+			limit = {
+				is_owned_by = TUR
+				is_core_of = SYR
+			}
+			SYR = {
+				transfer_state = PREV
+			}
+			TUR = {
+				remove_state_core = PREV
+			}
 		}
 		set_autonomy = {
 			target = SYR
@@ -1742,15 +1894,16 @@ country_event = {
 					neutrality = 100
 				}
 				create_country_leader = {
-					name = "Faisal I" 	
-					picture = "gfx/leaders/IRQ/IRQ_faisal_i.dds" 
-					expire = "1935.1.1" 
-					ideology = despotism 
-					traits = {  } 
+					name = "Faisal I"
+					picture = "gfx/leaders/IRQ/IRQ_faisal_i.dds"
+					expire = "1935.1.1"
+					ideology = despotism
+					traits = {
+						trait_despotism
+					}
 				}
 			}
 		}
-		
 		every_country = {
 			limit = {
 				OR = {
@@ -1761,13 +1914,15 @@ country_event = {
 				has_war_with = TUR
 			}
 			if = {
-				limit = { is_in_faction = yes }
+				limit = {
+					is_in_faction = yes
+				}
 				leave_faction = yes
 			}
 			white_peace = TUR
 		}
-		ai_chance = { 
-			factor = 5 
+		ai_chance = {
+			factor = 5
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
@@ -1775,16 +1930,22 @@ country_event = {
 		}
 	}
 	option = {
-		name = ww1_ottoman.46.b #Ignor Faisal
+		name = ww1_ottoman.46.b		#Ignor Faisal
 		every_state = {
-			limit = { is_core_of = TUR is_core_of = SYR }
-			TUR = { remove_state_core = PREV }
+			limit = {
+				is_core_of = TUR
+				is_core_of = SYR
+			}
+			TUR = {
+				remove_state_core = PREV
+			}
 		}
-		ai_chance = { 
-			factor = 25 
+		ai_chance = {
+			factor = 25
 		}
 	}
 }
+
 # Civil war Aftermath - Sultan's fate
 ####
 country_event = {
@@ -1792,123 +1953,888 @@ country_event = {
 	title = ww1_ottoman.47.t
 	desc = ww1_ottoman.47.d
 	picture = GFX_report_event_generic_rally
-	
 	fire_only_once = yes
-	trigger = {
-		tag = TUR
-		has_country_flag = TUR_hareket_ordusu_uprising
-		has_civil_war = no
-		has_completed_focus = TUR_istirak_mukavemet
-	}
-	
+	is_triggered_only = yes
 	option = {
-		name = ww1_ottoman.47.a	#Establish socialist republic
-		create_country_leader = {
-			name = "Ethem Nejat"
-			picture = "gfx/leaders/TUR/TUR_ethem_nejat.dds"
-			expire = "1935.1.1"
-			ideology = vanguardism
-			traits = {  }
+		name = ww1_ottoman.47.a
+		ai_chance = {
+			factor = 1
 		}
-		add_political_power = 100
-		add_stability = -0.10
-		ai_chance = { factor = 10 }
+		remove_ideas = ottoman_family
+		add_ideas = ottoman_family_socialist
+		complete_national_focus = TUR_empowermeclisiavam
+		set_country_flag = TUR_empowermeclisiavam
 	}
 	option = {
-		name = ww1_ottoman.31.b	#Nihad Efendi
+		name = ww1_ottoman.31.b		#Nihad Efendi
 		add_political_power = -100
-		add_stability = 0.10
+		add_stability = 0.1
 		create_country_leader = {
 			name = "Ahmed Nihad Efendi"
 			picture = "gfx/leaders/TUR/TUR_ahmed_nihad.dds"
 			expire = "1935.1.1"
 			ideology = religious_communism
-			
+			traits = {
+				trait_religious_communism
+				nihad
+			}
 		}
-		ai_chance = { factor = 1 }
+		complete_national_focus = TUR_ironfistofsocialism
+		set_country_flag = TUR_ironfistofsocialism
+		ai_chance = {
+			factor = 1
+		}
+	}
+	option = {
+		name = ww1_ottoman.47.b		#Establish socialist republic
+		drop_cosmetic_tag = yes
+		create_country_leader = {
+			name = "Ethem Nejat"
+			picture = "gfx/leaders/TUR/TUR_ethem_nejat.dds"
+			expire = "1935.1.1"
+			ideology = vanguardism
+			traits = {
+				trait_vanguardism
+				ethem
+			}
+		}
+		complete_national_focus = TUR_ironfistofsocialism
+		set_country_flag = TUR_ironfistofsocialism
+		add_political_power = 100
+		add_stability = -0.1
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
-# Vilayet not sure in future
+
+# NEWS - Ottoman Civil War
+################
+news_event = {
+	id = ww1_ottoman.49
+	title = ww1_ottoman.49.t
+	desc = ww1_ottoman.49.d
+	picture = GFX_news_event_042
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.49.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+# German General - send to Ottoman Empire
 ####
 country_event = {
-	id = ww1_ottoman.48
-	title = ww1_ottoman.48.t
-	desc = ww1_ottoman.48.d
-	picture = GFX_report_event_generic_rally
-	
-	fire_only_once = yes
-	trigger = {
-		tag = TUR
-		has_defensive_war = yes
-		any_state = {
-			OR = {
-				has_dynamic_modifier = { modifier = loyal_vilayet }
-				has_dynamic_modifier = { modifier = placated_vilayet }
+	id = ww1_ottoman.50
+	title = ww1_ottoman.50.t
+	desc = ww1_ottoman.50.d
+	picture = GFX_report_event_soldiers_marching
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.50.a
+		every_unit_leader = {
+			limit = {
+				has_id = 34260
+			}
+			set_nationality = TUR
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+	option = {
+		name = ww1_ottoman.50.b
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+# Black Sea Raid
+####
+country_event = {
+	id = ww1_ottoman.51
+	title = ww1_ottoman.51.t
+	desc = ww1_ottoman.51.d
+	picture = GFX_report_event_soldiers_marching
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.50.a
+		add_war_support = -0.02
+		137 = {
+			damage_building = {
+				type = dockyard
+				damage = 1
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Building of Berlin-Baghdad
+####
+country_event = {
+	id = ww1_ottoman.52
+	title = ww1_ottoman.52.t
+	desc = ww1_ottoman.52.d
+	picture = GFX_report_event_tur_sultan_in_istanbul
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.52.a
+		TUR = {
+			country_event = {
+				id = ww1_ottoman.53
+				hours = 6
+			}
+		}
+		ai_chance = {
+			factor = 8
+		}
+	}
+	option = {
+		name = ww1_ottoman.52.b
+		TUR = {
+			country_event = {
+				id = ww1_ottoman.54
+				hours = 6
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+# Germans agree to build road
+####
+country_event = {
+	id = ww1_ottoman.53
+	title = ww1_ottoman.53.t
+	desc = ww1_ottoman.53.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.53.a
+		activate_mission = TUR_berlin_baghdad_railway_mission
+		hidden_effect = {
+			ENG = {
+				country_event = {
+					id = ww1_ottoman.55
+					hours = 6
+				}
+			}			#conflict with Germany
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Germans ignore building Berlin-Baghdad
+####
+country_event = {
+	id = ww1_ottoman.54
+	title = ww1_ottoman.54.t
+	desc = ww1_ottoman.54.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.54.a
+		hidden_effect = {
+			ENG = {
+				country_event = {
+					id = ww1_ottoman.55
+					hours = 6
+				}
+			}			#conflict with Germany
+		}
+		add_political_power = -5
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Demand to stop building to Persian Gulf
+####
+country_event = {
+	id = ww1_ottoman.55
+	title = ww1_ottoman.55.t
+	desc = ww1_ottoman.55.d
+	picture = GFX_report_event_tur_sultan_in_istanbul
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.55.a		#stop build road on the north!
+		add_named_threat = {
+			threat = 2
+			name = ww1_ottoman.55.t
+		}
+		GER = {
+			country_event = {
+				id = ww1_ottoman.56
+				hours = 15
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = ww1_ottoman.55.b		#ignore situation
+		add_political_power = -5
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+# Berlin-Baghdad: British demands
+####
+country_event = {
+	id = ww1_ottoman.56
+	title = ww1_ottoman.56.t
+	desc = ww1_ottoman.56.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.56.a		#change route
+		ENG = {
+			country_event = {
+				id = ww1_ottoman.57
+				hours = 15
+			}
+		}
+		add_political_power = -75
+		set_global_flag = berlin_baghdad_dispute_ended
+		676 = {
+			set_state_flag = TUR_berlin_baghdad_railway_state_blocked
+		}
+		291 = {
+			set_state_flag = TUR_berlin_baghdad_railway_state_blocked
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+	option = {
+		name = ww1_ottoman.56.b		#ignore
+		ENG = {
+			country_event = {
+				id = ww1_ottoman.58
+				hours = 15
+			}
+		}
+		add_named_threat = {
+			threat = 5
+			name = ww1_ottoman.58.t
+		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
 			}
 		}
 	}
-	mean_time_to_happen = { days = 7 }
+}
+
+# Berlin-Baghdad: Germany changes route
+####
+country_event = {
+	id = ww1_ottoman.57
+	title = ww1_ottoman.57.t
+	desc = ww1_ottoman.57.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
 	option = {
-		name = ww1_ottoman.48.a
-		activate_mission = TUR_anxiety_in_vilayets
-		ai_chance = { factor = 1 }
+		name = ww1_ottoman.57.a
+		add_political_power = 75
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
-################
-################
-################
-################
 
+# Berlin-Baghdad: Germany changes route
+####
+country_event = {
+	id = ww1_ottoman.58
+	title = ww1_ottoman.58.t
+	desc = ww1_ottoman.58.d
+	picture = GFX_report_event_generic_sign_treaty1
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.58.a
+		news_event = ww1_ottoman.59
+		add_political_power = -100
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = GER
+			# expire = { days = 180 }
+		}
+		ai_chance = {
+			factor = 15
+		}
+	}
+	option = {
+		name = ww1_ottoman.58.b
+		add_political_power = -50
+		add_opinion_modifier = {
+			target = GER
+			modifier = embargo
+		}
+		ai_chance = {
+			factor = 65
+		}
+	}
+	option = {
+		name = ww1_ottoman.58.c
+		add_war_support = -0.1
+		ai_chance = {
+			factor = 25
+		}
+	}
+}
+
+# NEWS - Ottoman Civil War
+################
+news_event = {
+	id = ww1_ottoman.59
+	title = ww1_ottoman.59.t
+	desc = ww1_ottoman.59.d
+	picture = GFX_news_event_042
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.59.a
+		trigger = {
+			NOT = {
+				tag = ENG
+			}
+			NOT = {
+				tag = GER
+			}
+		}
+		ai_chance = {
+			factor = 100
+		}
+	}
+	option = {
+		name = ww1_ottoman.59.b
+		trigger = {
+			OR = {
+				tag = ENG
+				tag = GER
+			}
+		}
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+# Balkan Pact Initiative
+#########
+country_event = {
+	id = ww1_ottoman.60
+	title = ww1_ottoman.60.t
+	desc = ww1_ottoman.60.d
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.60.a
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0.5
+				OR = {
+					is_in_faction_with = FRA
+					is_in_faction_with = GER
+				}
+			}
+		}
+		if = {
+			limit = {
+				is_in_faction = yes
+			}
+			leave_faction = yes
+		}
+		FROM = {
+			add_to_faction = ROOT
+		}
+	}
+	option = {
+		name = ww1_ottoman.60.b
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 0.5
+				is_in_faction_with = TUR
+			}
+			modifier = {
+				factor = 0.5
+				TUR = {
+					NOT = {
+						any_owned_state = {
+							is_core_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		TUR = {
+			add_opinion_modifier = {
+				target = ENG
+				modifier = medium_decrease
+			}
+		}
+	}
+}
+
+# Armenian Minorities not support Enver
+#########
+country_event = {
+	id = ww1_ottoman.62
+	title = ww1_ottoman.62.t
+	desc = ww1_ottoman.62.d
+	fire_only_once = yes
+	trigger = {
+		tag = TUR
+		OR = {
+			has_completed_focus = TUR_raid_on_the_sublime_porte
+			has_completed_focus = TUR_empower_nazir_i_harbiye
+		}
+		has_war = yes
+	}
+	mean_time_to_happen = {
+		days = 7
+	}
+	option = {
+		name = ww1_ottoman.62.a
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Cyprus/Nicosian Agreement
+#########
+country_event = {
+	id = ww1_ottoman.63
+	title = ww1_ottoman.63.t
+	desc = ww1_ottoman.63.d
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.63.a
+		TUR = {
+			transfer_state = 183
+		}
+		add_political_power = 75
+		diplomatic_relation = {
+			country = TUR
+			relation = non_aggression_pact
+			active = no
+		}
+		ai_chance = {
+			factor = 25
+		}
+	}
+	option = {
+		name = ww1_ottoman.63.b
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+###Harbiyelir officers in power, reactionary plot
+country_event = {
+	id = ww1_ottoman.66
+	title = ww1_ottoman.66.t
+	desc = ww1_ottoman.66.d
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.66.a
+		activate_mission = TUR_reactionary_plot_mission
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+######Reactionary officers stage a coup
+country_event = {
+	id = ww1_ottoman.67
+	title = ww1_ottomans.67.t
+	desc = ww1_ottoman.67.d
+	is_triggered_only = yes
+	trigger = {
+		tag = TUR
+		NOT = {
+			has_completed_focus = TUR_reshape_the_army
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = TUR_reactionary_revolt
+			start_civil_war = {
+				ideology = neutrality
+				size = 0.35
+				keep_political_leader = yes
+				capital = 291
+				keep_unit_leaders_trigger = {
+					NOT = {
+						has_trait = trait_TUR_reactionaries_sympathies
+					}
+				}
+				states = {
+					553
+					554
+					677
+					455
+					344
+					829
+					680
+					677
+					348
+					350
+					676
+					828
+					291
+					662
+				}
+				create_country_leader = {
+					name = "Yıldız Teşkilatı Council"
+					picture = "gfx/leaders/TUR/TUR_yildiz_teskilati_council.dds"
+					expire = "1935.1.1"
+					ideology = despotism
+					traits = {
+						tur_military_junta
+						trait_despotism
+					}
+				}
+				set_cosmetic_tag = TUR_junta
+				set_party_name = {
+					ideology = neutrality
+					long_name = TUR_sultanate_precursor_party
+					name = TUR_sultanate_precursor_party
+				}
+				set_country_flag = TUR_revolter_flag
+			}
+		}
+	}
+	option = {
+		name = ww1_ottoman.67.a
+		hidden_effect = {
+			every_unit_leader = {
+				limit = {
+					has_trait = trait_TUR_reactionaries_sympathies
+				}
+				set_nationality = OTM
+			}
+		}
+	}
+}
+
+####Japan in Sadakat
+country_event = {
+	id = ww1_ottoman.68
+	title = ww1_ottoman.68.t
+	desc = ww1_ottoman.68.d
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.68.a
+		TUR = {
+			add_to_faction = JAP
+		}
+		ai_chance = {
+			factor = 75
+		}
+	}
+	option = {
+		name = ww1_ottoman.68.b
+		ai_chance = {
+			factor = 20
+		}
+	}
+}
+
+###Last warning
+country_event = {
+	id = ww1_ottoman.69
+	title = ww1_ottoman.69.t
+	desc = ww1_ottoman.69.d
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.69.a
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+###Darfur becomes free
+country_event = {
+	id = ww1_ottoman.70
+	title = ww1_ottoman.70.t
+	desc = ww1_ottoman.70.d
+	is_triggered_only = yes
+	option = {
+		#Based
+		name = ww1_ottoman.70.a
+		ENG = {
+			end_puppet = DAR
+			hidden_effect = {
+				set_country_flag = darfur_free
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+	option = {
+		#We want still bri'ish protection
+		name = ww1_ottoman.70.b
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+###Senussi joined war- Darfur is able to join factions
+country_event = {
+	id = ww1_ottoman.71
+	trigger = {
+		tag = DAR
+		has_war_with = ENG
+		LBA = {
+			has_war_with = ENG
+		}
+	}
+	hidden = yes
+	immediate = {
+		set_rule = {
+			can_join_factions = yes
+		}
+	}
+	fire_only_once = yes
+}
+
+###Sufi leaders consultations
+country_event = {
+	id = ww1_ottoman.72
+	title = ww1_ottoman.72.t
+	desc = ww1_ottoman.72.d
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.72.a
+		add_war_support = 0.05
+		add_stability = -0.1
+		add_political_power = 50
+		add_ideas = TUR_idea_sufi_integrated
+	}
+	option = {
+		name = ww1_ottoman.72.b
+		add_stability = 0.1
+		add_war_support = -0.05
+	}
+}
+
+###Invitations to caliphate
+country_event = {
+	id = ww1_ottoman.73
+	title = ww1_ottoman.73.t
+	desc = ww1_ottoman.73.d
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.73.a
+		TUR = {
+			add_to_faction = PREV
+		}
+		ai_chance = {
+			factor = 80
+		}
+	}
+	option = {
+		name = ww1_ottoman.73.b
+		ai_chance = {
+			factor = 30
+		}
+	}
+}
+
+####Army plot
+country_event = {
+	id = ww1_ottoman.75
+	title = ww1_ottoman.75.t
+	desc = ww1_ottoman.75.d
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.75.a
+		activate_mission_tooltip = TUR_revolt_against_islamists_mission
+	}
+}
+
+####Colonies on fire
+country_event = {
+	id = ww1_ottoman.76
+	title = ww1_ottoman.76.t
+	desc = ww1_ottoman.76.d
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.76.a
+	}
+}
+
+###Konstantinopoljski sporazum
+country_event = {
+	id = ww1_ottoman.77
+	title = ww1_ottoman.77.t
+	desc = ww1_ottoman.77.d
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.77.a
+		every_owned_state = {
+			limit = {
+				NOT = {
+					is_core_of = TUR
+				}
+			}
+			add_dynamic_modifier = {
+				modifier = loyal_vilayet
+			}
+			add_resistance = 20
+		}
+		ai_chance = {
+			factor = 50
+		}
+	}
+	option = {
+		name = ww1_ottoman.77.b
+		every_owned_state = {
+			limit = {
+				NOT = {
+					is_core_of = TUR
+				}
+			}
+			add_compliance = 20
+		}
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+####Osman Fuad leads reactionaries in civil war
+country_event = {
+	id = ww1_ottoman.78
+	title = ww1_ottoman.78.t
+	desc = ww1_ottoman.78.d
+	trigger = {
+		tag = OTM
+		has_country_leader = {
+			name = "Yıldız Teşkilatı Council"
+			ruling_only = yes
+		}
+	}
+	mean_time_to_happen = {
+		days = 30
+	}
+	fire_only_once = yes
+	option = {
+		name = ww1_ottoman.78.a
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Osman IV Fuad"
+			ideology = autocracy
+			expire = "1935.1.1"
+			picture = "gfx/leaders/TUR/TUR_osman_fuad.dds"
+			traits = {
+				osman_fuad_1
+				osman_fuad_2
+				trait_autocracy
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+################
+################
+################
+################
 # Purchase Two Battleships From Germany
 ##########################
-country_event  = {
+country_event = {
 	id = ww1_ottoman.92
 	title = ww1_ottoman.92.t
 	desc = ww1_ottoman.92.d
-	
 	fire_only_once = yes
 	trigger = {
-		tag = TUR 	#will be decision
-		GER = { exists = yes }
+		tag = TUR		#will be decision
+		GER = {
+			exists = yes
+		}
 		date > 1910.9.12
+		NOT = {
+			has_war_with = GER
+		}
 	}
-	
 	option = {
 		name = ww1_ottoman.92.a
 		add_political_power = -50
-		GER = { country_event = ww1_ottoman.93 }
-		ai_chance = { factor = 25 }
+		GER = {
+			country_event = ww1_ottoman.93
+		}
+		ai_chance = {
+			factor = 25
+		}
 	}
 	option = {
 		name = ww1_ottoman.92.b
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 0
+		}
 	}
 }
 
 # Sell Two Battleships To Ottoman
 ##########################
-country_event  = {
+country_event = {
 	id = ww1_ottoman.93
 	title = ww1_ottoman.93.t
 	desc = ww1_ottoman.93.d
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = ww1_ottoman.93.a
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		add_political_power = 50
-		TUR = { country_event = ww1_ottoman.94 }
+		TUR = {
+			country_event = ww1_ottoman.94
+		}
 	}
 	option = {
 		name = ww1_ottoman.93.b
-		ai_chance = { factor = 0 }
-		TUR = { country_event = ww1_ottoman.95 }
+		ai_chance = {
+			factor = 0
+		}
+		TUR = {
+			country_event = ww1_ottoman.95
+		}
 	}
 }
+
 # Sell ships
 ###########
-country_event  = {
+country_event = {
 	id = ww1_ottoman.94
 	title = ww1_ottoman.94.t
 	desc = ww1_ottoman.94.d
@@ -1916,7 +2842,9 @@ country_event  = {
 	is_triggered_only = yes
 	option = {
 		name = ww1_ottoman.94.a
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		GER = {
 			transfer_ship = {
 				prefer_name = "SMS Kurfürst Friedrich Wilhelm"
@@ -1938,98 +2866,111 @@ country_event = {
 	id = ww1_ottoman.95
 	title = ww1_ottoman.95.t
 	desc = ww1_ottoman.95.d
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = ww1_ottoman.95
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		add_political_power = 50
 	}
 }
 
 # Britts sieze our ships!
 ##############
-country_event  = {
+country_event = {
 	id = ww1_ottoman.96
 	title = ww1_ottoman.96.t
 	desc = ww1_ottoman.96.d
-	
-	fire_only_once = yes	
+	fire_only_once = yes
 	trigger = {
 		tag = ENG
 		has_war_with = GER
-		NOT = { has_war_with = TUR }
+		NOT = {
+			has_war_with = TUR
+		}
 	}
-	mean_time_to_happen = { days = 7 }
-	
+	mean_time_to_happen = {
+		days = 7
+	}
 	option = {
 		name = ww1_ottoman.96.a
-		ai_chance = { factor = 100 }
-		TUR = { country_event = ww1_ottoman.97 }
+		ai_chance = {
+			factor = 100
+		}
+		TUR = {
+			country_event = ww1_ottoman.97
+		}
 		ENG = {
 			if = {
 				limit = {
-					NOT = { has_dlc = "Man the Guns" }
+					NOT = {
+						has_dlc = "Man the Guns"
+					}
 				}
-
 				load_oob = ENG_seized_naval_legacy
 			}
-			
 			if = {
 				limit = {
 					has_dlc = "Man the Guns"
 				}
-
 				load_oob = ENG_seized_naval_mtg
 			}
 		}
 	}
 	option = {
 		name = ww1_ottoman.96.b
-		ai_chance = { factor = 0 }
-		TUR = { country_event = ww1_ottoman.98 }
+		ai_chance = {
+			factor = 0
+		}
+		TUR = {
+			country_event = ww1_ottoman.98
+		}
 	}
 }
+
 # Britts sieze ships - ships under british control
 #########
 country_event = {
 	id = ww1_ottoman.97
 	title = ww1_ottoman.97.t
 	desc = ww1_ottoman.97.d
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = ww1_ottoman.97
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		TUR = {
 			add_opinion_modifier = {
 				target = ENG
-				modifier = HOI4TGW_Opinion_anti_uk_policy_malus
+				modifier = medium_decrease
 			}
 		}
 	}
 }
+
 # Britts sieze ships - ships for Ottomans
 #########
 country_event = {
 	id = ww1_ottoman.98
 	title = ww1_ottoman.98.t
 	desc = ww1_ottoman.98.d
-	
 	is_triggered_only = yes
 	option = {
 		name = ww1_ottoman.98
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		TUR = {
 			if = {
 				limit = {
-					NOT = { has_dlc = "Man the Guns" }
+					NOT = {
+						has_dlc = "Man the Guns"
+					}
 				}
 				load_oob = TUR_seized_naval_legacy
 			}
-			
 			if = {
 				limit = {
 					has_dlc = "Man the Guns"
@@ -2042,27 +2983,27 @@ country_event = {
 
 # Treatment of the Najd Region
 ##############
-country_event = { #.28
+country_event = {
+	#.28
 	id = ww1_ottoman.99
 	title = ww1_ottoman.99.t
 	desc = ww1_ottoman.99.d
-	
 	fire_only_once = yes
 	trigger = {
 		TAG = TUR
 		JBS = {
 			is_subject_of = TUR
 		}
-
 		TUR = {
 			owns_state = 292
 			owns_state = 678
 		}
 	}
-	
 	option = {
 		name = ww1_ottoman.99.a
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 		JBS = {
 			transfer_state = 292
 			add_state_core = 292
@@ -2072,7 +3013,9 @@ country_event = { #.28
 	}
 	option = {
 		name = ww1_ottoman.99.b
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 0
+		}
 		end_puppet = JBS
 		every_country = {
 			limit = {
@@ -2080,7 +3023,7 @@ country_event = { #.28
 				has_war_with = TUR
 			}
 			white_peace = JBS
-	    }
+		}
 		TUR = {
 			declare_war_on = {
 				target = JBS
@@ -2097,14 +3040,12 @@ country_event = {
 	title = ww1_ottoman.100.t
 	desc = ww1_ottoman.100.d
 	picture = GFX_report_event_generic_sign_treaty1
-
 	is_triggered_only = yes
-
 	option = {
 		name = ww1_ottoman.100.a
 		add_to_faction = TUR
-		ai_chance = { 
-			factor = 45 
+		ai_chance = {
+			factor = 45
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
@@ -2115,7 +3056,7 @@ country_event = {
 	option = {
 		name = ww1_ottoman.100.b
 		ai_chance = {
-			factor = 5 
+			factor = 5
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
@@ -2132,26 +3073,28 @@ country_event = {
 	title = ww1_ottoman.101.t
 	desc = ww1_ottoman.101.d
 	picture = GFX_report_event_fascist_gathering
-	
 	is_triggered_only = yes
-
 	option = {
 		name = ww1_ottoman.101.a
-		ai_chance = { factor = 1 }
+		ai_chance = {
+			factor = 1
+		}
 		if = {
-			limit = { has_government = neutrality }
+			limit = {
+				has_government = neutrality
+			}
 			start_civil_war = {
 				ruling_party = democratic
-				ideology = neutrality 
-				size = 0.5 
+				ideology = neutrality
+				size = 0.7
 			}
 			else = {
 				start_civil_war = {
-					ideology = neutrality 
-					size = 0.5 
+					ideology = neutrality
+					size = 0.7
 				}
 			}
-		}	
+		}
 		random_country = {
 			limit = {
 				original_tag = INS
@@ -2172,29 +3115,47 @@ country_event = {
 				division_template = {
 					name = "Teskilat Brigade"
 					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
+						infantry = {
+							x = 0
+							y = 0
+						}
+						infantry = {
+							x = 0
+							y = 1
+						}
+						infantry = {
+							x = 0
+							y = 2
+						}
+						infantry = {
+							x = 1
+							y = 0
+						}
+						infantry = {
+							x = 1
+							y = 1
+						}
+						infantry = {
+							x = 1
+							y = 2
+						}
 					}
 				}
 				random_controlled_state = {
 					create_unit = {
-						division = "name = \"1. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.4" 
+						division = "name = \"1. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.4"
 						owner = INS
 					}
 					create_unit = {
-						division = "name = \"2. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2" 
+						division = "name = \"2. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2"
 						owner = INS
 					}
 					create_unit = {
-						division = "name = \"3. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2" 
+						division = "name = \"3. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2"
 						owner = INS
 					}
 					create_unit = {
-						division = "name = \"4. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2" 
+						division = "name = \"4. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2"
 						owner = INS
 					}
 				}
@@ -2202,6 +3163,7 @@ country_event = {
 		}
 	}
 }
+
 # Pakistan-Bangladesh Anti-Colonist Front
 ###########
 country_event = {
@@ -2209,16 +3171,22 @@ country_event = {
 	title = ww1_ottoman.102.t
 	desc = ww1_ottoman.102.d
 	picture = GFX_report_event_fascist_gathering
-	
 	is_triggered_only = yes
-
 	option = {
 		name = ww1_ottoman.102.a
 		if = {
-			limit = { PAK = { exists = no } }
+			limit = {
+				PAK = {
+					exists = no
+				}
+			}
 			every_owned_state = {
-				limit = { is_core_of = PAK }
-				PAK = { transfer_state = PREV }
+				limit = {
+					is_core_of = PAK
+				}
+				PAK = {
+					transfer_state = PREV
+				}
 			}
 			declare_war_on = {
 				target = PAK
@@ -2234,21 +3202,36 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { has_government = neutrality }
+			limit = {
+				has_government = neutrality
+			}
+			hidden_effect = {
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = no
+				}
+			}
 			start_civil_war = {
-				ruling_party = democratic
-				ideology = neutrality 
-				size = 0.5 
+				ideology = neutrality
+				size = 0.7
 				states = {
-					430 431 432 288 #Bangladesh
+					430
+					431
+					432
+					288
+					435
 				}
 			}
 			else = {
 				start_civil_war = {
-					ideology = neutrality 
-					size = 0.5 
+					ideology = neutrality
+					size = 0.7
 					states = {
-						430 431 432 288 #Bangladesh
+						430
+						431
+						432
+						288
+						435
 					}
 				}
 			}
@@ -2269,30 +3252,76 @@ country_event = {
 				division_template = {
 					name = "Teskilat Brigade"
 					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
+						infantry = {
+							x = 0
+							y = 0
+						}
+						infantry = {
+							x = 0
+							y = 1
+						}
+						infantry = {
+							x = 0
+							y = 2
+						}
+						infantry = {
+							x = 1
+							y = 0
+						}
+						infantry = {
+							x = 1
+							y = 1
+						}
+						infantry = {
+							x = 1
+							y = 2
+						}
 					}
 				}
 				random_controlled_state = {
 					create_unit = {
-						division = "name = \"1. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.4" 
-						owner = INS
+						division = "name = \"1. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.4"
+						owner = PREV
 					}
 					create_unit = {
-						division = "name = \"2. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2" 
-						owner = INS
+						division = "name = \"2. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2"
+						owner = PREV
 					}
 					create_unit = {
-						division = "name = \"3. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2" 
-						owner = INS
+						division = "name = \"3. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2"
+						owner = PREV
 					}
 					create_unit = {
-						division = "name = \"4. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2" 
-						owner = INS
+						division = "name = \"4. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"1. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"2. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"3. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"4. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"5. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"6. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"7. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
 					}
 				}
 			}
@@ -2312,42 +3341,87 @@ country_event = {
 				id = "TUR"
 				value = 200
 			}
-			set_cosmetic_tag = RAJ_OTT 
+			set_cosmetic_tag = RAJ_OTT
 			hidden_effect = {
 				division_template = {
 					name = "Teskilat Brigade"
 					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
+						infantry = {
+							x = 0
+							y = 0
+						}
+						infantry = {
+							x = 0
+							y = 1
+						}
+						infantry = {
+							x = 0
+							y = 2
+						}
+						infantry = {
+							x = 1
+							y = 0
+						}
+						infantry = {
+							x = 1
+							y = 1
+						}
+						infantry = {
+							x = 1
+							y = 2
+						}
 					}
 				}
 				random_controlled_state = {
 					create_unit = {
-						division = "name = \"1. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.4" 
-						owner = INS
+						division = "name = \"1. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.4"
+						owner = PREV
 					}
 					create_unit = {
-						division = "name = \"2. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2" 
-						owner = INS
+						division = "name = \"2. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2"
+						owner = PREV
 					}
 					create_unit = {
-						division = "name = \"3. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2" 
-						owner = INS
+						division = "name = \"3. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2"
+						owner = PREV
 					}
 					create_unit = {
-						division = "name = \"4. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2" 
-						owner = INS
+						division = "name = \"4. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"1. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"2. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"3. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"4. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"5. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"6. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
 					}
 				}
 			}
 		}
-		ai_chance = { factor = 1 }
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
+
 # Malayasian Anti-Colonist Uprising
 ####################
 country_event = {
@@ -2355,22 +3429,22 @@ country_event = {
 	title = ww1_ottoman.103.t
 	desc = ww1_ottoman.103.d
 	picture = GFX_report_event_fascist_gathering
-	
 	is_triggered_only = yes
-
 	option = {
 		name = ww1_ottoman.103.a
 		if = {
-			limit = { has_government = neutrality }
+			limit = {
+				has_government = neutrality
+			}
 			start_civil_war = {
 				ruling_party = democratic
-				ideology = neutrality 
-				size = 0.5 
+				ideology = neutrality
+				size = 0.6
 			}
 			else = {
 				start_civil_war = {
-					ideology = neutrality 
-					size = 0.5 
+					ideology = neutrality
+					size = 0.6
 				}
 			}
 		}
@@ -2393,35 +3467,272 @@ country_event = {
 				division_template = {
 					name = "Teskilat Brigade"
 					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
+						infantry = {
+							x = 0
+							y = 0
+						}
+						infantry = {
+							x = 0
+							y = 1
+						}
+						infantry = {
+							x = 0
+							y = 2
+						}
+						infantry = {
+							x = 1
+							y = 0
+						}
+						infantry = {
+							x = 1
+							y = 1
+						}
+						infantry = {
+							x = 1
+							y = 2
+						}
 					}
 				}
 				random_controlled_state = {
 					create_unit = {
-						division = "name = \"1. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.4" 
-						owner = INS
+						division = "name = \"1. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.4"
+						owner = PREV
 					}
 					create_unit = {
-						division = "name = \"2. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2" 
-						owner = INS
+						division = "name = \"2. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2"
+						owner = PREV
 					}
 					create_unit = {
-						division = "name = \"3. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2" 
-						owner = INS
+						division = "name = \"3. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2"
+						owner = PREV
 					}
 					create_unit = {
-						division = "name = \"4. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2" 
-						owner = INS
+						division = "name = \"4. Teskilat Brigade\" division_template = \"Teskilat Brigade\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"1. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"2. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
+					}
+					create_unit = {
+						division = "name = \"3. Milis Kuvveti\" division_template = \"Milis Kuvveti\" start_experience_factor = 0.2"
+						owner = PREV
 					}
 				}
 			}
 		}
-		ai_chance = { factor = 1 }
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Deportation of Armenians News
+################
+news_event = {
+	id = ww1_ottoman.104
+	title = ww1_ottoman.104.t
+	desc = ww1_ottoman.104.d
+	picture = GFX_news_event_032
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.104.a
+		trigger = {
+			tag = TUR
+		}		#doing right things
+	}
+	option = {
+		name = ww1_ottoman.104.b
+		set_global_flag = ottoman_deportation_of_minorities
+		trigger = {
+			NOT = {
+				tag = TUR
+			}
+		}		#oof
+	}
+}
+
+# Deportation complited - now we can gain turanist cores
+########################
+country_event = {
+	id = ww1_ottoman.105
+	title = ww1_ottoman.105.t
+	desc = ww1_ottoman.105.d
+	picture = GFX_report_event_generic_rally
+	trigger = {
+		tag = TUR
+		has_completed_focus = TUR_deport_the_minorities
+		NOT = {
+			has_idea = TUR_deportation_of_minorities
+		}
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		name = ww1_ottoman.105.a
+		#unlock_decision_category_tooltip = TUR_cores_turanist
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# Sadakat Pact - South American Focus
+###########
+country_event = {
+	id = ww1_ottoman.106
+	title = ww1_ottoman.106.t
+	desc = ww1_ottoman.106.d
+	picture = GFX_report_event_sailors_in_working_rig
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.106.a		#join alliance
+		TUR = {
+			add_to_faction = ROOT
+		}
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 10
+				OR = {
+					tag = VEN
+					tag = ARG
+					tag = CHL
+				}
+			}
+		}
+	}
+	option = {
+		name = ww1_ottoman.106.b		#defensive pact
+		TUR = {
+			give_guarantee = ROOT
+		}
+		ROOT = {
+			give_guarantee = TUR
+		}
+		ai_chance = {
+			factor = 25
+		}
+	}
+	option = {
+		name = ww1_ottoman.106.c
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+###Balkan economy pact-Ševket path
+country_event = {
+	id = ww1_ottoman.107
+	title = ww1_ottoman.107.t
+	desc = ww1_ottoman.107.d
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.107.a
+		ai_chance = {
+			factor = 1
+		}
+		add_political_power = -100
+		every_country = {
+			limit = {
+				OR = {
+					has_idea = TUR_idea_balkan_economic_sphere_5
+					has_idea = TUR_idea_balkan_economic_sphere_4
+					has_idea = TUR_idea_balkan_economic_sphere_3
+					has_idea = TUR_idea_balkan_economic_sphere_2
+					has_idea = TUR_idea_balkan_economic_sphere_1
+				}
+			}
+			TUR_balkan_economic_sphere_level_up = yes
+			if = {
+				limit = {
+					TUR = {
+						has_idea = TUR_idea_balkan_economic_sphere_1
+					}
+				}
+				add_ideas = TUR_idea_balkan_economic_sphere_2
+			}
+			if = {
+				limit = {
+					TUR = {
+						has_idea = TUR_idea_balkan_economic_sphere_2
+					}
+				}
+				add_ideas = TUR_idea_balkan_economic_sphere_3
+			}
+			if = {
+				limit = {
+					TUR = {
+						has_idea = TUR_idea_balkan_economic_sphere_3
+					}
+				}
+				add_ideas = TUR_idea_balkan_economic_sphere_4
+			}
+			if = {
+				limit = {
+					TUR = {
+						has_idea = TUR_idea_balkan_economic_sphere_4
+					}
+				}
+				add_ideas = TUR_idea_balkan_economic_sphere_5
+			}
+			if = {
+				limit = {
+					TUR = {
+						has_idea = TUR_idea_balkan_economic_sphere_5
+					}
+				}
+				add_ideas = TUR_idea_balkan_economic_sphere_6
+			}
+		}
+	}
+	option = {
+		name = ww1_ottoman.107.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				is_subject_of = TUR
+			}
+		}
+	}
+}
+
+###Guarantees-Ševket path
+country_event = {
+	id = ww1_ottoman.108
+	title = ww1_ottoman.108.t
+	desc = ww1_ottoman.108.d
+	is_triggered_only = yes
+	option = {
+		name = ww1_ottoman.108.a
+		TUR = {
+			give_guarantee = ROOT
+		}
+		give_guarantee = TUR
+		diplomatic_relation = {
+			country = TUR
+			relation = non_aggression_pact
+			active = yes
+		}
+		add_political_power = -25
+		ai_chance = {
+			factor = 1
+		}
+	}
+	option = {
+		name = ww1_ottoman.108.b
+		ai_chance = {
+			factor = 2
+		}
 	}
 }
 
@@ -2435,7 +3746,9 @@ country_event = {
 	fire_only_once = yes
 	option = {
 		name = ottoman.6.a
-		ai_chance = { factor = 1}
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
 
@@ -2446,10 +3759,11 @@ country_event = {
 	picture = GFX_report_event_sailors_in_working_rig
 	is_triggered_only = yes
 	fire_only_once = yes
-
 	option = {
 		name = ottoman.114.a
-		ai_chance = { factor = 1}
+		ai_chance = {
+			factor = 1
+		}
 	}
 }
 
@@ -2461,13 +3775,15 @@ country_event = {
 	picture = GFX_report_event_ANZAC_day
 	is_triggered_only = yes
 	fire_only_once = yes
-
 	option = {
 		name = ottoman.111.a
-		ai_chance = { factor = 1}
-	    set_country_flag = OTT_huriyet
+		ai_chance = {
+			factor = 1
+		}
+		set_country_flag = OTT_huriyet
 	}
 }
+
 country_event = {
 	id = ottoman.112
 	title = ottoman.112.title
@@ -2475,221 +3791,257 @@ country_event = {
 	picture = GFX_report_event_ANZAC_day
 	is_triggered_only = yes
 	fire_only_once = yes
-
 	option = {
 		name = ottoman.112.a
-		ai_chance = { factor = 1}
-	    set_country_flag = OTT_huriyet
+		ai_chance = {
+			factor = 1
+		}
+		set_country_flag = OTT_huriyet
 	}
 }
 
-##Event: Fate of Ottoman family
-country_event = {
-	id = ottoman.13
-	title = ottoman.13.title
-	desc = ottoman.13.desc
-	picture = GFX_report_event_hol_cabinet_de_geer
-	is_triggered_only = yes
-	fire_only_once = yes
-
-	option = {
-		name = ottoman.13.a
-		ai_chance = { factor = 1}
-		add_stability = 0.10
-		add_ideas = ottoman_family_socialist
-		remove_ideas = ottoman_family
-		complete_national_focus = TUR_ironfistofsocialism
-		create_country_leader = {
-			name = "Ahmed Nihad Efendi"
-			picture="gfx/leaders/TUR/nihad.dds"
-			expire = "1935.1.1"
-			ideology = religious_communism
-			traits = {  }
-		}
-	}
-
-	option = {
-		name = ottoman.13.d
-		ai_chance = { factor = 1}
-		remove_ideas = ottoman_family
-		add_stability = -0.20
-		complete_national_focus = TUR_ironfistofsocialism
-		create_country_leader = {
-			name = "Ethem Necat"
-			picture="gfx/leaders/TUR/ethem.dds"
-			expire = "1935.1.1"
-			ideology = vanguardism
-			traits = {  }
-		}
-	}
-}
-##Event: What should we do about the Armenian problem ?
-country_event = {
-	id = ottoman.14
-	title = ottoman.14.title
-	desc = ottoman.14.desc
-	picture = GFX_report_event_generic_rifles
-	is_triggered_only = yes
-	fire_only_once = yes
-	option = {
-		name = ottoman.14.a
-		trigger = { has_manpower > 75000 }
-		add_manpower = -75000
-		if = {
-			limit = { has_idea = idea_turkey_balkan_separatism }
-			remove_ideas = idea_turkey_balkan_separatism
-		}
-		if = {
-			limit = { has_idea = idea_turkey_minor_separatism }
-			remove_ideas = idea_turkey_minor_separatism
-		}
-		add_timed_idea = { idea = idea_turkey_minor_separatism days = 350 }
-		ai_chance = { factor = 0 }
-	}
-	option = {
-		name = ottoman.14.b
-		if = {
-			limit = { has_idea = idea_turkey_balkan_separatism }
-			remove_ideas = idea_turkey_balkan_separatism
-		}
-		if = {
-			limit = { has_idea = idea_turkey_minor_separatism }
-			remove_ideas = idea_turkey_minor_separatism
-		}
-		USA = { set_country_flag = { flag = TUR_armenian_genocide days = 60 value = 1 } }
-		add_timed_idea = { idea = idea_turkey_armenian_genocide days = 270 }
-		if = {
-			limit = { owns_state = 353 }
-			353 = {
-				add_manpower = -100000
-			}
-		}
-		if = {
-			limit = { owns_state = 354 }
-			354 = {
-				add_manpower = -100000
-			}
-		}
-		if = {
-			limit = { owns_state = 352 }
-			352 = {
-				add_manpower = -100000
-			}
-		}
-		if = {
-			limit = { owns_state = 349 }
-			349 = {
-				add_manpower = -100000
-			}
-		}
-		ai_chance = { factor = 100 }
-	}
-}
-
-##Event: South America initiative
-country_event = {
-	id = ottoman.16
-	title = ottoman.16.title
-	desc = ottoman.16.desc
-	picture = GFX_report_event_sailors_in_working_rig
-	is_triggered_only = yes
-	fire_only_once = yes
-
-	option = {
-		name = ottoman.16.a
-		ai_chance = { factor = 1 }
-		CUB = {
-			country_event = { id = generic.5 days = 1 }
-		}
-		VEN = { 
-			country_event = { id = generic.5 days = 1 }
-			create_wargoal = { 
-				type = annex_everything 
-				target = COL 
-			}
-			add_state_claim = 486 
-			add_state_claim = 306 
-			add_state_claim = 493 
-			add_state_claim = 795
-        }
-		BRA = { 
-			country_event = { id = generic.5 days = 1 }
-			create_wargoal = { 
-				type = annex_everything 
-				target = PAR 
-			}
-			add_state_claim = 687 
-			add_state_claim = 309 
-			add_state_claim = 310 
-			add_state_claim = 301
-		}
-		PRU = {
-			country_event = { id = generic.5 days = 1 }
-			create_wargoal = { 
-                type = annex_everything 
-                target = ECU 
-			}
-		}
-		ARG = {
-			country_event = { id = generic.5 days = 1 }
-			create_wargoal = { 
-                type = annex_everything 
-                target = ENG 
-			}
-			create_wargoal = { 
-                type = annex_everything 
-                target = URG 
-			}
-			create_wargoal = { 
-                type = annex_everything 
-                target = CHL 
-			}
-			add_state_claim = 507 
-			add_state_claim = 279 
-			add_state_claim = 300
-		}
-		BOL = {
-			country_event = { id = generic.5 days = 1 }
-			create_wargoal = { 
-                type = annex_everything 
-                target = CHL 
-			}
-			add_state_claim = 506
-        }
-		MEX = {
-			country_event = { id = generic.5 days = 1 }
-			create_wargoal = { 
-				type = annex_everything 
-				target = GUA 
-			}
-			create_wargoal = { 
-				type = annex_everything 
-				target = ELS 
-			}
-			create_wargoal = { 
-                type = annex_everything 
-                target = NIC 
-			} 
-			create_wargoal = { 
-				type = annex_everything 
-				target = HON 
-			}
-		}
-	}
-}
-
+# #Event: Fate of Ottoman family
+# country_event = {
+# 	id = ottoman.13
+# 	title = ottoman.13.title
+# 	desc = ottoman.13.desc
+# 	picture = GFX_report_event_hol_cabinet_de_geer
+# 	is_triggered_only = yes
+# 	fire_only_once = yes
+# 	option = {
+# 		name = ottoman.13.a
+# 		ai_chance = { factor = 1}
+# 		add_stability = 0.10
+# 		add_ideas = ottoman_family_socialist
+# 		remove_ideas = ottoman_family
+# 		complete_national_focus = TUR_ironfistofsocialism
+# 		create_country_leader = {
+# 			name = "Ahmed Nihad Efendi"
+# 			picture="gfx/leaders/TUR/nihad.dds"
+# 			expire = "1935.1.1"
+# 			ideology = religious_communism
+# 			traits = {  }
+# 		}
+# 	}
+# 	option = {
+# 		name = ottoman.13.d
+# 		ai_chance = { factor = 1}
+# 		remove_ideas = ottoman_family
+# 		add_stability = -0.20
+# 		complete_national_focus = TUR_ironfistofsocialism
+# 		create_country_leader = {
+# 			name = "Ethem Necat"
+# 			picture="gfx/leaders/TUR/ethem.dds"
+# 			expire = "1935.1.1"
+# 			ideology = vanguardism
+# 			traits = {  }
+# 		}
+# 	}
+# }
 #Conquest of al-Hasa
 country_event = {
 	id = ottoman.184
 	title = ottoman.184.title
 	desc = ottoman.184.desc
 	picture = GFX_report_event_saf_soldiers_3
-	
 	is_triggered_only = yes
-	
 	option = {
 		name = ottoman.184.a
-		SAU = { transfer_state = 804 set_cosmetic_tag = SAU_nejd_and_hasa }
+		SAU = {
+			transfer_state = 804
+			set_cosmetic_tag = SAU_nejd_and_hasa
+		}
 	}
 }
 
+###Demand brits to leave Egypt
+country_event = {
+	id = ottoman.185
+	title = ottoman.185.t
+	desc = ottoman.185.d
+	is_triggered_only = yes
+	option = {
+		name = ottoman.185.a
+		end_puppet = EGY
+		TUR = {
+			set_autonomy = {
+				target = EGY
+				autonomy_state = autonomy_tgwr_protectorate
+			}
+		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 12
+				has_war = yes
+			}
+		}
+	}
+	option = {
+		name = ottoman.185.b
+		TUR = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = EGY
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+
+country_event = {
+	id = ottoman_arabia.185
+	title = ottoman_arabia.185.t
+	desc = ottoman_arabia.185.d
+	is_triggered_only = yes
+	option = {
+		name = ottoman_arabia.185.a
+		end_puppet = OMA
+		TUR = {
+			set_autonomy = {
+				target = OMA
+				autonomy_state = autonomy_tgwr_protectorate
+			}
+		}
+		TUR = {
+			set_state_owner = 656
+			set_state_owner = 804
+			set_state_owner = 765
+			set_state_owner = 658
+			set_state_owner = 659
+		}
+		ai_chance = {
+			factor = 2
+			Modifier = {
+				Factor = 20
+				has_war = yes
+			}
+		}
+	}
+	option = {
+		name = ottoman_arabia.185.b
+		TUR = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = OMA
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+
+#########################
+country_event = {
+	id = ottomanasembly.1
+	title = ottomanasembly.1.t
+	desc = ottomanasembly.1.d
+	is_triggered_only = yes
+	option = {
+		name = ottomanasembly.1.a
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 1
+				is_in_faction = yes
+			}
+		}
+		add_ideas = tur_meclis_assembly
+	}
+	option = {
+		name = ottomanasembly.1.b
+		add_ideas = tur_meclis_sultancilar
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+####Force Bulgaria to align
+country_event = {
+	id = ottoman.186
+	title = ottoman.186.t
+	desc = ottoman.186.d
+	is_triggered_only = yes
+	option = {
+		name = ottoman.186.a
+		TUR = {
+			puppet = BUL
+		}
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 1
+				is_in_faction = yes
+			}
+		}
+	}
+	option = {
+		name = ottoman.186.b
+		hidden_effect = {
+			TUR = {
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = BUL
+				}
+			}
+		}
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+###Elections 
+country_event = {
+	id = ottoman.187
+	title = ottoman.187.t
+	desc = ottoman.187.d
+	is_triggered_only = yes
+	option = {
+		#Tevfik
+		name = ottoman.187.a
+		create_country_leader = {
+			name = "Ahmet Tevfik Paşa"
+			ideology = conservatism
+			expire = "1935.1.1"
+			picture = "gfx/leaders/TUR/TUR_ahmet_tevfik.dds"
+			traits = {
+				tevfik
+				grand_vizier
+				trait_conservatism
+			}
+		}
+	}
+	option = {
+		name = ottoman.187.b
+		create_country_leader = {
+			name = "Cavid Bey"
+			ideology = conservatism
+			expire = "1935.1.1"
+			picture = "gfx/leaders/TUR/TUR_cavid_bey.tga"
+			traits = {
+				grand_vizier
+				editor
+				trait_conservatism
+			}
+		}
+	}
+	option = {
+		name = ottoman.187.c
+		create_country_leader = {
+			name = "Ahmet Izzet Paşa"
+			ideology = conservatism
+			expire = "1935.1.1"
+			picture = "gfx/leaders/TUR/TUR_ahmet_izzet.tga"
+			traits = {
+				grand_vizier
+				maresal
+				trait_conservatism
+			}
+		}
+	}
+}

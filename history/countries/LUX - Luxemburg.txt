@@ -5,33 +5,31 @@ set_stability = 0.90
 set_war_support = 0.1
 set_convoys = 0
 
-create_country_leader = { name = "Marie-Adélaïde" desc=LUX_marie_adelaide_DESC picture="gfx/leaders/LUX_marie_adelaide.dds" expire="1935.1.1" ideology = liberalism traits={  } }
-
 create_country_leader = { 
     name = "Michel Welter" 
     picture="gfx/leaders/Europe/Portrait_europe_generic_7.dds"
 	expire="1935.1.1" 
 	ideology = reformist_socialism 
-	traits={  } 
+	traits = { trait_reformist_socialism } 
 }
 create_country_leader={ 
 	name = "William IV" 
 	picture="gfx/leaders/LUX/LUX_william_iv.dds" 
 	expire="1935.1.1" 
 	ideology = autocracy 
-	traits={  } 
+	traits = { trait_autocracy } 
 }
 create_country_leader={ 
 	name = "Émile Reuter" 
 	picture="gfx/leaders/Europe/Portrait_europe_generic_6.dds" 
 	expire="1935.1.1" 
 	ideology = conservatism 
-	traits={  } 
+	traits = { trait_conservatism } 
 }
 
 
 1910.1.1 = {
-	oob = "LUX_1910"
+	# oob = "LUX_1910"
 
 	set_technology = {
 		#infantry
@@ -62,8 +60,5 @@ create_country_leader={
 		fascism = 0
 		communism = 1
 		neutrality = 55
-	}
-
-	add_ideas = {
 	}	
 }

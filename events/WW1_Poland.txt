@@ -51,9 +51,13 @@ country_event = {
 	
 	trigger = {
 		tag = POL
+		exists = yes
 		is_subject = no
-		GAL = { exists = yes is_subject = no }
-	}	
+		GAL = {
+			exists = yes
+			is_subject = no
+		}
+	}
 	mean_time_to_happen = {
 		days = 0
 	}
@@ -66,10 +70,24 @@ country_event = {
 				target = GAL
 				transfer_troops = yes
 			}
-		}
-		every_state = {
-			limit = { is_core_of = GAL }
-			add_core_of = POL
+			if = {
+				limit = {
+					WUK = {
+						exists = yes
+						is_subject = no
+					}
+				}
+				annex_country = {
+					target = WUK
+					transfer_troops = no
+				}
+				every_state = {
+					limit = {
+						is_core_of = WUK
+					}
+					remove_core_of = WUK
+				}
+			}
 		}
 	}
 }
@@ -85,7 +103,14 @@ country_event = {
 	trigger = {
 		tag = POL
 		exists = yes			
-		NOT = { has_country_leader = { name = "Józef Piłsudski" ruling_only = yes } }
+		NOT = { 
+			has_country_leader = { 
+				name = "Józef Piłsudski" 
+				ruling_only = yes 
+			} 
+			has_completed_focus = POL_declare_a_republic
+			has_completed_focus = POL_kingdom
+		}
 		OR = {
 		    is_subject = no
 			AND = {
@@ -98,6 +123,9 @@ country_event = {
 	mean_time_to_happen = { days = 1 }
 	option = {
 		name = ww1_poland.1.a
+		trigger = {
+			NOT = {has_completed_focus = POL_kingdom}
+		}
 		if = {
 		    limit = {
                 is_subject_of = GER
@@ -109,12 +137,13 @@ country_event = {
 			name = "Józef Piłsudski"
 			picture = "gfx/leaders/POL/POL_jozef_pilsudski.dds" 
 			expire = "1935.1.1" 
-			ideology = centrism
+			ideology = authoritarian_democracy
 			traits = { 
 			    nationalist_symbol 
 				dislikes_russia 
 			} 
 		}
+		set_cosmetic_tag = POL_republic
 		hidden_effect = {			
             retire_ideology_leader = communism
 			create_country_leader = {
@@ -126,8 +155,15 @@ country_event = {
 			}			
 		}	
 		set_party_name = { ideology = neutrality name = POL_pilsudski_party long_name = POL_pilsudski_party}
-		set_cosmetic_tag = POL_republic
+		complete_national_focus = POL_declare_a_republic
 		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = ww1_poland.1.b
+		complete_national_focus = POL_kingdom
+		trigger = {
+			NOT = {has_completed_focus = POL_declare_a_republic}
+		}
 	}
 }
 #Poland Annexes Galicia - Undead Unicorn wuz here, fixed by Silent Enforcer
@@ -177,7 +213,7 @@ country_event = {
 				}
 				create_country_leader = { 
 					name = "Józef Piłsudski"
-					picture = "gfx/leaders/POL/POL_jozef_pilsudski.dds" 
+					picture = "gfx/leaders/POL/POL_jozef_pilsudski_socialist.dds" 
 					expire = "1935.1.1" 
 					ideology = marxism
 					traits = { 
@@ -201,7 +237,6 @@ country_event = {
 	title = ww1_poland.3.t
 	desc = ww1_poland.3.d
 	picture = GFX_report_event_soviet_soldiers
-    fire_only_once = yes
 	trigger = {
 		original_tag = POL
 		exists = yes			
@@ -250,5 +285,131 @@ country_event = {
 		}
 		set_party_name = { ideology = communism name = POL_communism_party long_name = POL_communism_party_long }
 		drop_cosmetic_tag = yes
+	}
+}
+#Ask for Galicia
+country_event = {
+	id = ww1_poland.5
+	title = ww1_poland.5.t
+	desc = ww1_poland.5.d
+	is_triggered_only = yes
+	option = {
+		name = ww1_poland.2.a
+		ai_chance = { factor = 100 }
+		if = {
+			limit = {
+				has_subject = GAL
+			}
+			POL = { 
+				annex_country = {
+					target = GAL
+					transfer_troops = yes
+				}
+			}
+		}
+		every_owned_state = {
+			limit = {
+				is_core_of = GAL
+				is_core_of = POL
+			}
+			POL = { transfer_state = PREV }
+		}
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			set_autonomy = {
+				target = POL
+				autonomous_state = autonomy_dominion
+				freedom_level = 0.1
+			}
+			else = { puppet = POL }
+		}
+		POL = { country_event = ww1_poland.6 }
+	}
+	option = {
+		name = ww1_poland.2.b
+		ai_chance = { factor = 0 }
+		POL = { country_event = ww1_poland.7 }
+	}
+}
+#Ask for Galicia - accept
+country_event = {
+	id = ww1_poland.6
+	title = ww1_poland.6.t
+	desc = ww1_poland.6.d
+	is_triggered_only = yes
+	option = {
+		name = ww1_poland.6.a
+		effect_tooltip = {
+			AUH = { puppet = POL }
+		}
+	}
+}
+#Ask for Galicia - reject
+country_event = {
+	id = ww1_poland.7
+	title = ww1_poland.7.t
+	desc = ww1_poland.7.d
+	is_triggered_only = yes
+	option = {
+		name = ww1_poland.7.a
+		add_opinion_modifier = {
+			target = AUH
+			modifier = large_decrease
+		}
+		if = {
+			limit = {
+				has_country_leader = {
+					name = "Karol Stefan I" 
+					ruling_only = yes 
+				}						
+			}
+			add_country_leader_trait = unpopular_monarch
+		}
+	}
+}
+#1922 Polish presidential elections
+country_event = {
+    id = ww1_poland.8
+	title = ww1_poland.8.t
+	desc = ww1_poland.8.d
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = POL_election_event
+	}
+	option = {
+		name = ww1_poland.8.a #PSL
+		complete_national_focus = POL_peoples_party_victory
+		ai_chance = { factor = 50 }
+	}
+	option = {
+		name = ww1_poland.8.a #ZLN
+		complete_national_focus = POL_national_democrat_victory
+		ai_chance = { 
+			factor = 40
+			modifier = {
+				factor = 5
+				fascism > 0.4
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+	option = {
+		name = ww1_poland.8.c #PSP
+		complete_national_focus = POL_socialist_victory
+		ai_chance = { 
+			factor = 10 
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		trigger = {
+			communism > 0.2
+		}
 	}
 }

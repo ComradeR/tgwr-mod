@@ -9,7 +9,7 @@ create_country_leader = {
 	picture = "gfx/leaders/ASR/ASR_muhammad_ibn_ali_al_idrisi.dds" 
 	expire = "1935.1.1" 
 	ideology = despotism 
-	 
+	traits = { trait_despotism }
 }
 
 1910.1.1 = {
@@ -18,20 +18,7 @@ create_country_leader = {
 	set_technology = {
 		#infantry
 		infantry_weapons = 1
-		
-		#support
-		
-		#armored
-		
-		#artillery
-		
-		#doctrine
-		
-		#navy
-
-		#air
-		
-		#engineering
+		camelry = 1
 	}
 	set_politics = {
 		ruling_party = neutrality

@@ -21,7 +21,6 @@ abandon_puppet_tag = { #in testing
 				has_cosmetic_tag = CHI_RUS
 				has_cosmetic_tag = PER_RUS
 				has_cosmetic_tag = ENG_USA
-				has_cosmetic_tag = ENG_MEX
 				has_cosmetic_tag = PER_ENG
 				has_cosmetic_tag = CHI_ENG
 			}
@@ -512,5 +511,52 @@ TUR_modernize_army_effect = {
 	else_if = {
 		limit = { has_idea = TUR_army_of_bygone_era_11 }
 		remove_ideas = TUR_army_of_bygone_era_11
+	}
+}
+TUR_balkan_economic_sphere_level_up = {
+	if = {
+		limit = {
+			has_idea = TUR_idea_balkan_economic_sphere_1
+		}
+		swap_ideas = {
+			remove_idea = TUR_idea_balkan_economic_sphere_1
+			add_idea = TUR_idea_balkan_economic_sphere_2
+		}
+	}
+	if = {
+		limit = {
+			has_idea = TUR_idea_balkan_economic_sphere_2
+		}
+		swap_ideas = {
+			remove_idea = TUR_idea_balkan_economic_sphere_2
+			add_idea = TUR_idea_balkan_economic_sphere_3
+		}
+	}
+	if = {
+		limit = {
+			has_idea = TUR_idea_balkan_economic_sphere_3
+		}
+		swap_ideas = {
+			remove_idea = TUR_idea_balkan_economic_sphere_3
+			add_idea = TUR_idea_balkan_economic_sphere_4
+		}
+	}
+	if = {
+		limit = {
+			has_idea = TUR_idea_balkan_economic_sphere_4
+		}
+		swap_ideas = {
+			remove_idea = TUR_idea_balkan_economic_sphere_4
+			add_idea = TUR_idea_balkan_economic_sphere_5
+		}
+	}
+	if = {
+		limit = {
+			has_idea = TUR_idea_balkan_economic_sphere_5
+		}
+		swap_ideas = {
+			remove_idea = TUR_idea_balkan_economic_sphere_5 
+			add_idea = TUR_idea_balkan_economic_sphere_6
+		}
 	}
 }

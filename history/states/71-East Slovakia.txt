@@ -3,7 +3,7 @@ state={
 	name="STATE_71"
 	manpower = 1197800
 	state_category=rural
-	provinces={ 555 581 3550 3581 6586 6604 11554 }
+	provinces={ 555 581 3550 3581 6586 11554 }
 	history={
 	    victory_points = {
 			3581 3
@@ -11,6 +11,7 @@ state={
 		owner=AUH
 		add_core_of=AUH
 		add_core_of=SLO
+		add_claim_by=HUN
 		buildings={
 			infrastructure=4
 			industrial_complex=1

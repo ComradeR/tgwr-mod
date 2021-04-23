@@ -62,6 +62,7 @@ CHI_xinhai_revolution = {
 		activation = {
 			original_tag = CHI
 			has_global_flag = xinhai_revolution_ends
+			NOT = { has_global_flag = national_protection_war }
 		}
 		allowed = {
 			original_tag = CHI
@@ -70,6 +71,7 @@ CHI_xinhai_revolution = {
 			OR = {
 				has_completed_focus = CHI_kuomintang
 				has_completed_focus = CHI_ruling_of_yuan_shikai
+				has_global_flag = national_protection_war
 			}
 		}
 		visible = {
@@ -77,12 +79,66 @@ CHI_xinhai_revolution = {
 			has_global_flag = xinhai_revolution_ends
 			NOT = { has_completed_focus = CHI_kuomintang }
 			NOT = { has_completed_focus = CHI_ruling_of_yuan_shikai }
+			NOT = { has_global_flag = national_protection_war }
 		}
 		fire_only_once = yes
 		is_good = no
 		timeout_effect = {
 			CHI = { country_event = { id = ww1_china.5 } }
 		}		
+	}
+	CHI_sue_for_peace_QIN = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = CHI
+		}
+		visible = {
+			has_global_flag = xinhai_revolution
+			NOT = { has_global_flag = xinhai_revolution_ends }
+		}
+		available = {
+			has_global_flag = xinhai_revolution
+			NOT = { has_global_flag = xinhai_revolution_ends }
+			surrender_progress > 0.5
+		}
+		fire_only_once = yes
+		complete_effect = {
+			CHI = {
+				white_peace = QIN
+
+				transfer_navy = {
+					target = QIN
+				}
+			}
+			QIN = {
+				annex_country = {
+					target = CHI
+				}
+
+				hidden_effect = {
+					set_global_flag = xinhai_revolution_ends
+					set_country_flag = xinhai_victory
+					add_ideas = CHI_idea_inflation5
+					add_ideas = CHI_idea_army_corruption3
+
+					add_timed_idea = {
+						idea = CHI_idea_xinhai_revolution_ends
+						days = 720
+					}
+
+					news_event = { id = kis_news.119 }
+				}
+			
+				change_tag_from = CHI
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000
+				surrender_progress > 0.9
+			}
+		}
 	}
 }
 CHI_warlord_era = {
@@ -91,24 +147,27 @@ CHI_warlord_era = {
 		days_mission_timeout = 270
 		activation = {
 			original_tag = CHI
-			has_global_flag = warlord_era
+			NOT = { has_government = fascism }
+			OR = {
+				has_global_flag = national_protection_war
+				AND = {
+					has_global_flag = yuan_shikai_dead
+					has_global_flag = chinese_warlord_crisis
+					NOT = { has_completed_focus = CHI_second_empire }
+				}
+			}
 			owns_state = 608
 			NOT = { has_global_flag = manchu_restoration }
-			NOT = { has_completed_focus = CHI_national_protection_war }
 		}
 		allowed = {
 			original_tag = CHI
 		}
 		available = {
-			OR = {
-				NOT = { owns_state = 608 }
-				has_global_flag = manchu_restoration
-				has_completed_focus = CHI_national_protection_war
-			}
+			NOT = { owns_state = 608 }
 		}
 		visible = {
 			original_tag = CHI
-			has_global_flag = warlord_era
+			has_global_flag = national_protection_war
 			NOT = { has_global_flag = manchu_restoration }
 		}
 		fire_only_once = yes
@@ -119,34 +178,81 @@ CHI_warlord_era = {
 	}
 	CHI_warlord_era_mission = {
 		icon = generic_nationalism		
-		days_mission_timeout = 140
+		days_mission_timeout = 13 #historically fast
 		activation = {
 			has_global_flag = chinese_warlord_crisis
-			NOT = { has_global_flag = warlord_era }
-		}
-		allowed = {
-			OR = {
-				original_tag = CHI
-				original_tag = QIN
+			NOT = {
+				has_global_flag = warlord_era
+				has_global_flag = national_protection_war
+				has_country_flag = CHI_national_protection_flag
 			}
-		}
-		available = {
-			has_global_flag = warlord_era
-		}
-		visible = {
 			OR = {
 				has_completed_focus = CHI_second_empire
 				has_completed_focus = CHI_suppress_monarchists
-				has_global_flag = chinese_warlord_crisis
 			}
-			NOT = { has_global_flag = warlord_era }
+		}
+		allowed = {
+			original_tag = CHI
+		}
+		available = {
+			OR = {
+				has_global_flag = warlord_era
+				has_global_flag = national_protection_war
+			}
+		}
+		visible = {
+			has_global_flag = chinese_warlord_crisis
+			NOT = {
+				has_global_flag = warlord_era
+				has_global_flag = national_protection_war
+				has_country_flag = CHI_national_protection_flag
+			}
+			OR = {
+				has_completed_focus = CHI_second_empire
+				has_completed_focus = CHI_suppress_monarchists
+			}
 		}
 		fire_only_once = yes
 		is_good = no
 		timeout_effect = {
-			country_event = { id = ww1_china.2 }
-			set_global_flag = warlord_era			
-		}		
+			country_event = { id = ww1_china.37 }
+			set_global_flag = national_protection_war
+			#set_global_flag = warlord_era
+			#this will be caused after the national protection war
+		}
+	}
+	QIN_warlord_era_mission = {
+		icon = generic_nationalism
+		days_mission_timeout = 30
+		activation = {
+			has_global_flag = chinese_warlord_crisis
+			NOT = {
+				has_global_flag = warlord_era
+			}
+			has_completed_focus = CHI_pacify_beiyang_army
+		}
+		allowed = {
+			original_tag = QIN
+		}
+		available = {
+			OR = {
+				has_global_flag = warlord_era
+				has_global_flag = national_protection_war
+			}
+		}
+		visible = {
+			has_global_flag = chinese_warlord_crisis
+			NOT = {
+				has_global_flag = warlord_era
+			}
+			has_completed_focus = CHI_pacify_beiyang_army
+		}
+		fire_only_once = yes
+		is_good = no
+		timeout_effect = {
+			set_global_flag = warlord_era
+			QIN = { create_faction = qing_empire }
+		}
 	}
 	CHI_government_split_mission = {
 		icon = generic_nationalism		
@@ -159,7 +265,7 @@ CHI_warlord_era = {
 			original_tag = CHI
 		}
 		available = {
-			NOT = { has_idea = CHI_idea_government_divided }
+			NOT = { has_global_flag = warlord_era }
 		}
 		visible = {
 			has_global_flag = warlord_era
@@ -173,340 +279,959 @@ CHI_warlord_era = {
 			set_global_flag = CHI_government_split_mission
 		}		
 	}
-	# NATIONAL PROTECTION WAR
-	CHI_lead_warlord_uprising_PRC = {
-		icon = generic_prepare_civil_war
-		allowed = { original_tag = CHI }
-		visible = {
-			has_completed_focus = CHI_national_protection_war 
-			NOT = { has_global_flag = warlord_era }
+	CHI_sue_for_peace_NPA = {
+		allowed = {
+			original_tag = CHI
 		}
 		available = {
-			has_completed_focus = CHI_national_protection_war
-			PRC = { exists = no }
-			NOT = { has_global_flag = warlord_leads_npw }
+			any_country = {
+				has_country_flag = CHI_national_protection_flag
+				has_war_with = CHI
+			}
+			NOT = { has_country_flag = CHI_national_protection_flag }
+			NOT = { has_government = democratic }
 		}
-		
-		cost = 0	
+		visible = {
+			any_country = {
+				has_country_flag = CHI_national_protection_flag
+				has_war_with = CHI
+			}
+			NOT = { has_country_flag = CHI_national_protection_flag }
+			NOT = { has_government = democratic }
+		}
 		fire_only_once = yes
-		complete_effect = {
-			set_global_flag = shaanxi_clique
-			PRC = {
-				transfer_state = 622
-				hidden_effect = {
-					add_state_core = 622
-					load_oob = "PRC_1916"
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000
+				OR = {
+					surrender_progress > 0.6
+					has_global_flag = yuan_shikai_dead
 				}
-				change_tag_from = ROOT
-				set_global_flag = warlord_leads_npw
 			}
 		}
-		ai_will_do = { factor = 0 }
-	}
-	CHI_lead_warlord_uprising_GDC = {
-		icon = generic_prepare_civil_war
-		allowed = { original_tag = CHI }
-		visible = {
-			has_completed_focus = CHI_national_protection_war 
-			NOT = { has_global_flag = warlord_era }
-		}
-		available = {
-			has_completed_focus = CHI_national_protection_war
-			GDC = { exists = no }
-			NOT = { has_global_flag = warlord_leads_npw }
-		}
-		
-		cost = 0	
-		fire_only_once = yes
 		complete_effect = {
-			set_global_flag = guangzhou_clique
-			GDC = {
-				transfer_state = 591
-				transfer_state = 592
-				transfer_state = 593
-				transfer_state = 594
-				hidden_effect = {
-					add_state_core = 591
-					add_state_core = 592
-					add_state_core = 593
-					add_state_core = 594
-					load_oob = "GXC_1916"
-				}
-				change_tag_from = ROOT
-				set_global_flag = warlord_leads_npw
+			country_event = {
+				id = ww1_china.38
+				days = 1
 			}
 		}
-		ai_will_do = { factor = 0 }
 	}
-	CHI_lead_warlord_uprising_ZHILI = {
-		icon = generic_prepare_civil_war
-		allowed = { original_tag = CHI }
-		visible = {
-			has_completed_focus = CHI_national_protection_war 
-			NOT = { has_global_flag = warlord_era }
+	# For Kuomintang
+	CHI_sue_for_peace_NPA_2 = {
+		allowed = {
+			original_tag = CHI
 		}
 		available = {
-			has_completed_focus = CHI_national_protection_war
-			YUN = { exists = no }
-			NOT = { has_global_flag = warlord_leads_npw }
+			any_country = {
+				has_country_flag = CHI_national_protection_flag
+				has_war_with = CHI
+			}
+			NOT = { has_country_flag = CHI_national_protection_flag }
+			has_government = democratic
 		}
-		cost = 0	
+		visible = {
+			any_country = {
+				has_country_flag = CHI_national_protection_flag
+				has_war_with = CHI
+			}
+			NOT = { has_country_flag = CHI_national_protection_flag }
+			has_government = democratic
+		}
 		fire_only_once = yes
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000
+				OR = {
+					surrender_progress > 0.6
+					has_global_flag = yuan_shikai_dead
+				}
+			}
+		}
 		complete_effect = {
+			country_event = ww1_china.38
+		}
+	}
+	CHI_constitutional_protection_war = {
+		icon = generic_nationalism
+		days_mission_timeout = 60
+		activation = {
+			has_global_flag = chinese_warlord_crisis
+			has_global_flag = manchu_restoration
+			has_global_flag = warlord_era
+			has_country_leader = {
+				name = "Duan Qirui"
+				ruling_only = yes
+			}
+		}
+		allowed = {
+			OR = {
+				original_tag = CHI
+				original_tag = QIN
+			}
+		}
+		available = {
+			OR = {
+				has_global_flag = constitutional_protection_war
+			}
+		}
+		visible = {
+			has_global_flag = chinese_warlord_crisis
+			has_global_flag = manchu_restoration
+			has_global_flag = warlord_era
+			has_country_leader = {
+				name = "Duan Qirui"
+				ruling_only = yes
+			}
+		}
+		fire_only_once = yes
+		is_good = no
+		timeout_effect = {
+			country_event = { id = ww1_china.39 }
+			set_global_flag = constitutional_protection_war
+		}
+	}
+	CHI_sue_for_peace_CPG = {
+		allowed = {
+			OR = {
+				original_tag = CHI
+				original_tag = GXC
+			}
+		}
+		available = {
+			has_global_flag = constitutional_protection_war
+			GXC = {
+				has_war_with = CHI
+			}
+			surrender_progress > 0.25
+			NOT = { has_global_flag = warlord_era }
+		}
+		visible = {
+			has_global_flag = constitutional_protection_war
+			GXC = {
+				has_war_with = CHI
+			}
+			NOT = { has_global_flag = warlord_era }
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			base = 1000
+		}
+		complete_effect = {
+			country_event = ww1_china.40
+		}
+	}
+	CHI_zhili_anhui_war = {
+		icon = generic_nationalism
+		days_mission_timeout = 965 #historical
+		activation = {
+			has_global_flag = chinese_warlord_crisis
+			has_global_flag = manchu_restoration
+			has_global_flag = warlord_era
+			ANC = {
+				exists = yes
+				NOT = { has_war_with = SDC }
+			}
+			SDC = { exists = yes }
+			FNG = { exists = yes }
+			NOT = { has_global_flag = zhili_anhui_war }
+		}
+		allowed = {
+			OR = {
+				original_tag = ANC
+				original_tag = SDC
+				original_tag = FNG
+			}
+		}
+		available = {
+			OR = {
+				has_global_flag = zhili_anhui_war
+				ANC = {
+					has_war_with = SDC
+				}
+			}
+		}
+		visible = {
+			has_global_flag = chinese_warlord_crisis
+			has_global_flag = manchu_restoration
+			has_global_flag = warlord_era
+			ANC = {
+				exists = yes
+				NOT = { has_war_with = SDC }
+			}
+			SDC = { exists = yes }
+			FNG = { exists = yes }
+			NOT = { has_global_flag = zhili_anhui_war }
+		}
+		fire_only_once = yes
+		is_good = no
+		timeout_effect = {
+			create_faction = eight_provinces
+			add_to_faction = HNC
+			add_to_faction = FNG
+			set_global_flag = zhili_anhui_war
+		}
+	}
+	ANC_sue_for_peace_SDC = {
+		allowed = {
+			original_tag = ANC
+		}
+		available = {
+			has_global_flag = zhili_anhui_war
+			ANC = {
+				has_war_with = SDC
+				surrender_progress > 0.1
+			}
+		}
+		visible = {
+			has_global_flag = zhili_anhui_war
+			ANC = {
+				has_war_with = SDC
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000
+				surrender_progress > 0.2
+			}
+		}
+		complete_effect = {
+			country_event = ww1_china.43
+		}
+	}
+	CHI_first_zhili_fengtian_war = {
+		icon = generic_nationalism
+		days_mission_timeout = 644 #historical
+		activation = {
+			has_global_flag = chinese_warlord_crisis
+			has_global_flag = manchu_restoration
+			has_global_flag = warlord_era
+			has_global_flag = zhili_anhui_war
 			SDC = {
-				transfer_state = 597
-				transfer_state = 614
-				transfer_state = 620
-				hidden_effect = {
-					add_state_core = 597
-					load_oob = "SDC_1916"
+				exists = yes
+				NOT = {
+					has_war_with = FNG
+					is_in_faction_with = FNG
 				}
-				change_tag_from = ROOT
-				set_cosmetic_tag = CHI_ZHC
-				set_global_flag = warlord_leads_npw
+			}
+			FNG = { exists = yes }
+			NOT = { has_global_flag = first_zhili_fengtian_war }
+		}
+		allowed = {
+			OR = {
+				original_tag = SDC
+				original_tag = FNG
+				original_tag = GXC
+				original_tag = ANC
+				has_country_flag = CHI_kuomintang_flag
 			}
 		}
-		ai_will_do = { factor = 0 }
-	}
-	CHI_lead_warlord_uprising_YUN = {
-		icon = generic_prepare_civil_war
-		allowed = { original_tag = CHI }
-		visible = {
-			has_completed_focus = CHI_national_protection_war 
-			NOT = { has_global_flag = warlord_era }
-		}
 		available = {
-			has_completed_focus = CHI_national_protection_war
-			YUN = { exists = no }
-			NOT = { has_global_flag = warlord_leads_npw }
+			OR = {
+				has_global_flag = first_zhili_fengtian_war
+				SDC = {
+					has_war_with = FNG
+				}
+			}
 		}
-		cost = 0	
+		visible = {
+			has_global_flag = chinese_warlord_crisis
+			has_global_flag = manchu_restoration
+			has_global_flag = warlord_era
+			has_global_flag = zhili_anhui_war
+			SDC = {
+				exists = yes
+				NOT = {
+					has_war_with = FNG
+					is_in_faction_with = FNG
+				}
+			}
+			FNG = { exists = yes }
+			NOT = { has_global_flag = first_zhili_fengtian_war }
+		}
 		fire_only_once = yes
-		complete_effect = {
-			YUN = {
-				transfer_state = 325
-				hidden_effect = {
-					add_state_core = 325
-					load_oob = "YUN_1916"
-				}
-				change_tag_from = ROOT
-				set_global_flag = warlord_leads_npw
-				create_wargoal = {
-					type = annex_everything
-					target = CHI
-				}
-			}
+		is_good = no
+		timeout_effect = {
+			set_global_flag = first_zhili_fengtian_war
 		}
-		ai_will_do = { factor = 0 }
 	}
-	CHI_lead_warlord_uprising_GZC = {
-		icon = generic_prepare_civil_war
-		allowed = { original_tag = CHI }
-		visible = {
-			has_completed_focus = CHI_national_protection_war 
-			NOT = { has_global_flag = warlord_era }
+	FNG_sue_for_peace_SDC = {
+		allowed = {
+			original_tag = FNG
 		}
 		available = {
-			has_completed_focus = CHI_national_protection_war
-			GZC = { exists = no }
-			NOT = { has_global_flag = warlord_leads_npw }
+			has_global_flag = first_zhili_fengtian_war
+			NOT = { has_global_flag = second_zhili_fengtian_war }
+			FNG = {
+				has_war_with = SDC
+			}
 		}
-		cost = 0
+		visible = {
+			has_global_flag = first_zhili_fengtian_war
+			NOT = { has_global_flag = second_zhili_fengtian_war }
+			FNG = {
+				has_war_with = SDC
+			}
+		}
 		fire_only_once = yes
-		complete_effect = {
-			GZC = {
-				transfer_state = 603
-				hidden_effect = {
-					add_state_core = 603
-					load_oob = "GZC_1916"
-				}
-				change_tag_from = ROOT
-				set_global_flag = warlord_leads_npw
-				create_wargoal = {
-					type = annex_everything
-					target = CHI
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000
+				OR = {
+					surrender_progress > 0.3
+					date > 1922.6.24
+					NOT = { controls_state = 609 }
+					NOT = { controls_state = 611 }
 				}
 			}
 		}
-		ai_will_do = { factor = 0 }
+		complete_effect = {
+			SDC = { country_event = ww1_china.46 }
+		}
 	}
-	CHI_lead_warlord_uprising_GXC = {
-		icon = generic_prepare_civil_war
-		allowed = { original_tag = CHI }
-		visible = {
-			has_completed_focus = CHI_national_protection_war 
-			NOT = { has_global_flag = warlord_era }
+	CHI_second_constitutional_protection_movement = {
+		icon = generic_nationalism
+		days_mission_timeout = 120 #historical
+		activation = {
+			has_global_flag = warlord_era
+			OR = {
+				has_global_flag = zhili_anhui_war
+				date > 1920.7.14
+			}
+			NOT = {	
+				OR = {
+					any_country = { has_country_flag = CHI_kuomintang_flag }
+					ANC = { has_government = democratic }
+					SDC = { has_government = democratic }
+					FNG = { has_government = democratic }
+				}
+			}
+		}
+		allowed = {
+			OR = {
+				original_tag = GXC
+				original_tag = ANC
+				original_tag = SDC
+				original_tag = FNG
+				has_country_flag = CHI_kuomintang_flag
+			}
 		}
 		available = {
-			has_completed_focus = CHI_national_protection_war
+			OR = {
+				has_global_flag = second_constitutional_protection_movement
+				any_country = { has_country_flag = CHI_kuomintang_flag }
+				ANC = { has_government = democratic }
+				SDC = { has_government = democratic }
+				FNG = { has_government = democratic }
+			}
+		}
+		visible = {
+			NOT = {	
+				OR = {
+					any_country = { has_country_flag = CHI_kuomintang_flag }
+					ANC = { has_government = democratic }
+					SDC = { has_government = democratic }
+					FNG = { has_government = democratic }
+				}
+			}
+		}
+		fire_only_once = yes
+		is_good = no
+		timeout_effect = {
+			set_global_flag = second_constitutional_protection_movement
+		}
+	}
+	CHI_yung_feng_incident = {
+		icon = generic_nationalism
+		days_mission_timeout = 60 #historical
+		activation = {
+			has_global_flag = first_zhili_fengtian_war
 			GXC = { exists = no }
-			NOT = { has_global_flag = warlord_leads_npw }
+			any_country = {
+				has_country_flag = CHI_kuomintang_flag
+				owns_state = 591
+			}
 		}
-		cost = 0
+		allowed = {
+			has_country_flag = CHI_kuomintang_flag
+			owns_state = 591
+		}
+		available = {
+			GXC = { exists = yes }
+			has_global_flag = yung_feng_incident
+			any_country = {
+				has_country_flag = CHI_kuomintang_flag
+				NOT = { owns_state = 591 }
+			}
+		}
+		visible = {
+			has_country_flag = CHI_kuomintang_flag
+			owns_state = 591
+		}
+		fire_only_once = yes
+		is_good = no
+		timeout_effect = {
+			set_global_flag = yung_feng_incident
+		}
+	}
+	SDC_sue_for_peace_FNG = {
+		allowed = {
+			original_tag = SDC
+		}
+		available = {
+			has_global_flag = second_zhili_fengtian_war
+			FNG = {
+				has_war_with = SDC
+			}
+			surrender_progress > 0.3
+		}
+		visible = {
+			has_global_flag = second_zhili_fengtian_war
+			FNG = {
+				has_war_with = SDC
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000
+				OR = {
+					has_global_flag = beijing_coup
+					GMJ = { exists = yes }
+					surrender_progress > 0.5
+				}
+			}
+		}
+		complete_effect = {
+			FNG = { country_event = ww1_china.52 }
+		}
+	}
+	CHI_long_march_decision = {
+		allowed = {
+			original_tag = PRC
+		}
+		available = {
+			has_country_flag = CHI_soviet_republic_flag
+			has_war_with = KMT
+			surrender_progress > 0.5
+		}
+		visible = {
+			has_country_flag = CHI_soviet_republic_flag
+			has_war_with = KMT
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000
+				surrender_progress > 0.7
+			}
+		}
+		complete_effect = {
+			KMT = {
+				annex_country = {
+					target = CSR
+					transfer_troops = no
+				}
+			}
+			every_state = {
+				limit = {
+					is_core_of = CSR
+				}
+				remove_core_of = CSR
+			}
+			if = {
+				limit = {
+					PRC = {
+						exists = yes
+						owns_state = 622
+					}
+				}
+			}
+			else = {
+				PRC = {
+					transfer_state = 622
+				}
+			}
+			PRC = {
+				set_country_flag = long_march_start
+				change_tag_from = PREV
+				leave_faction = yes
+				every_country = {
+					limit = { has_war_with = PREV }
+					white_peace = PREV
+				}
+			}
+		}
+	}
+	CHI_long_march_timer = {
+		icon = generic_nationalism
+		days_mission_timeout = 365
+		activation = {
+			original_tag = PRC
+			has_country_flag = long_march_start
+			NOT = { has_country_flag = long_march_end }
+		}
+		allowed = {
+			original_tag = PRC
+		}
+		available = {
+			OR = {
+				has_war = yes
+				NOT = { owns_state = 622 }
+			}
+		}
+		visible = {
+			original_tag = PRC
+			has_country_flag = long_march_start
+			NOT = { has_country_flag = long_march_end }
+		}
+		fire_only_once = yes
+		is_good = yes
+		timeout_effect = {
+			set_country_flag = long_march_end
+		}	
+	}
+	CHI_new_guangxi_clique = {
+		allowed = {
+			always = yes
+		}
+		visible = {
+			has_country_flag = CHI_kuomintang_flag
+			owns_state = 599
+			GXC = { exists = no }
+		}
+		available = {
+			has_country_flag = CHI_kuomintang_flag
+			owns_state = 599
+			GXC = { exists = no }
+		}
 		fire_only_once = yes
 		complete_effect = {
 			GXC = {
 				transfer_state = 599
-				hidden_effect = {
-					add_state_core = 599
-					load_oob = "GXC_1916"
+				add_state_core = 599
+			}
+			puppet = GXC
+			GXC = {
+				set_politics = {
+					ruling_party = neutrality
+					elections_allowed = no
 				}
-				change_tag_from = ROOT
-				set_global_flag = warlord_leads_npw
-				create_wargoal = {
-					type = annex_everything
-					target = CHI
+				set_popularities = {
+					democratic = 30
+					neutrality = 60
+					fascism = 0
+					communism = 10
 				}
+				create_country_leader = {
+					name = "Li Zongren"
+					picture = "gfx/leaders/GXC/Portrait_Guanxi_Clique_Li_Zongren.dds"
+					expire = "1965.1.1"
+					ideology = despotism
+					traits = {
+						trait_despotism
+					}
+				}
+				create_corps_commander = {
+					name = "Chen Jitang"
+					portrait_path = "gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
+					traits = { }
+					skill = 3
+					attack_skill = 2
+					defense_skill = 3
+					planning_skill = 3
+					logistics_skill = 2
+				}
+				remove_unit_leader = 73047
 			}
 		}
-		ai_will_do = { factor = 0 }
+		ai_will_do = {
+			factor = 1000
+		}
 	}
-	CHI_lead_warlord_uprising_SHX = {
-		icon = generic_prepare_civil_war
-		allowed = { original_tag = CHI }
+	CHI_north_expedition = {
+		allowed = {
+			always = yes
+		}
 		visible = {
-			has_completed_focus = CHI_national_protection_war 
-			NOT = { has_global_flag = warlord_era }
+			has_country_flag = CHI_kuomintang_flag
+			has_country_leader = {
+				name = "Chiang Kai-shek"
+				ruling_only = yes
+			}
+			OR = {
+				has_global_flag = zhili_fengtian_fengyushang_war_end
+				date > 1926.7.1
+			}
+			is_neighbor_of = SDC
+			SDC = { has_war = no }
 		}
 		available = {
-			has_completed_focus = CHI_national_protection_war
-			SHX = { exists = no }
-			NOT = { has_global_flag = warlord_leads_npw }
+			has_country_flag = CHI_kuomintang_flag
+			has_country_leader = {
+				name = "Chiang Kai-shek"
+				ruling_only = yes
+			}
+			OR = {
+				has_global_flag = zhili_fengtian_fengyushang_war_end
+				date > 1926.7.1
+			}
+			has_war = no
+			is_in_faction = no
+			is_neighbor_of = SDC
+			SDC = { has_war = no }
 		}
-		cost = 0
 		fire_only_once = yes
 		complete_effect = {
-			SHX = {
-				transfer_state = 615
-				hidden_effect = {
-					add_state_core = 615
-					load_oob = "SHX_1916"
+			set_global_flag = north_expedition
+			create_faction = nanjing_government
+			every_state = {
+				limit = {
+					is_core_of = CHI
 				}
-				change_tag_from = ROOT
-				set_global_flag = warlord_leads_npw
-				create_wargoal = {
+				add_core_of = PREV
+			}
+			if = {
+				limit = {
+					GMJ = {
+						exists = yes
+						NOT = { has_war_with = PREV }
+					}
+				}
+				add_to_faction = GMJ
+			}
+			if = {
+				limit = {
+					SHX = {
+						exists = yes
+						NOT = { has_war_with = PREV }
+					}
+				}
+				add_to_faction = SHX
+			}
+			declare_war_on = {
+				target = SDC
+				type = annex_everything
+			}
+			if = {
+				limit = {
+					FNG = { exists = yes }
+				}
+				declare_war_on = {
+					target = FNG
 					type = annex_everything
-					target = CHI
+				}
+			}
+			if = {
+				limit = {
+					HNC = {
+						exists = yes
+						is_subject = no
+						is_neighbor_of = KMT
+					}
+				}
+				annex_country = {
+					target = HNC
 				}
 			}
 		}
-		ai_will_do = { factor = 0 }
+		target_trigger = {
+			FROM = {
+				tag = SDC
+			}
+		}
+		ai_will_do = {
+			factor = 1000
+		}
 	}
-	CHI_lead_warlord_uprising_XSM = {
-		icon = generic_prepare_civil_war
-		allowed = { original_tag = CHI }
-		visible = {
-			has_completed_focus = CHI_national_protection_war 
-			NOT = { has_global_flag = warlord_era }
+	CHI_zhili_fengtian_fengyushang_war = {
+		icon = generic_nationalism
+		days_mission_timeout = 420 #historical
+		activation = {
+			has_global_flag = chinese_warlord_crisis
+			has_global_flag = warlord_era
+			has_global_flag = second_zhili_fengtian_war
+			SDC = { exists = yes }
+			FNG = { exists = yes }
+			GMJ = { exists = yes }
+			NOT = { has_global_flag = zhili_fengtian_fengyushang_war }
+		}
+		allowed = {
+			OR = {
+				original_tag = SDC
+				original_tag = FNG
+				original_tag = GMJ
+				original_tag = SHX
+				original_tag = GXC
+				has_country_flag = CHI_kuomintang_flag
+			}
 		}
 		available = {
-			has_completed_focus = CHI_national_protection_war
-			XSM = { exists = no }
-			NOT = { has_global_flag = warlord_leads_npw }
-		}
-		cost = 0
-		fire_only_once = yes
-		complete_effect = {
-			XSM = {
-				transfer_state = 283
-				transfer_state = 604
-				transfer_state = 755
-				hidden_effect = {
-					add_state_core = 283
-					add_state_core = 604
-					add_state_core = 755
-					load_oob = "XSM_1916"
-				}
-				change_tag_from = ROOT
-				set_global_flag = warlord_leads_npw
-				create_wargoal = {
-					type = annex_everything
-					target = CHI
+			OR = {
+				has_global_flag = zhili_fengtian_fengyushang_war
+				FNG = {
+					has_war_with = GMJ
 				}
 			}
 		}
-		ai_will_do = { factor = 0 }
-	}
-	CHI_lead_warlord_uprising_SIK = {
-		icon = generic_prepare_civil_war
-		allowed = { original_tag = CHI }
 		visible = {
-			has_completed_focus = CHI_national_protection_war 
-			NOT = { has_global_flag = warlord_era }
+			has_global_flag = chinese_warlord_crisis
+			has_global_flag = warlord_era
+			has_global_flag = second_zhili_fengtian_war
+			SDC = { exists = yes }
+			FNG = { exists = yes }
+			GMJ = { exists = yes }
+			NOT = { has_global_flag = zhili_fengtian_fengyushang_war }
+		}
+		fire_only_once = yes
+		is_good = no
+		timeout_effect = {
+			set_global_flag = zhili_fengtian_fengyushang_war
+		}
+	}
+	CHI_GMJ_sue_for_peace_FNG = {
+		allowed = {
+			original_tag = GMJ
 		}
 		available = {
-			has_completed_focus = CHI_national_protection_war
-			SIK = { exists = no }
-			NOT = { has_global_flag = warlord_leads_npw }
+			has_global_flag = zhili_fengtian_fengyushang_war
+			has_war_with = FNG
+			surrender_progress > 0.3
 		}
-		cost = 0
+		visible = {
+			has_global_flag = zhili_fengtian_fengyushang_war
+			has_war_with = FNG
+		}
 		fire_only_once = yes
-		complete_effect = {
-			SIK = {
-				transfer_state = 618
-				transfer_state = 617
-				transfer_state = 287
-				transfer_state = 619
-				hidden_effect = {
-					add_state_core = 619
-					add_state_core = 618
-					add_state_core = 617
-					add_state_core = 287
-					load_oob = "SIK_1916"
-				}
-				change_tag_from = ROOT
-				set_global_flag = warlord_leads_npw
-				create_wargoal = {
-					type = annex_everything
-					target = CHI
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000
+				surrender_progress > 0.5
+				has_war_with = SDC
+				if = {
+					limit = {
+						SHX = { exists = yes }
+					}
+					has_war_with = SHX
 				}
 			}
 		}
-		ai_will_do = { factor = 0 }
+		complete_effect = {
+			FNG = { country_event = ww1_china.52 }
+		}
 	}
-	CHI_lead_warlord_uprising_SCC = {
-		icon = generic_prepare_civil_war
-		allowed = { original_tag = CHI }
-		visible = {
-			has_completed_focus = CHI_national_protection_war 
-			NOT = { has_global_flag = warlord_era }
+	CHI_FNG_sue_for_peace_KMT = {
+		allowed = {
+			original_tag = FNG
 		}
 		available = {
-			has_completed_focus = CHI_national_protection_war
-			SCC = { exists = no }
-			NOT = { has_global_flag = warlord_leads_npw }
+			has_global_flag = north_expedition
+			any_country = {
+				has_country_flag = CHI_kuomintang_flag
+				has_war_with = FNG
+			}
+			surrender_progress > 0.3
 		}
-		cost = 0
+		visible = {
+			has_global_flag = north_expedition
+			any_country = {
+				has_country_flag = CHI_kuomintang_flag
+				has_war_with = FNG
+			}
+		}
 		fire_only_once = yes
-		complete_effect = {
-			SCC = {
-				transfer_state = 605
-				hidden_effect = {
-					add_state_core = 605
-					load_oob = "SCC_1916"
-				}
-				change_tag_from = ROOT
-				set_global_flag = warlord_leads_npw
-				create_wargoal = {
-					type = annex_everything
-					target = CHI
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000
+				OR = {
+					surrender_progress > 0.5
+					NOT = { controls_state = 608 }
 				}
 			}
 		}
-		ai_will_do = { factor = 0 }
+		complete_effect = {
+			FNG = { country_event = ww1_china.61 }
+		}
+	}
+	CHI_JAP_assassinate_zhang_zuolin = {
+		allowed = {
+			original_tag = JAP
+		}
+		available = {
+			FNG = {
+				is_subject = no
+				has_country_leader = {
+					name = "Zhang Zuolin"
+					ruling_only = yes
+				}
+				OR = {
+					AND = {
+						NOT = { owns_state = 608 }
+						has_global_flag = zhili_fengtian_fengyushang_war
+					}
+					has_global_flag = north_expedition_end
+				}
+			}
+			is_neighbor_of = FNG
+			OR = {
+				AND = {
+					owns_state = 527
+					owns_state = 799
+				}
+				KOR = {
+					is_subject_of = JAP
+					is_neighbor_of = FNG
+				}
+			}
+		}
+		visible = {
+			FNG = {
+				is_subject = no
+				has_country_leader = {
+					name = "Zhang Zuolin"
+					ruling_only = yes
+				}
+			}
+		}
+		cost = 150
+		fire_only_once = yes
+		ai_will_do = {
+			base = 1000
+		}
+		complete_effect = {
+			FNG = { country_event = ww1_china.62 }
+		}
+	}
+	CHI_anti_chiang_war = {
+		icon = generic_nationalism
+		days_mission_timeout = 120 #historical
+		activation = {
+			has_global_flag = north_expedition_end
+			any_country = {
+				has_country_flag = CHI_kuomintang_flag
+				has_country_leader = {
+					name = "Chiang Kai-shek"
+					ruling_only = yes
+				}
+			}
+			NOT = { has_global_flag = anti_chiang_war }
+		}
+		allowed = {
+			OR = {
+				has_country_flag = CHI_kuomintang_flag
+				original_tag = FNG
+				original_tag = GMJ
+				original_tag = SHX
+				original_tag = GXC
+			}
+		}
+		available = {
+			OR = {
+				has_global_flag = anti_chiang_war
+				KMT = {
+					has_war_with = GMJ
+				}
+			}
+		}
+		visible = {
+			has_global_flag = north_expedition_end
+			any_country = {
+				has_country_flag = CHI_kuomintang_flag
+				has_country_leader = {
+					name = "Chiang Kai-shek"
+					ruling_only = yes
+				}
+			}
+			NOT = { has_global_flag = anti_chiang_war }
+		}
+		fire_only_once = yes
+		is_good = no
+		timeout_effect = {
+			set_global_flag = anti_chiang_war
+		}
+	}
+	CHI_SHX_sue_for_peace_KMT = {
+		allowed = {
+			original_tag = SHX
+		}
+		available = {
+			has_global_flag = anti_chiang_war
+			any_country = {
+				has_country_flag = CHI_kuomintang_flag
+				has_war_with = SHX
+			}
+			surrender_progress > 0.3
+		}
+		visible = {
+			has_global_flag = anti_chiang_war
+			any_country = {
+				has_country_flag = CHI_kuomintang_flag
+				has_war_with = SHX
+			}
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000
+				OR = {
+					surrender_progress > 0.5
+					NOT = { controls_state = 608 }
+				}
+			}
+		}
+		complete_effect = {
+			FNG = { country_event = ww1_china.64 }
+		}
+	}
+	CHI_FNG_sue_for_peace_JAP = {
+		allowed = {
+			original_tag = FNG
+		}
+		available = {
+			has_war_with = JAP
+			surrender_progress > 0.3
+		}
+		visible = {
+			has_war_with = JAP
+		}
+		fire_only_once = yes
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000
+				OR = {
+					surrender_progress > 0.5
+				}
+			}
+		}
+		complete_effect = {
+			FNG = { country_event = ww1_china.66 }
+		}
 	}
 }
 CHI_chinese_warlords = {
 	CHI_fix_army_corruption = {
 		icon = generic_civil_support
 		allowed = {
-			always = no
+			always = yes
 		}
 		visible = {
-			has_idea = CHI_idea_army_corruption
+			has_global_flag = warlord_era
 			has_country_flag = part_of_china
+			has_idea = CHI_idea_army_corruption
 		}
 		available = {
+			has_global_flag = warlord_era
+			has_country_flag = part_of_china
 			has_idea = CHI_idea_army_corruption
 			has_army_manpower = {
 				size > 100000
@@ -526,13 +1251,16 @@ CHI_chinese_warlords = {
 	CHI_fix_inflation = {
 		icon = generic_civil_support
 		allowed = {
-			always = no
+			always = yes
 		}
 		visible = {
-			has_idea = CHI_idea_inflation3
+			has_global_flag = warlord_era
 			has_country_flag = part_of_china
+			has_idea = CHI_idea_inflation3
 		}
 		available = {
+			has_global_flag = warlord_era
+			has_country_flag = part_of_china
 			has_idea = CHI_idea_inflation3
 			num_of_factories > 10
 			has_stability > 0.35
@@ -574,146 +1302,13 @@ CHI_chinese_warlords = {
 				target = GDC
 			}
 		}
-		ai_will_do = {
-			factor = 100
-		}
-	}
-	CHI_GDC_kuomintang_government = {
-		icon = generic_prepare_civil_war
-		allowed = {
-			original_tag = GDC
-		}
-		visible = {
-		}
-		available = {
-			has_war_support > 0.45
-			has_stability > 0.45
-			has_army_manpower = {
-				size > 75000
-			}
-			has_government = neutrality
-			CHI = { exists = no has_completed_focus = CHI_national_protection_war }
-		}
-		cost = 150		
-		days_remove = 10
-		fire_only_once = yes
-		remove_effect = {
-			set_global_flag = reunite_china
-			set_global_flag = GDC_kuomintang
-			CHI = {
-				annex_country = {
-					target = GDC
-					transfer_troops = yes
-				}
-				change_tag_from = GDC
-				create_country_leader = {
-					name = "Chiang Kai-shek"
-					picture = "gfx/leaders/CHI/CHI_chiang_kai_shek.dds"
-					expire = "1935.1.1"
-					ideology = oligarchism
-					
-				}
+		target_trigger = {
+			FROM = {
+				tag = GDC
 			}
 		}
 		ai_will_do = {
 			factor = 100
-			modifier = {
-				factor = 0
-				date < 1921.1.1
-			}
-		}
-	}
-	CHI_zhili_annex_jiangsu = {
-		icon = generic_prepare_civil_war
-		allowed = {
-			original_tag = SDC
-		}
-		visible = {
-			JNC = { owns_state = 598 }
-		}
-		available = {
-			has_army_manpower = {
-				size > 75000
-			}
-			JNC = { owns_state = 598 }
-		}
-		cost = 75		
-		days_remove = 10
-		fire_only_once = yes
-		remove_effect = {
-			every_state = {
-				limit = {
-					is_owned_by = JNC
-					is_core_of = JNC
-				}
-				add_core_of = ROOT
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = JNC
-			}
-		}
-		ai_will_do = {
-			factor = 100
-		}
-	}
-	CHI_FNG_form_guominjun = {
-		icon = generic_prepare_civil_war
-		allowed = {
-			original_tag = FNG
-		}
-		visible = {
-			JNC = { owns_state = 598 }
-		}
-		available = {
-			GMJ = { exists = no }
-			has_war_with = CHI
-		}
-		cost = 150	
-		days_remove = 10
-		fire_only_once = yes
-		remove_effect = {
-			GMJ = {
-				transfer_state = 621
-				transfer_state = 612
-				transfer_state = 611
-				hidden_effect = {
-					add_state_core = 621
-					add_state_core = 612
-					add_state_core = 611
-				}
-				load_oob = "GMJ_1919"
-			}
-			puppet = GMJ
-		}
-		ai_will_do = {
-			factor = 100
-		}
-	}
-	CHI_GMJ_leave_FNG = {
-		icon = generic_prepare_civil_war
-		allowed = {
-			original_tag = GMJ
-		}
-		visible = {
-			
-		}
-		available = {
-			is_puppet_of = FNG
-			NOT = { has_war_with = CHI }
-		}
-		cost = 75		
-		days_remove = 10
-		fire_only_once = yes
-		remove_effect = {
-			end_puppet = GMJ
-		}
-		ai_will_do = {
-			factor = 100
-			modifier = {
-				factor = 0
-				CHI = { NOT = { has_completed_focus = CHI_revival_of_kuomntang } }
-			}
 		}
 	}
 	CHI_XSM_take_ningxia = {
@@ -740,34 +1335,41 @@ CHI_chinese_warlords = {
 	CHI_ANC_conquer_mongolia = {
 		icon = generic_prepare_civil_war
 		allowed = {
-			original_tag = ANC
+			OR = {
+				original_tag = CHI
+				original_tag = QIN
+				original_tag = ANC
+			}
 		}
 		visible = {
 			MON = { exists = yes }
+			owns_state = 608
 		}
 		available = {
 			owns_state = 608
-			has_army_manpower = {
-				size > 250000
-			}
-			CHI = { exists = no }
+			has_war = no
+			RUS = { has_war_with = SOV }
 			MON = { exists = yes }
+			is_neighbor_of = MON
 		}
 		cost = 75		
 		days_remove = 10
 		fire_only_once = yes
 		remove_effect = {
 			if = {
-				limit = { MON = { is_puppet_of = RUS } }
+				limit = { TAN = { is_puppet_of = RUS } }
 				RUS = { country_event = { id = ww1_china.26 days = 30 } }
 			}
-			annex_country = {
-				target = MON
-				transfer_troops = no
+			transfer_state = 329
+			transfer_state = 330
+		}
+		target_trigger = {
+			FROM = {
+				tag = MON
 			}
 		}
 		ai_will_do = {
-			factor = 100
+			factor = 1000
 		}
 	}
 	CHI_ANC_war_with_FNG = {
@@ -784,6 +1386,8 @@ CHI_chinese_warlords = {
 				size > 250000
 			}
 			FNG = { exists = yes }
+			SDC = { exists = no }
+			is_neighbor_of = FNG
 		}
 		cost = 75		
 		days_remove = 10
@@ -792,6 +1396,11 @@ CHI_chinese_warlords = {
 			create_wargoal = {
 				type = annex_everything
 				target = FNG
+			}
+		}
+		target_trigger = {
+			FROM = {
+				tag = FNG
 			}
 		}
 		ai_will_do = {
@@ -891,22 +1500,48 @@ CHI_chinese_warlords = {
 				original_tag = QIN
 			}
 		}
-		visible = { has_completed_focus = CHI_united_china }
+		visible = {
+			has_country_flag = ready_to_unite_china
+			XSM = { exists = yes }
+		}
 		target_trigger = {
 			FROM = {
 				tag = XSM
 			}
 		}
-		available = { XSM = { exists = yes } has_army_manpower = { size > 250000 } is_puppet = no }
+		available = {
+			XSM = {
+				exists = yes
+				has_war = no
+			}
+			is_subject = no
+			has_war = no
+			is_neighbor_of = XSM
+		}
 		cost = 75		
 		days_remove = 10
 		fire_only_once = yes
 		remove_effect = {
 			XSM = {
+				if = {
+					limit = {
+						is_in_faction_with = QIN
+					}
+					leave_faction = yes
+				}
 				country_event = ww1_china.33
 			}
 		}
-		ai_will_do = { factor = 0 }
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				original_tag = QIN
+				has_army_manpower = { size > 250000 }
+				PRC = { exists = no }
+				SHX = { exists = no }
+			}
+		}
 	}
 	CHI_unite_china_SHX = {
 		icon = generic_ignite_civil_war
@@ -916,22 +1551,47 @@ CHI_chinese_warlords = {
 				original_tag = QIN
 			}
 		}
-		visible = { has_completed_focus = CHI_united_china }
+		visible = {
+			has_country_flag = ready_to_unite_china
+			SHX = { exists = yes }
+		}
 		target_trigger = {
 			FROM = {
 				tag = SHX
 			}
 		}
-		available = { SHX = { exists = yes } has_army_manpower = { size > 250000 } is_puppet = no }
+		available = {
+			SHX = {
+				exists = yes
+				has_war = no
+			}
+			is_subject = no
+			has_war = no
+			is_neighbor_of = SHX
+		}
 		cost = 75		
 		days_remove = 10
 		fire_only_once = yes
 		remove_effect = {
 			SHX = {
+				if = {
+					limit = {
+						is_in_faction_with = QIN
+					}
+					leave_faction = yes
+				}
 				country_event = ww1_china.33
 			}
 		}
-		ai_will_do = { factor = 0 }
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				original_tag = QIN
+				has_army_manpower = { size > 250000 }
+				SDC = { exists = no }
+			}
+		}
 	}
 	CHI_unite_china_SIK = {
 		icon = generic_ignite_civil_war
@@ -941,22 +1601,47 @@ CHI_chinese_warlords = {
 				original_tag = QIN
 			}
 		}
-		visible = { has_completed_focus = CHI_united_china }
+		visible = {
+			has_country_flag = ready_to_unite_china
+			SIK = { exists = yes }
+		}
 		target_trigger = {
 			FROM = {
 				tag = SIK
 			}
 		}
-		available = { SIK = { exists = yes } has_army_manpower = { size > 250000 } is_puppet = no }
+		available = {
+			SIK = {
+				exists = yes
+				has_war = no
+			}
+			is_puppet = no
+			has_war = no
+			is_neighbor_of = SIK
+		}
 		cost = 75		
 		days_remove = 10
 		fire_only_once = yes
 		remove_effect = {
 			SIK = {
+				if = {
+					limit = {
+						is_in_faction_with = QIN
+					}
+					leave_faction = yes
+				}
 				country_event = ww1_china.33
 			}
 		}
-		ai_will_do = { factor = 0 }
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				original_tag = QIN
+				has_army_manpower = { size > 250000 }
+				XSM = { exists = no }
+			}
+		}
 	}
 	CHI_unite_china_YUN = {
 		icon = generic_ignite_civil_war
@@ -966,22 +1651,50 @@ CHI_chinese_warlords = {
 				original_tag = QIN
 			}
 		}
-		visible = { has_completed_focus = CHI_united_china }
+		visible = {
+			has_country_flag = ready_to_unite_china
+			YUN = { exists = yes }
+		}
 		target_trigger = {
 			FROM = {
 				tag = YUN
 			}
 		}
-		available = { YUN = { exists = yes } has_army_manpower = { size > 250000 } is_puppet = no }
+		available = {
+			YUN = {
+				exists = yes
+				has_war = no
+			}
+			is_subject = no
+			has_war = no
+			is_neighbor_of = YUN
+		}
 		cost = 75		
 		days_remove = 10
 		fire_only_once = yes
 		remove_effect = {
 			YUN = {
+				if = {
+					limit = {
+						is_in_faction_with = QIN
+					}
+					leave_faction = yes
+				}
 				country_event = ww1_china.33
 			}
 		}
-		ai_will_do = { factor = 0 }
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				original_tag = QIN
+				has_army_manpower = { size > 250000 }
+				GXC = { exists = no }
+				GZC = { exists = no }
+				HNC = { exists = no }
+				JNC = { exists = no }
+			}
+		}
 	}
 	CHI_unite_china_GXC = {
 		icon = generic_ignite_civil_war
@@ -991,22 +1704,48 @@ CHI_chinese_warlords = {
 				original_tag = QIN
 			}
 		}
-		visible = { has_completed_focus = CHI_united_china }
+		visible = {
+			has_country_flag = ready_to_unite_china
+			GXC = { exists = yes }
+		}
 		target_trigger = {
 			FROM = {
 				tag = GXC
 			}
 		}
-		available = { GXC = { exists = yes } has_army_manpower = { size > 250000 } is_puppet = no }
+		available = {
+			GXC = {
+				exists = yes
+				has_war = no
+			}
+			is_subject = no
+			has_war = no
+			is_neighbor_of = GXC
+		}
 		cost = 75		
 		days_remove = 10
 		fire_only_once = yes
 		remove_effect = {
 			GXC = {
+				if = {
+					limit = {
+						is_in_faction_with = QIN
+					}
+					leave_faction = yes
+				}
 				country_event = ww1_china.33
 			}
 		}
-		ai_will_do = { factor = 0 }
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				original_tag = QIN
+				has_army_manpower = { size > 250000 }
+				JNC = { exists = no }
+				HNC = { exists = no }
+			}
+		}
 	}
 	CHI_unite_china_GDC = {
 		icon = generic_ignite_civil_war
@@ -1016,51 +1755,49 @@ CHI_chinese_warlords = {
 				original_tag = QIN
 			}
 		}
-		visible = { has_completed_focus = CHI_united_china }
+		visible = {
+			has_country_flag = ready_to_unite_china
+			GDC = { exists = yes }
+		}
 		target_trigger = {
 			FROM = {
 				tag = GDC
 			}
 		}
-		available = { GDC = { exists = yes } has_army_manpower = { size > 250000 } is_puppet = no }
-		cost = 75		
+		available = {
+			GDC = {
+				exists = yes
+				has_war = no
+			}
+			is_subject = no
+			has_war = no
+			is_neighbor_of = GDC
+		}
+		cost = 75
 		days_remove = 10
 		fire_only_once = yes
 		remove_effect = {
 			GDC = {
+				if = {
+					limit = {
+						is_in_faction_with = QIN
+					}
+					leave_faction = yes
+				}
 				country_event = ww1_china.33
 			}
 		}
-		ai_will_do = { factor = 0 }
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				original_tag = QIN
+				has_army_manpower = { size > 250000 }
+				JNC = { exists = no }
+				JXC = { exists = no }
+			}
+		}
 	}
-	#CHI_unite_china_GNC = {
-	#	icon = generic_ignite_civil_war
-	#	allowed = {
-	#		OR = {
-	#			original_tag = CHI
-	#			original_tag = QIN
-	#		}
-	#	}
-	#	visible = { has_completed_focus = CHI_united_china }
-	#	target_trigger = {
-	#		FROM = {
-	#			tag = GNC
-	#		}
-	#	}
-	#	available = {
-	#		country_exists = GNC
-	#		GNC = { has_army_manpower = { size >250000 } is_puppet = no }
-	#	}
-	#	cost = 75		
-	#	days_remove = 10
-	#	fire_only_once = yes
-	#	remove_effect = {
-	#		GNC = {
-	#			country_event = ww1_china.33
-	#		}
-	#	}
-	#	ai_will_do = { factor = 0 }
-	#}
 	CHI_unite_china_JXC = {
 		icon = generic_ignite_civil_war
 		allowed = {
@@ -1069,22 +1806,45 @@ CHI_chinese_warlords = {
 				original_tag = QIN
 			}
 		}
-		visible = { has_completed_focus = CHI_united_china }
+		visible = {
+			has_country_flag = ready_to_unite_china
+			JXC = { exists = yes }
+		}
 		target_trigger = {
 			FROM = {
 				tag = JXC
 			}
 		}
-		available = { JXC = { exists = yes } has_army_manpower = { size > 250000 } is_puppet = no }
+		available = {
+			JXC = {
+				exists = yes
+				has_war = no
+			}
+			is_subject = no
+			has_war = no
+			is_neighbor_of = JXC
+		}
 		cost = 75		
 		days_remove = 10
 		fire_only_once = yes
 		remove_effect = {
 			JXC = {
+				if = {
+					limit = {
+						is_in_faction_with = QIN
+					}
+					leave_faction = yes
+				}
 				country_event = ww1_china.33
 			}
 		}
-		ai_will_do = { factor = 100 }
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				has_army_manpower = { size > 250000 }
+			}
+		}
 	}
 	CHI_unite_china_HNC = {
 		icon = generic_ignite_civil_war
@@ -1094,22 +1854,45 @@ CHI_chinese_warlords = {
 				original_tag = QIN
 			}
 		}
-		visible = { has_completed_focus = CHI_united_china }
+		visible = {
+			has_country_flag = ready_to_unite_china
+			HNC = { exists = yes }
+		}
 		target_trigger = {
 			FROM = {
 				tag = HNC
 			}
 		}
-		available = { HNC = { exists = yes } has_army_manpower = { size > 250000 } is_puppet = no }
+		available = {
+			HNC = {
+				exists = yes
+				has_war = no
+			}
+			is_subject = no
+			has_war = no
+			is_neighbor_of = HNC
+		}
 		cost = 75		
 		days_remove = 10
 		fire_only_once = yes
 		remove_effect = {
 			HNC = {
+				if = {
+					limit = {
+						is_in_faction_with = QIN
+					}
+					leave_faction = yes
+				}
 				country_event = ww1_china.33
 			}
 		}
-		ai_will_do = { factor = 100 }
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				has_army_manpower = { size > 250000 }
+			}
+		}
 	}
 	CHI_unite_china_JNC = {
 		icon = generic_ignite_civil_war
@@ -1119,22 +1902,46 @@ CHI_chinese_warlords = {
 				original_tag = QIN
 			}
 		}
-		visible = { has_completed_focus = CHI_united_china }
+		visible = {
+			has_country_flag = ready_to_unite_china
+			JNC = { exists = yes }
+		}
 		target_trigger = {
 			FROM = {
 				tag = JNC
 			}
 		}
-		available = { JNC = { exists = yes } has_army_manpower = { size > 250000 } is_puppet = no }
+		available = {
+			JNC = {
+				exists = yes
+				has_war = no
+			}
+			is_subject = no
+			has_war = no
+			is_neighbor_of = JNC
+		}
 		cost = 75		
 		days_remove = 10
 		fire_only_once = yes
 		remove_effect = {
 			JNC = {
+				if = {
+					limit = {
+						is_in_faction_with = QIN
+					}
+					leave_faction = yes
+				}
 				country_event = ww1_china.33
 			}
 		}
-		ai_will_do = { factor = 100 }
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				original_tag = CHI
+				has_army_manpower = { size > 250000 }
+			}
+		}
 	}
 	CHI_unite_china_ZHC = {
 		icon = generic_ignite_civil_war
@@ -1144,20 +1951,651 @@ CHI_chinese_warlords = {
 				original_tag = QIN
 			}
 		}
-		visible = { has_completed_focus = CHI_united_china }
+		visible = {
+			has_country_flag = ready_to_unite_china
+			ZHC = { exists = yes }
+		}
 		target_trigger = {
 			FROM = {
 				tag = ZHC
 			}
 		}
-		available = { ZHC = { exists = yes } has_army_manpower = { size > 250000 } is_puppet = no }
-		cost = 25		
-		days_remove = 1
+		available = {
+			ZHC = {
+				exists = yes
+				has_war = no
+			}
+			is_subject = no
+			has_war = no
+			is_neighbor_of = ZHC
+		}
+		cost = 75		
+		days_remove = 10
 		fire_only_once = yes
 		remove_effect = {
-			ZHE = { country_event = ww1_china.33 }
+			ZHC = {
+				if = {
+					limit = {
+						is_in_faction_with = QIN
+					}
+					leave_faction = yes
+				}
+				country_event = ww1_china.33
+			}
 		}
-		ai_will_do = { factor = 100 }
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				has_army_manpower = { size > 250000 }
+			}
+		}
+	}
+	CHI_unite_china_GZC = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			OR = {
+				original_tag = CHI
+				original_tag = QIN
+			}
+		}
+		visible = {
+			has_country_flag = ready_to_unite_china
+			GZC = { exists = yes }
+		}
+		target_trigger = {
+			FROM = {
+				tag = GZC
+			}
+		}
+		available = {
+			GZC = {
+				exists = yes
+				has_war = no
+			}
+			is_subject = no
+			has_war = no
+			is_neighbor_of = GZC
+		}
+		cost = 75		
+		days_remove = 10
+		fire_only_once = yes
+		remove_effect = {
+			GZC = {
+				if = {
+					limit = {
+						is_in_faction_with = QIN
+					}
+					leave_faction = yes
+				}
+				country_event = ww1_china.33
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				has_army_manpower = { size > 250000 }
+			}
+		}
+	}
+	CHI_unite_china_SCC = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			OR = {
+				original_tag = CHI
+				original_tag = QIN
+			}
+		}
+		visible = {
+			has_country_flag = ready_to_unite_china
+			SCC = { exists = yes }
+		}
+		target_trigger = {
+			FROM = {
+				tag = SCC
+			}
+		}
+		available = {
+			SCC = {
+				exists = yes
+				has_war = no
+			}
+			is_subject = no
+			has_war = no
+			is_neighbor_of = SCC
+		}
+		cost = 75		
+		days_remove = 10
+		fire_only_once = yes
+		remove_effect = {
+			SCC = {
+				if = {
+					limit = {
+						is_in_faction_with = QIN
+					}
+					leave_faction = yes
+				}
+				country_event = ww1_china.33
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				has_army_manpower = { size > 250000 }
+			}
+		}
+	}
+	CHI_unite_china_SDC = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			OR = {
+				original_tag = CHI
+				original_tag = QIN
+			}
+		}
+		visible = {
+			has_country_flag = ready_to_unite_china
+			SDC = { exists = yes }
+		}
+		target_trigger = {
+			FROM = {
+				tag = SDC
+			}
+		}
+		available = {
+			SDC = {
+				exists = yes
+				has_war = no
+			}
+			is_subject = no
+			has_war = no
+			is_neighbor_of = SDC
+		}
+		cost = 75		
+		days_remove = 10
+		fire_only_once = yes
+		remove_effect = {
+			SDC = {
+				if = {
+					limit = {
+						is_in_faction_with = QIN
+					}
+					leave_faction = yes
+				}
+				country_event = ww1_china.33
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				has_army_manpower = { size > 250000 }
+			}
+		}
+	}
+	CHI_unite_china_PRC = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			OR = {
+				original_tag = CHI
+				original_tag = QIN
+			}
+		}
+		visible = {
+			has_country_flag = ready_to_unite_china
+			PRC = { exists = yes }
+		}
+		target_trigger = {
+			FROM = {
+				tag = PRC
+			}
+		}
+		available = {
+			PRC = {
+				exists = yes
+				has_war = no
+			}
+			is_subject = no
+			has_war = no
+			is_neighbor_of = PRC
+		}
+		cost = 75		
+		days_remove = 10
+		fire_only_once = yes
+		remove_effect = {
+			PRC = {
+				if = {
+					limit = {
+						is_in_faction_with = QIN
+					}
+					leave_faction = yes
+				}
+				country_event = ww1_china.33
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				has_army_manpower = { size > 250000 }
+			}
+		}
+	}
+	CHI_unite_china_FNG = {
+		icon = generic_ignite_civil_war
+		allowed = {
+			OR = {
+				original_tag = CHI
+				original_tag = QIN
+			}
+		}
+		visible = {
+			has_country_flag = ready_to_unite_china
+			FNG = { exists = yes }
+		}
+		target_trigger = {
+			FROM = {
+				tag = FNG
+			}
+		}
+		available = {
+			FNG = {
+				exists = yes
+				has_war = no
+			}
+			is_subject = no
+			has_war = no
+			is_neighbor_of = FNG
+		}
+		cost = 75		
+		days_remove = 10
+		fire_only_once = yes
+		remove_effect = {
+			FNG = {
+				if = {
+					limit = {
+						is_in_faction_with = QIN
+					}
+					leave_faction = yes
+				}
+				country_event = ww1_china.33
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				has_army_manpower = { size > 250000 }
+			}
+		}
+	}
+	CHI_proclaim_republic_nanjing = {
+		allowed = {
+			original_tag = JNC
+		}
+		visible = {
+			OR = {
+				has_cosmetic_tag = NPA_democratic
+				has_cosmetic_tag = LEP
+			}
+		}
+		available = {
+			OR = {
+				has_cosmetic_tag = NPA_democratic
+				has_cosmetic_tag = LEP
+			}
+			NOT = { is_in_faction_with = QIN }
+			OR = {
+				controls_state = 608
+				has_war_with = QIN
+				QIN = { exists = no }
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			set_cosmetic_tag = CHI_uprising
+
+			every_state = {
+				limit = {
+					is_core_of = QIN
+				}
+				add_core_of = JNC
+			}
+		}
+	}
+	CHI_proclaim_league_of_eight_provinces = {
+		allowed = {
+			original_tag = JNC
+		}
+		visible = {
+			has_cosmetic_tag = NPA_democratic
+			NOT = { has_cosmetic_tag = LEP }
+		}
+		available = {
+			has_cosmetic_tag = NPA_democratic
+			NOT = { has_cosmetic_tag = LEP }
+			owns_state = 598
+			owns_state = 606
+			owns_state = 596
+			owns_state = 600
+			owns_state = 595
+			owns_state = 593
+			owns_state = 599
+			owns_state = 594
+			owns_state = 591
+			owns_state = 592
+			owns_state = 602
+			owns_state = 749
+			owns_state = 613
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			set_cosmetic_tag = LEP
+		}
+	}
+	CHI_JNC_attack_GXC = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = JNC
+		}
+		target_trigger = {
+			FROM = {
+				tag = GXC
+			}
+		}
+		visible = {
+			GXC = { exists = yes }
+		}
+		available = {
+			GXC = {
+				exists = yes
+				has_war = no
+			}
+			has_war = no
+			is_neighbor_of = GXC
+		}
+		cost = 75
+		days_remove = 10
+		fire_only_once = yes
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_owned_by = GXC
+					is_core_of = GXC
+				}
+				add_core_of = JNC
+			}
+			GXC = {
+				leave_faction = yes
+			}
+			JNC = {
+				declare_war_on = {
+					target = GXC
+					type = civil_war
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				strength_ratio = {
+					tag = GXC
+					ratio > 2
+				}
+			}
+		}
+	}
+	CHI_JNC_attack_HNC = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = JNC
+		}
+		target_trigger = {
+			FROM = {
+				tag = HNC
+			}
+		}
+		visible = {
+			HNC = { exists = yes }
+		}
+		available = {
+			HNC = {
+				exists = yes
+				has_war = no
+			}
+			has_war = no
+			is_neighbor_of = HNC
+		}
+		cost = 75
+		days_remove = 10
+		fire_only_once = yes
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_owned_by = HNC
+					is_core_of = HNC
+				}
+				add_core_of = JNC
+			}
+			HNC = {
+				leave_faction = yes
+			}
+			JNC = {
+				declare_war_on = {
+					target = HNC
+					type = civil_war
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				strength_ratio = {
+					tag = HNC
+					ratio > 2
+				}
+			}
+		}
+	}
+	CHI_SIK_annex_KUM = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			OR = {
+				original_tag = SIK
+				original_tag = CHI
+				original_tag = QIN
+			}
+		}
+		target_trigger = {
+			FROM = {
+				tag = KUM
+			}
+		}
+		visible = {
+			KUM = { exists = yes }
+		}
+		available = {
+			is_neighbor_of = KUM
+			KUM = {
+				exists = yes
+				NOT = {
+					has_country_leader = {
+						name = "Maqsud Shah"
+						ruling_only = no
+					}
+				}
+			}
+			if = {
+				limit = {
+					original_tag = SIK
+				}
+				SIK = {
+					has_country_leader = {
+						name = "Jin Shuren"
+						ruling_only = yes
+					}
+				}
+			}
+		}
+		cost = 75
+		days_remove = 10
+		fire_only_once = yes
+		remove_effect = {
+			annex_country = {
+				target = KUM
+				transfer_troops = no
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	CHI_KUM_call_support_from_XSM = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = KUM
+		}
+		visible = {
+			has_war_with = SIK
+			XSM = {
+				exists = yes
+				is_neighbor_of = SIK
+			}
+		}
+		available = {
+			has_war_with = SIK
+			XSM = {
+				is_subject = no
+				has_war = no
+				is_neighbor_of = SIK
+			}
+			SIK = {
+				is_subject = no
+				is_in_faction = no
+			}	
+		}
+		days_remove = 10
+		fire_only_once = yes
+		remove_effect = {
+			XSM = { country_event = ww1_xinjiang.4 }
+		}
+		target_trigger = {
+			FROM = {
+				tag = XSM
+			}
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+	CHI_SIK_call_sheng_shicai = {
+		icon = generic_prepare_civil_war
+		allowed = {
+			original_tag = SIK
+		}
+		visible = {
+			has_war_with = KUM
+		}
+		available = {
+			has_war_with = KUM
+			OR = {
+				surrender_progress > 0.1
+				has_war_with = XSM
+				date > 1933.1.1
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = CHI_SIK_call_sheng_shicai_tt
+			add_war_support = 0.1
+			
+			hidden_effect = {
+				set_country_flag = sheng_shicai_in_sinkiang
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 2000
+				OR = {
+					surrender_progress > 0.3
+					date > 1933.1.1
+				}
+			}
+		}
+	}
+	CHI_XSM_sue_for_peace_SIK = {
+		allowed = {
+			original_tag = XSM
+		}
+		visible = {
+			has_war_with = SIK
+			SIK = {
+				has_country_leader = {
+					name = "Sheng Shicai"
+					ruling_only = yes
+				}
+			}
+		}
+		available = {
+			has_war_with = SIK
+			is_subject = no
+			SIK = {
+				has_country_leader = {
+					name = "Sheng Shicai"
+					ruling_only = yes
+				}
+			}
+		}
+		complete_effect = {
+			add_war_support = -0.1
+			white_peace = SIK
+
+			hidden_effect = {
+				if = {
+					limit = {
+						SOV = {
+							exists = yes
+							is_neighbor_of = SIK
+						}
+					}
+					# Just like vanilla
+					SIK = {
+						set_politics = {
+							ruling_party = communism
+							elections_allowed = no
+						}
+						set_popularities = {
+							communism = 100
+						}
+					}
+					SOV = {
+						give_guarantee = SIK
+					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				tag = SIK
+			}
+		}
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 2000
+				SOV = {
+					exists = yes
+					is_neighbor_of = SIK
+				}
+			}
+		}
 	}
 }
 
@@ -1169,11 +2607,11 @@ foreign_politics = {
 			}
 		}
 		available = {
-			controls_state = 525
-			controls_state = 527
-			controls_state = 800
-			controls_state = 801
-			controls_state = 802
+			has_full_control_of_state = 525
+			has_full_control_of_state = 527
+			has_full_control_of_state = 800
+			has_full_control_of_state = 801
+			has_full_control_of_state = 802
 			NOT = { country_exists = KOR }
 		}
 		ai_will_do = {
@@ -1181,11 +2619,7 @@ foreign_politics = {
 		}
 		cost = 0
 		visible = {
-			controls_state = 525
-			controls_state = 527
-			controls_state = 800
-			controls_state = 801
-			controls_state = 802
+			has_war_with = JAP
 			NOT = { country_exists = KOR }
 		}
 		fire_only_once = no
@@ -1200,11 +2634,11 @@ foreign_politics = {
 			}
 		}
 		available = {
-			controls_state = 525
-			controls_state = 527
-			controls_state = 800
-			controls_state = 801
-			controls_state = 802
+			has_full_control_of_state = 525
+			has_full_control_of_state = 527
+			has_full_control_of_state = 800
+			has_full_control_of_state = 801
+			has_full_control_of_state = 802
 			NOT = { country_exists = KOR }
 		}
 		ai_will_do = {
@@ -1212,11 +2646,14 @@ foreign_politics = {
 		}
 		cost = 0
 		visible = {
-			controls_state = 525
-			controls_state = 527
-			controls_state = 800
-			controls_state = 801
-			controls_state = 802
+			OR = {
+				controls_state = 525
+				controls_state = 527
+				controls_state = 800
+				controls_state = 801
+				controls_state = 802
+				has_war_with = JAP
+			}
 			NOT = { country_exists = KOR }
 		}
 		fire_only_once = no

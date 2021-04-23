@@ -14,11 +14,10 @@ set_country_flag=monroe_doctrine
 
 create_country_leader = { 
 	name = "José Madriz" 
-	desc=NIC_jose_madriz_DESC 
 	picture="gfx/leaders/NIC/NIC_jose_madriz.dds" 
 	expire="1935.1.1" 
-	ideology = liberalism 
-	traits={  } 
+	ideology = social_liberalism 
+	traits = { trait_social_liberalism } 
 }
 create_corps_commander = {  
 	name = "Benjamín Zeledón" 
@@ -71,8 +70,4 @@ create_corps_commander = {
 	    communism = 3
 	    neutrality = 41
 	}
-
-	add_ideas = {
-
-	}	
 }

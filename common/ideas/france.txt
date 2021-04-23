@@ -436,7 +436,6 @@ ideas = {
 			}
 			available = {
 				NOT = { owns_state = 28 }
-				NOT = { has_country_flag = great_war_loser }
 				NOT = { has_country_flag = great_war_winner }
 			}
 			rule = { can_create_factions = yes }
@@ -826,5 +825,30 @@ ideas = {
 				political_power_gain = 0.25
 			}
 		}
+	}
+	hidden_ideas = {
+		FRA_wadai_war = {
+			available = {
+				has_war_with = CHA
+				NOT = {
+				    any_country = {
+					    NOT = {
+						    original_tag = CHA 
+						    original_tag = DAR
+						    original_tag = LBA
+					    }
+					    has_war_with = FRA
+				    }
+				}
+				OR = {
+				    original_tag = FRA
+					is_subject_of = FRA
+				}
+			}
+			modifier = {
+				offensive_war_stability_factor = 0.25
+			}
+		}
+
 	}
 }	

@@ -12,10 +12,7 @@ add_to_faction = RUS
 
 if = {
 	limit = {
-		OR = {
-			has_dlc = "Together for Victory"
-			has_dlc = "Man the Guns"
-		}
+		has_dlc = "Together for Victory"
 	}
 	set_autonomy = {
 		target = VIN
@@ -28,6 +25,17 @@ if = {
 }
 # SPECIAL_DLC Together for Victory
 
+1910.1.1 = {
+	declare_war_on = {
+		target = CHA
+		type = annex_everything
+	}		
+    set_province_controller = 4978
+	set_province_controller = 3181
+	activate_mission = FRA_wadai_war_timer
+}
+
+
 if = {
 	limit = {
 		has_dlc = "Man the Guns"
@@ -39,22 +47,22 @@ create_country_leader = {
 	name = "Louis Frossard" 
 	picture = "gfx/leaders/FRA/FRA_louis_frossard.dds" 
 	expire = "1935.1.1" 
-	ideology = council_communism
-	traits = {} 
+	ideology = marxism
+	traits = { trait_marxism }  
 }
 create_country_leader = {
 	name = "Armand Fallières" 
 	picture = "gfx/leaders/FRA/FRA_armand_fallieres.dds" 
 	expire = "1935.1.1" 
 	ideology = conservatism
-	traits = {} 
+	traits = { trait_conservatism }  
 }
 create_country_leader = {
 	name = "Georges Valois" 
 	picture = "gfx/leaders/FRA/FRA_georges_valois.dds" 
 	expire = "1935.1.1" 
 	ideology = national_syndicalism
-	traits = {} 
+	traits = { trait_national_syndicalism }  
 }
 
 create_field_marshal = {
@@ -235,6 +243,7 @@ set_technology = {
 	#air
 	early_fighter = 1
 	airship_bomber = 1
+	scout_plane = 1
 		
 	#engineering
 	electrical_engineering = 1
@@ -262,6 +271,7 @@ add_ideas = {
 	ww1_Scramble_for_Africa
 	FRA_disjointed_government
 	limited_conscription
+	FRA_wadai_war
 }
 
 if = {
@@ -569,6 +579,7 @@ if = {
 		improved_heavy_battery = 1
 		basic_torpedo = 1
 		sonar = 1
+		smoke_generator = 1
 		basic_secondary_battery = 1
 		improved_secondary_battery = 1
 		basic_cruiser_armor_scheme = 1

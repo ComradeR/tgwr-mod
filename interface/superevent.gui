@@ -1,0 +1,121 @@
+guiTypes = {
+	containerWindowType = {
+		name = "SE_Window"
+		size = { width = 600 height = 675 }
+		position = { x=0 y=0 }
+		Orientation = center
+		Origo = center
+		clipping = no
+
+		#set in chronological order
+		iconType = {
+			name ="SE_mex_revolution" 
+			spriteType = "GFX_SE_mex_revolution" 
+			position = { x=38 y = 55 }
+		}
+		iconType = {
+			name ="SE_chi_xinhai_revolution" 
+			spriteType = "GFX_SE_chi_xinhai_revolution" 
+			position = { x=38 y = 55 }
+		}
+		iconType = {
+			name ="SE_eng_republic" 
+			spriteType = "GFX_SE_eng_republic" 
+			position = { x=38 y = 55 }
+		}
+		iconType = {
+			name ="SE_bul_bw2_winner" 
+			spriteType = "GFX_SE_bul_bw2_winner" 
+			position = { x=38 y = 55 }
+		}
+		iconType = {
+			name ="SE_great_war" 
+			spriteType = "GFX_SE_great_war" 
+			position = { x=38 y = 55 }
+		}
+		iconType = {
+			name ="SE_war_of_the_worlds" 
+			spriteType = "GFX_SE_war_of_the_worlds" 
+			position = { x=38 y = 55 }
+		}
+		iconType = {
+			name ="SE_eng_kitchener" 
+			spriteType = "GFX_SE_eng_kitchener" 
+			position = { x=38 y = 55 }
+		}
+		iconType = {
+			name ="SE_chi_warlord_era" 
+			spriteType = "GFX_SE_chi_warlord_era" 
+			position = { x=38 y = 55 }
+		}
+		iconType = {
+			name ="SE_rus_february_revolution" 
+			spriteType = "GFX_SE_rus_february_revolution" 
+			position = { x=38 y = 55 }
+		}
+		iconType = {
+			name ="SE_rus_october_revolution" 
+			spriteType = "GFX_SE_rus_october_revolution" 
+			position = { x=38 y = 55 }
+		}
+		iconType = {
+			name ="SE_rus_civil_war_winner_white" 
+			spriteType = "GFX_SE_rus_civil_war_winner_white" 
+			position = { x=38 y = 55 }
+		}
+		iconType = {
+			name ="SE_rus_civil_war_winner_red" 
+			spriteType = "GFX_SE_rus_civil_war_winner_red" 
+			position = { x=38 y = 55 }
+		}
+		iconType = {
+			name ="SE_ger_nazi" 
+			spriteType = "GFX_SE_ger_nazi" 
+			position = { x=38 y = 55 }
+		}
+		iconType = {
+			name ="SE_test" 
+			spriteType = "GFX_SE_test" 
+			position = { x=38 y = 55 }
+		}
+		################################################################
+		containerWindowType = {
+			name = "Background"
+			background = {
+				name = "Background"
+				spriteType ="GFX_window_SE_border"
+			}
+		}
+		buttonType = {
+			name = "SE_Option"
+			position = { x = -68 y = 238 }
+			spriteType = "GFX_button_261x34"
+			buttonFont = "hoi_20bs"
+			buttonText = "[get_superevent_option]"
+			clicksound = click_open
+			clicksound = click_default
+			Orientation = center
+			scale = 1
+		}	
+		instantTextBoxType = {
+			name = "SE_textbox"
+			position = {  x = -175 y = 112 }
+			font = "hoi_18mbs"
+			text = [get_superevent_quote]
+			maxWidth = 480
+			maxHeight = 200
+			fixedsize = yes	  
+			format = centre
+			Orientation = center
+		}
+		instantTextBoxType = {
+			name = "SE_title"
+			position = { x = 161 y = 32 }
+			font = "hoi_24header"
+			text = "[get_superevent_title]"
+			maxWidth = 400
+			maxHeight = 24
+			format = centre
+		}
+	}
+}	

@@ -611,6 +611,17 @@ news_event = {
 			    name = ENG_anti_martian_league_party
 			}
 		}
+		if = {
+			limit = {
+				has_game_rule = {
+					rule = rule_superevent
+					option = DEFAULT
+				}
+				is_ai = no
+			}
+			play_song = "SE_war_of_the_worlds"
+            set_country_flag = SE_war_of_the_worlds
+		}
 	}
 }
 
@@ -1080,7 +1091,7 @@ country_event = {
 	picture = GFX_report_event_canadian_soldiers
 	
 	trigger = {
-		casualties > 250000
+		casualties > 900000
 		has_global_flag = kis_war
 		NOT = { has_country_flag = random_army_event }
 		NOT = { has_country_flag = fraternization_event }

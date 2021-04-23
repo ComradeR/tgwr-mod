@@ -14,12 +14,9 @@ state={
 		buildings = {
 			infrastructure = 3
 			industrial_complex = 1
-
-
 		}
-
 	}
-	state_category=town
-	manpower=406000
+	state_category=large_town
+	manpower=627800
 	buildings_max_level_factor=1.000
 }

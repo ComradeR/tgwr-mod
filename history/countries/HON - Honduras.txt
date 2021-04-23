@@ -15,8 +15,8 @@ create_country_leader = {
 	name = "Miguel R. Dávila" 
 	picture="gfx/leaders/HON/HON_miguel_r_davila.dds" 
 	expire="1935.1.1" 
-	ideology = liberalism 
-	traits={ } 
+	ideology = classical_liberalism 
+	traits = { trait_classical_liberalism }   
 }
 create_corps_commander = {  
 	name = "Francisco Bertrand"
@@ -54,8 +54,4 @@ create_corps_commander = {
 	    communism = 1
 	    neutrality = 1
 	}
-
-	add_ideas = {
-
-	}	
 }
