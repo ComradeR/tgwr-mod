@@ -116,14 +116,14 @@ give_guarantee = BEL # Treaty of London 1839
 
 
 create_country_leader = { 
-	name = "Edward Pease"
+	name = "Edward Reynolds Pease"
 	picture = "ENG_Edward_Pease.dds" 
-	expire="1935.1.1" 
-	ideology=council_communism
-	traits = {  } 
+	expire = "1935.1.1" 
+	ideology = council_communism
+	 
 }
 create_country_leader = {
-	name = "Herbert H. Asquith" 
+	name = "Herbert Henry Asquith" 
 	picture = "gfx/leaders/ENG/ENG_herbert_henry_asquith.dds" 
 	expire = "1935.1.1" 
 	ideology = liberalism
@@ -360,7 +360,7 @@ create_corps_commander = {
 create_corps_commander = {
 	name = "Thomas Snow" 
 	portrait_path = "gfx/leaders/ENG/ENG_thomas_snow.dds" 
-	traits = { }
+	
 	id = 819
 	skill = 2
 	attack_skill = 1
@@ -572,6 +572,7 @@ create_navy_leader = {
 		edward_vii
 		eng_overextension
 		eng_fleet_at_rest
+		ENG_lords_opposition
 		
 		ENG_edward_grey #suck my cock
 	}
@@ -1746,7 +1747,7 @@ if = {
 	#Give player chance to build it.
 	create_operative_leader = {
 		name = "Sidney Reilly"
-		picture = "ENG_Sidney_Reilly.dds"
+		GFX = ENG_Sidney_Reilly
 		traits = { operative_double_agent operative_tough operative_infiltrator operative_seducer }
 		bypass_recruitment = no
 		available_to_spy_master = yes
@@ -1754,10 +1755,10 @@ if = {
 	}
 	create_operative_leader = {
 		name = "Harry Houdini"
-		picture = "ENG_harry_houdini.dds"
+		GFX = ENG_harry_houdini
 		traits = { operative_infiltrator operative_safe_cracker operative_escape_artist }
 		bypass_recruitment = no
-		available_to_spy_master = yes
-		nationalities = { ENG USA AUH HUN }
+		available_to_spy_master = no
+		nationalities = { USA AUH HUN }
 	}
 }

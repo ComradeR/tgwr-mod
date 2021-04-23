@@ -454,6 +454,8 @@ country_event = {
 						state = 103
 						state = 104
 						state = 102
+						state = 208
+						state = 575
 					}
 					OR = {
 						is_owned_by = AUH
@@ -473,6 +475,7 @@ country_event = {
 					}
 				}	
 				transfer_state = 163
+				transfer_state = 244
 			}
 			if = {
 				limit = { 
@@ -497,7 +500,7 @@ country_event = {
 				picture = "gfx/leaders/CRO/CRO_Anton_Korosec.dds"
 				expire = "1935.1.1"
 				ideology = centrism
-				traits = { }
+				
 			}
 		}
 		ai_chance = { factor = 100 }
@@ -692,6 +695,7 @@ country_event = {
 			AUH = { end_puppet = HUN }
 			drop_cosmetic_tag = yes
 			transfer_state = 43
+			transfer_state = 147
 			transfer_state = 154
 			transfer_state = 155
 			transfer_state = 664
@@ -746,6 +750,18 @@ country_event = {
 					AUH = { owns_state = 80 }
 				}
 				transfer_state = 80
+			}
+			if = {
+				limit = {
+					AUH = { owns_state = 778 }
+				}
+				transfer_state = 778
+			}
+			if = {
+				limit = {
+					AUH = { owns_state = 513 }
+				}
+				transfer_state = 513
 			}
 			every_state = {
 				limit = { is_owned_by = HUN }
@@ -828,6 +844,7 @@ country_event = {
 			ITA = {
 				transfer_state = 39
 				transfer_state = 163
+				transfer_state = 244
 				transfer_state = 736
 			}
 		}
@@ -1175,7 +1192,7 @@ country_event = {
 						picture = "gfx/leaders/AUH/AUH_franz_joseph_i.dds"
 						expire = "1935.1.1"
 						ideology = autocracy
-						traits = { }
+						
 					}
 				}
 			}
@@ -1191,7 +1208,7 @@ country_event = {
 						picture="gfx/leaders/AUH/AUH_karl_i.dds"
 						expire="1935.1.1"
 						ideology = autocracy
-						traits = { }
+						
 					}
 				}
 			}
@@ -1207,7 +1224,7 @@ country_event = {
 						picture="gfx/leaders/AUH/AUH_franz_ferdinand.dds"
 						expire="1935.1.1"
 						ideology = autocracy
-						traits = { }
+						
 					}
 				}
 			}
